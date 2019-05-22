@@ -551,7 +551,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -774,14 +774,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7728000566945804249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64a6eaa763fd8af4da7e32fa4a6fe3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   centerPosition: {x: 0, y: 0, z: 0}
-  unlocked: 0
+  centerScale: {x: 0, y: 0, z: 0}
   inCenter: 0
+  radius: 0
+  counterClockwise: 0
+  rhythmObject: {fileID: 5605145439435445703}
 --- !u!1 &8796248160273329932
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +842,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4026090742114099901}
     m_Modifications:
+    - target: {fileID: 2716767855825998476, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
+        type: 3}
+      propertyPath: m_Name
+      value: BoidEmitter
+      objectReference: {fileID: 0}
     - target: {fileID: 2716767855825998474, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -893,11 +901,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2716767855825998476, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
-        type: 3}
-      propertyPath: m_Name
-      value: BoidEmitter
       objectReference: {fileID: 0}
     - target: {fileID: 2716767855825998477, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
         type: 3}

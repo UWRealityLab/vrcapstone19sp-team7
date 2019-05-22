@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BeatObject
+  - teleportDest
   layers:
   - Default
   - TransparentFX

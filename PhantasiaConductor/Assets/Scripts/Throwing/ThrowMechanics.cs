@@ -24,23 +24,43 @@ namespace Valve.VR.InteractionSystem
 
         private bool startup = true;
 
-        void Start() 
+        private void Awake()
         {
             spawn = GetComponent<CustomSpawnAndAttachToHand>();
-            /* beatInfo = GetComponent<BeatInfo>();
+            beatInfo = GetComponent<BeatInfo>();
+        }
+
+        void Start() 
+        {
             if (throwEnabled)
             {
                 leftThrowable = spawn.SpawnAndAttach(leftHand);
                 rightThrowable = spawn.SpawnAndAttach(rightHand);
-            }*/
+            }
         }
-/*
+
         public void NewLoop()
         {
-            if (startup)
+            if (startup && gameObject.activeInHierarchy)
             {
                 startup = false;
-                ReleaseOnBeat();
+                StartCoroutine(ReleasePerFrame());
+            }
+        }
+
+        private IEnumerator ReleasePerFrame()
+        {
+            while(true)
+            {
+                if (throwEnabled)
+                {
+                    leftHand.DetachObject(leftThrowable);
+                    rightHand.DetachObject(rightThrowable);
+
+                    leftThrowable = spawn.SpawnAndAttach(leftHand);
+                    rightThrowable = spawn.SpawnAndAttach(rightHand);
+                }
+                yield return new WaitForSeconds(beatInfo.beatTime);
             }
         }
 
@@ -48,16 +68,16 @@ namespace Valve.VR.InteractionSystem
         {
             if (throwEnabled)
             {
-                Debug.Log(beatInfo.beatTime);
                 leftHand.DetachObject(leftThrowable);
                 rightHand.DetachObject(rightThrowable);
-                // leftThrowable = spawn.SpawnAndAttach(leftHand);
-                // rightThrowable = spawn.SpawnAndAttach(rightHand);
+
+                leftThrowable = spawn.SpawnAndAttach(leftHand);
+                rightThrowable = spawn.SpawnAndAttach(rightHand);
             }
-            Debug.Log(beatInfo.beatTime);
             Invoke("ReleaseOnBeat", beatInfo.beatTime);
         }
-*/
+
+/*
         void FixedUpdate()
         {
             if (throwEnabled)
@@ -85,7 +105,7 @@ namespace Valve.VR.InteractionSystem
                 
             }
         }
-
+*/
         private bool IsButtonDown(Hand hand) {
             if (MOUSE_DEBUG)
             {
@@ -107,6 +127,13 @@ namespace Valve.VR.InteractionSystem
             {
                 return releaseAction.GetStateUp(hand.handType);
             }
+        }
+
+        public void DisableThrow()
+        {
+            throwEnabled = false;
+            leftHand.DetachObject(leftThrowable);
+            rightHand.DetachObject(rightThrowable);
         }
 
         public bool ThrowEnabled
