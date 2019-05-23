@@ -8,13 +8,11 @@ public class UnlockAction : MonoBehaviour
 	public Vector3 centerScale;
 	public bool inCenter = false;
 	public float radius;
-	public bool counterClockwise;
+	public float rotationSpeed = 1; //negative for counterclockwise
 
 	public GameObject rhythmObject;
-
+	private float y = 0;
 	void Awake () {
-		centerPosition = new Vector3(0,0,0);
-		centerScale = new Vector3(1,1,1);
 		inCenter = false;
 		//rhythmObject = transform.parent.Find("RhythmObject");
 	}
@@ -23,10 +21,13 @@ public class UnlockAction : MonoBehaviour
 	void FixedUpdate()
 	{
 		if (inCenter) {
+			y += rotationSpeed;
+        	transform.rotation = Quaternion.Euler(0, y, 0);
+
 			//transform.rotation.y += 1;
 		} else {
 			Vector3 delta = centerPosition - transform.position;
-			if (delta.magnitude < .01f) {
+			if (delta.magnitude < .25f) {
 				inCenter = true;
 				transform.position = centerPosition;
 			} else {
@@ -36,7 +37,7 @@ public class UnlockAction : MonoBehaviour
 
 
 		float deltaRadius = radius - rhythmObject.transform.localPosition.x;
-		if (deltaRadius < .01f ) {
+		if (deltaRadius < .1f ) {
 			rhythmObject.transform.localPosition = new Vector3(radius, 0, 0);
 		} else {
 			rhythmObject.transform.localPosition += new Vector3(deltaRadius / 75, 0, 0);
@@ -44,7 +45,7 @@ public class UnlockAction : MonoBehaviour
 
 
 		Vector3 deltaScale = centerScale - transform.localScale;
-		if (deltaScale.magnitude < .01f) {
+		if (deltaScale.magnitude < .1f) {
 			transform.localScale = centerScale;
 		} else {
 			transform.localScale += deltaScale / 75;

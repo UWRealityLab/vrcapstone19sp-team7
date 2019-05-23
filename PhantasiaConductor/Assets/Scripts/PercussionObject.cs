@@ -11,6 +11,7 @@ public class PercussionObject : MonoBehaviour
     public uint hitsToUnlock = 4;
     public bool unlocked = false;
     public bool isPiano = false;
+    public static rythmComplete = false; //true 
 
     private Renderer hitRenderer;
     private BeatBlinkController beatBlinkController;
@@ -52,7 +53,7 @@ public class PercussionObject : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             beatBlinkController.NewLoop();
-            if (!isPiano)
+            if (!isPiano && !rythmComplete)
             {
                 loopSource.Play();
             }
@@ -65,7 +66,9 @@ public class PercussionObject : MonoBehaviour
         Invoke("LoopSourceOn", hitClip.length + .1f);
         hitRenderer.material = unlockMaterial;
         GetComponent<Renderer>().material = unlockMaterial;
-        Debug.Log("AA");
+        Color color = this.GetComponent<MeshRenderer>().material.color;
+        color.a = .2f;
+        this.GetComponent<MeshRenderer>().material.color = color;
     }
 
     public void HitOnce()

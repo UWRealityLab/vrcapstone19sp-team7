@@ -13,7 +13,8 @@ public class Blink : MonoBehaviour
     public UnityEvent onBlinkOffToOn;
 
     public bool isPiano = false;
-
+    public float transparency;
+    
     // true is on, false is off
     private bool blinkState = true;
     private bool unlocked = false;
