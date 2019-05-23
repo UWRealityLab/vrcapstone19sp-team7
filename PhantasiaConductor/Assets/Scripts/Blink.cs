@@ -25,7 +25,7 @@ public class Blink : MonoBehaviour
             GetComponent<Collider>().enabled = true;
         }
         Color color = this.GetComponent<MeshRenderer>().material.color;
-        color.a = .25f;
+        color.a = .2f;
         this.GetComponent<MeshRenderer>().material.color = color;
     }
 
