@@ -3024,6 +3024,10 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 130850544}
+    - target: {fileID: 1709879473, guid: 8a83454104c6ad54dab6072635c3892b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1783169964, guid: 8a83454104c6ad54dab6072635c3892b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6804,7 +6808,7 @@ PrefabInstance:
     - target: {fileID: 4711757853987125809, guid: 6ad139cec03e1394eb282e3ae9a32b7f,
         type: 3}
       propertyPath: spawnTime
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad139cec03e1394eb282e3ae9a32b7f, type: 3}

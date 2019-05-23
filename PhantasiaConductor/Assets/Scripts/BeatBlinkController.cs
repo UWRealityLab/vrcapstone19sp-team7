@@ -34,7 +34,7 @@ public class BeatBlinkController : MonoBehaviour
  
     IEnumerator RunBeat(int beatCount)
     {
-        Debug.Log("BBBBBBBBB" + beatCount);
+        // Debug.Log("BBBBBBBBB" + beatCount);
         bool isHit = beatInfo.beats[beatCount];
         bool isNextHit = beatInfo.beats[(beatCount + 1) % beatInfo.beats.Length];
         
@@ -87,7 +87,7 @@ public class BeatBlinkController : MonoBehaviour
                 hitCount = 0;
             }
             transform.localPosition = originalPos + beatInfo.offsets[hitCount];
-            Debug.Log(beatInfo.offsets[hitCount]);
+            // Debug.Log(beatInfo.offsets[hitCount]);
         }
     }
 

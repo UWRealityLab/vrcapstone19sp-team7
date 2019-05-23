@@ -18,6 +18,8 @@ public class Hittable : MonoBehaviour
     public bool canInteract;
     public bool preventRepeated = true;
 
+    private bool isUnlocked = false;
+
     // keep track of hit counts
     private uint hitCount;
 
@@ -31,6 +33,14 @@ public class Hittable : MonoBehaviour
         if (GetComponent<PObject>() != null)
         {
             // canHit = GetComponent<PObject>().IsAlive();
+        }
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.N)) {
+            if (!isUnlocked) {
+                Unlock();
+            }
         }
     }
 
@@ -48,12 +58,17 @@ public class Hittable : MonoBehaviour
             //Debug.Log(hitCount + "       " + hitsToUnlock);
             if (hitCount == hitsToUnlock)
             {
-                onUnlock.Invoke();
+                Unlock();
             }
 
 
             HitFlag = true;
         }
+    }
+
+    public void Unlock() {
+        onUnlock.Invoke();
+        isUnlocked = true;
     }
 
     void OnPinched()

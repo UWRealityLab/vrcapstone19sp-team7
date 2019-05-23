@@ -10,7 +10,6 @@ namespace Valve.VR.InteractionSystem
 
         public GameObject[] puzzles;
         private AudioSource winSource;
-        
         public AudioClip winClip;
 
         public int currentPuzzle;
@@ -55,15 +54,20 @@ namespace Valve.VR.InteractionSystem
                 puzzles[currentPuzzle].SetActive(true);
 
             } else {
-            	//PercussionObject.rhythmComplete = true;
                 onPuzzleComplete.Invoke();
             }
         }
 
         public void NewLoop(){
-        		for (int i = 0; i < puzzles.Length; i++) {
-        			puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().NewLoop();
-        		}
+            for (int i = 0; i < puzzles.Length; i++) {
+                puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().NewLoop();
+            }
+        }
+
+        public void MoveAllToCenter(){
+            for (int i = 0; i < puzzles.Length; i++) {
+                // puzzles[i].GetComponent<UnlockAction>().Unlock();
+            }
         }
     }
 }
