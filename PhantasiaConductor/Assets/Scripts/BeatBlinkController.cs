@@ -11,7 +11,6 @@ public class BeatBlinkController : MonoBehaviour
     private Blink blink;
     public BeatInfo beatInfo;
     public bool unlocked = false;
-    private int beatCount = 0;
     private int hitCount = -1;
     private Vector3 originalPos;
 
@@ -30,14 +29,12 @@ public class BeatBlinkController : MonoBehaviour
 
     public void NewLoop()
     {
-        beatCount = -1;
-        RunBeat();
+        StartCoroutine(RunBeat(0));
     }
  
-    void RunBeat()
+    IEnumerator RunBeat(int beatCount)
     {
-        beatCount++;
-        Debug.Log(beatCount);
+        Debug.Log("BBBBBBBBB" + beatCount);
         bool isHit = beatInfo.beats[beatCount];
         bool isNextHit = beatInfo.beats[(beatCount + 1) % beatInfo.beats.Length];
         
@@ -64,7 +61,8 @@ public class BeatBlinkController : MonoBehaviour
 
         if (beatCount < beatInfo.beats.Length - 1)
         {
-            Invoke("RunBeat", beatInfo.beatTime);
+            yield return new WaitForSeconds(beatInfo.beatTime);
+            StartCoroutine(RunBeat(beatCount + 1));
         }
     }
     
