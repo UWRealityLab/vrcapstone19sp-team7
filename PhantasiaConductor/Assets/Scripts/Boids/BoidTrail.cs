@@ -49,7 +49,7 @@ public class BoidTrail : MonoBehaviour
             float seed = Random.Range(0f, 1000f);
             for (var i = 0; i < numCurveKeys; i++)
             {
-                widths[i] = Mathf.PerlinNoise(seed + (0.5f * i), seed + (0.25f * i));
+                widths[i] = Mathf.Clamp(Mathf.PerlinNoise(seed + (0.5f * i), seed + (0.25f * i)), .5f, 1.0f);
             }
 
             {
