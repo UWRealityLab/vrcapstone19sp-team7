@@ -2929,6 +2929,21 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 730225338482027663, guid: 138177e7863b85945bcf2d498a5fe4bf,
+        type: 3}
+      propertyPath: flock
+      value: 
+      objectReference: {fileID: 1906802791}
+    - target: {fileID: 730225338879135615, guid: 138177e7863b85945bcf2d498a5fe4bf,
+        type: 3}
+      propertyPath: flock
+      value: 
+      objectReference: {fileID: 2087472150}
+    - target: {fileID: 4168275687095249048, guid: 138177e7863b85945bcf2d498a5fe4bf,
+        type: 3}
+      propertyPath: flock
+      value: 
+      objectReference: {fileID: 1906802791}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 138177e7863b85945bcf2d498a5fe4bf, type: 3}
 --- !u!114 &1121144454 stripped

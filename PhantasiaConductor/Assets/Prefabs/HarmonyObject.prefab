@@ -230,6 +230,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1015708508159520412}
+        m_MethodName: EmitBoids
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   notes: 0c000000090000000700000007000000
@@ -334,6 +345,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3146714838521478161}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1015708508159520412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2716767855825998477, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
+    type: 3}
+  m_PrefabInstance: {fileID: 3146714838521478161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6526e2fdc123e1c499115a6fb2b07420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3745579494255060194
 PrefabInstance:
   m_ObjectHideFlags: 0
