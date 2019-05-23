@@ -35,6 +35,7 @@ namespace Valve.VR.InteractionSystem
             // beatInfo = GetComponent<BeatInfo>();
         }
 
+        /*
         void Start() 
         {
             if (throwEnabled)
@@ -43,16 +44,26 @@ namespace Valve.VR.InteractionSystem
                 rightThrowable = spawn.SpawnAndAttach(rightHand);
             }
         }
+        */
 
+            /*
         private void FixedUpdate()
         {
+
+            Debug.Log(rightHand.GetTrackedObjectVelocity(0f).magnitude);
             if (leftHand.GetTrackedObjectVelocity(0f).magnitude > velocityThreshhold)
             {
                 leftAboveThreshhold = true;
-            } else if (leftAboveThreshhold && leftHand.GetTrackedObjectVelocity(0f).magnitude < velocityThreshhold)
+            }
+            else if (leftAboveThreshhold && leftHand.GetTrackedObjectVelocity(0f).magnitude < velocityThreshhold)
             {
-                leftHand.DetachObject(leftThrowable);
-                leftThrowable = spawn.SpawnAndAttach(leftHand);
+                if (leftThrowable != null)
+                {
+                    leftHand.DetachObject(leftThrowable);
+                    StartCoroutine(delaySpawn(false));
+                }
+                leftThrowable = null;
+                leftAboveThreshhold = false;
             }
 
             if (rightHand.GetTrackedObjectVelocity(0f).magnitude > velocityThreshhold)
@@ -61,11 +72,29 @@ namespace Valve.VR.InteractionSystem
             }
             else if (rightAboveThreshhold && rightHand.GetTrackedObjectVelocity(0f).magnitude < velocityThreshhold)
             {
-                rightHand.DetachObject(rightThrowable);
-                rightThrowable = spawn.SpawnAndAttach(rightHand);
+                if (rightThrowable != null)
+                {
+                    rightHand.DetachObject(rightThrowable);
+                    StartCoroutine(delaySpawn(true));
+                }
+                rightThrowable = null;
+                rightAboveThreshhold = false;
+                
             }
         }
-
+        
+        private IEnumerator delaySpawn(bool right)
+        {
+            yield return new WaitForSeconds(0.25f);
+            if (right)
+            {
+                rightThrowable = spawn.SpawnAndAttach(rightHand);
+            } else
+            {
+                leftThrowable = spawn.SpawnAndAttach(leftHand);
+            }
+        }
+        */
         /*
         public void NewLoop()
         {
@@ -105,7 +134,7 @@ namespace Valve.VR.InteractionSystem
             Invoke("ReleaseOnBeat", beatInfo.beatTime);
         }
         */
-        /*
+
                 void FixedUpdate()
                 {
                     if (throwEnabled)
@@ -133,7 +162,7 @@ namespace Valve.VR.InteractionSystem
 
                     }
                 }
-        */
+
         private bool IsButtonDown(Hand hand) {
             if (MOUSE_DEBUG)
             {
