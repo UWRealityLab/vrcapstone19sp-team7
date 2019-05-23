@@ -24,10 +24,15 @@ namespace Valve.VR.InteractionSystem
 
         private bool startup = true;
 
+
+        public float velocityThreshhold = 10f;
+        private bool leftAboveThreshhold = false;
+        private bool rightAboveThreshhold = false;
+
         private void Awake()
         {
             spawn = GetComponent<CustomSpawnAndAttachToHand>();
-            beatInfo = GetComponent<BeatInfo>();
+            // beatInfo = GetComponent<BeatInfo>();
         }
 
         void Start() 
@@ -39,6 +44,29 @@ namespace Valve.VR.InteractionSystem
             }
         }
 
+        private void FixedUpdate()
+        {
+            if (leftHand.GetTrackedObjectVelocity(0f).magnitude > velocityThreshhold)
+            {
+                leftAboveThreshhold = true;
+            } else if (leftAboveThreshhold && leftHand.GetTrackedObjectVelocity(0f).magnitude < velocityThreshhold)
+            {
+                leftHand.DetachObject(leftThrowable);
+                leftThrowable = spawn.SpawnAndAttach(leftHand);
+            }
+
+            if (rightHand.GetTrackedObjectVelocity(0f).magnitude > velocityThreshhold)
+            {
+                rightAboveThreshhold = true;
+            }
+            else if (rightAboveThreshhold && rightHand.GetTrackedObjectVelocity(0f).magnitude < velocityThreshhold)
+            {
+                rightHand.DetachObject(rightThrowable);
+                rightThrowable = spawn.SpawnAndAttach(rightHand);
+            }
+        }
+
+        /*
         public void NewLoop()
         {
             if (startup && gameObject.activeInHierarchy)
@@ -76,36 +104,36 @@ namespace Valve.VR.InteractionSystem
             }
             Invoke("ReleaseOnBeat", beatInfo.beatTime);
         }
+        */
+        /*
+                void FixedUpdate()
+                {
+                    if (throwEnabled)
+                    {
 
-/*
-        void FixedUpdate()
-        {
-            if (throwEnabled)
-            {
 
-                
-                if (leftThrowable == null && IsButtonDown(leftHand))
-                {
-                    leftThrowable = spawn.SpawnAndAttach(leftHand);
-                } 
-                if (rightThrowable == null && IsButtonDown(rightHand))
-                {
-                    rightThrowable = spawn.SpawnAndAttach(rightHand);
+                        if (leftThrowable == null && IsButtonDown(leftHand))
+                        {
+                            leftThrowable = spawn.SpawnAndAttach(leftHand);
+                        } 
+                        if (rightThrowable == null && IsButtonDown(rightHand))
+                        {
+                            rightThrowable = spawn.SpawnAndAttach(rightHand);
+                        }
+                        if (WasButtonReleased(leftHand))
+                        {
+                            leftHand.DetachObject(leftThrowable);
+                            leftThrowable = null;
+                        }
+                        if (WasButtonReleased(rightHand))
+                        {
+                            rightHand.DetachObject(rightThrowable);
+                            rightThrowable = null;
+                        }
+
+                    }
                 }
-                if (WasButtonReleased(leftHand))
-                {
-                    leftHand.DetachObject(leftThrowable);
-                    leftThrowable = null;
-                }
-                if (WasButtonReleased(rightHand))
-                {
-                    rightHand.DetachObject(rightThrowable);
-                    rightThrowable = null;
-                }
-                
-            }
-        }
-*/
+        */
         private bool IsButtonDown(Hand hand) {
             if (MOUSE_DEBUG)
             {
