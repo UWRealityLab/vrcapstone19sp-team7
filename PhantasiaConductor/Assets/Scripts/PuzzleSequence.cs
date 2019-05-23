@@ -55,7 +55,7 @@ namespace Valve.VR.InteractionSystem
                 puzzles[currentPuzzle].SetActive(true);
 
             } else {
-            	PercussionObject.rhythmComplete = true;
+            	//PercussionObject.rhythmComplete = true;
                 onPuzzleComplete.Invoke();
             }
         }
@@ -63,9 +63,6 @@ namespace Valve.VR.InteractionSystem
         public void NewLoop(){
         		for (int i = 0; i < puzzles.Length; i++) {
         			puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().NewLoop();
-        		}
-        		if (PercussionObject.rhythmComplete) {
-
         		}
         }
     }

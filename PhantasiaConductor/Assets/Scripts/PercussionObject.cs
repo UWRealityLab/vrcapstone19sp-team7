@@ -11,7 +11,7 @@ public class PercussionObject : MonoBehaviour
     public uint hitsToUnlock = 4;
     public bool unlocked = false;
     public bool isPiano = false;
-    public static rythmComplete = false; //true 
+    //public static rhythmComplete = false; //true 
 
     private Renderer hitRenderer;
     private BeatBlinkController beatBlinkController;
@@ -53,7 +53,7 @@ public class PercussionObject : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             beatBlinkController.NewLoop();
-            if (!isPiano && !rythmComplete)
+            if (!isPiano) // && !rhythmComplete)
             {
                 loopSource.Play();
             }

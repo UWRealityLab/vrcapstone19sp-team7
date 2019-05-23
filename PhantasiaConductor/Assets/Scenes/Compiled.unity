@@ -3571,8 +3571,18 @@ PrefabInstance:
     - target: {fileID: 3610926845883683179, guid: 1a796801a65e7134c850b1096e10774d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3610926846367259348, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 1843923526}
+    - target: {fileID: 3610926846367259348, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 500699234}
     - target: {fileID: 6032642714095921303, guid: 1a796801a65e7134c850b1096e10774d,
         type: 3}
       propertyPath: centerScale.x
@@ -3663,16 +3673,6 @@ PrefabInstance:
       propertyPath: handColliders
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3610926846367259348, guid: 1a796801a65e7134c850b1096e10774d,
-        type: 3}
-      propertyPath: leftHand
-      value: 
-      objectReference: {fileID: 1843923526}
-    - target: {fileID: 3610926846367259348, guid: 1a796801a65e7134c850b1096e10774d,
-        type: 3}
-      propertyPath: rightHand
-      value: 
-      objectReference: {fileID: 500699234}
     - target: {fileID: 3610926845883683178, guid: 1a796801a65e7134c850b1096e10774d,
         type: 3}
       propertyPath: m_LocalPosition.x
