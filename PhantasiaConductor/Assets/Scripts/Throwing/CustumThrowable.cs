@@ -136,7 +136,8 @@ namespace Valve.VR.InteractionSystem
                     hand.GetEstimatedPeakVelocities(out velocity, out angularVelocity);
                     break;
                 case ReleaseStyle.GetFromHand:
-                    velocity = hand.transform.forward * hand.GetTrackedObjectVelocity(releaseVelocityTimeOffset).magnitude;
+                    velocity = hand.GetTrackedObjectVelocity(releaseVelocityTimeOffset);
+                    // velocity = hand.transform.forward * hand.GetTrackedObjectVelocity(releaseVelocityTimeOffset).magnitude;
                     angularVelocity = hand.GetTrackedObjectAngularVelocity(releaseVelocityTimeOffset);
                     break;
                 default:

@@ -502,7 +502,7 @@ PrefabInstance:
     - target: {fileID: 5593010059244981528, guid: e7fadcf52ab2e2b49bc054aff2832f31,
         type: 3}
       propertyPath: onNewLoop.m_PersistentCalls.m_Calls.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5593010059244981528, guid: e7fadcf52ab2e2b49bc054aff2832f31,
         type: 3}
@@ -1212,6 +1212,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PianoPuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 5837641069144768310, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
+        type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 1846796839}
+    - target: {fileID: 5837641069144768310, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
+        type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 1165597880}
     - target: {fileID: 5837641069144768309, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1267,16 +1277,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5837641069144768310, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
-        type: 3}
-      propertyPath: leftHand
-      value: 
-      objectReference: {fileID: 1846796839}
-    - target: {fileID: 5837641069144768310, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
-        type: 3}
-      propertyPath: rightHand
-      value: 
-      objectReference: {fileID: 1165597880}
     - target: {fileID: 5837641069144768311, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
         type: 3}
       propertyPath: attachmentFlags
