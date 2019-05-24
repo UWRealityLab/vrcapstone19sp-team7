@@ -13,7 +13,7 @@ public class Hittable : MonoBehaviour
     public UnityEvent onTracked;
 
     public bool inContact;
-    
+
     public bool canHit;
     public bool canInteract;
     public bool preventRepeated = true;
@@ -21,7 +21,8 @@ public class Hittable : MonoBehaviour
     private bool isUnlocked = false;
 
     // keep track of hit counts
-    private uint hitCount;
+    [HideInInspector]
+    public uint hitCount;
 
     // use hit flag to keep track of hits
     private bool hitFlag;
@@ -36,9 +37,12 @@ public class Hittable : MonoBehaviour
         }
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.N)) {
-            if (!isUnlocked) {
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            if (!isUnlocked)
+            {
                 Unlock();
             }
         }
@@ -55,7 +59,7 @@ public class Hittable : MonoBehaviour
 
             onHitOnce.Invoke();
             hitCount++;
-            //Debug.Log(hitCount + "       " + hitsToUnlock);
+            
             if (hitCount == hitsToUnlock)
             {
                 Unlock();
@@ -66,7 +70,8 @@ public class Hittable : MonoBehaviour
         }
     }
 
-    public void Unlock() {
+    public void Unlock()
+    {
         onUnlock.Invoke();
         isUnlocked = true;
     }
@@ -87,7 +92,7 @@ public class Hittable : MonoBehaviour
         }
     }
 
-    
+
 
     public void StopHit()
     {
@@ -142,6 +147,15 @@ public class Hittable : MonoBehaviour
         set
         {
             hitCount = value;
+        }
+    }
+
+    public float completion
+    {
+        get
+        {
+            return (float) hitCount / hitsToUnlock;
+
         }
     }
 }

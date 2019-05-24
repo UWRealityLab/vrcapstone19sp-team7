@@ -38,4 +38,8 @@ public class CollisionThrow : MonoBehaviour
         }
         
     }
+
+    // void OnTriggerEnter(Collider collider) {
+    //     Debug.Log("trigger enter");
+    // }
 }

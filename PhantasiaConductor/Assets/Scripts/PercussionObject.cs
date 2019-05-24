@@ -20,6 +20,8 @@ public class PercussionObject : MonoBehaviour
     private Hittable hittable;
     private BeatInfo beatInfo;
 
+    private ParticleSystem ps;
+
     // We can remove this and set values in the prefab
     void Awake()
     {
@@ -45,6 +47,19 @@ public class PercussionObject : MonoBehaviour
 
         hittable = GetComponent<Hittable>();
         hittable.hitsToUnlock = hitsToUnlock;
+        ps = transform.Find("ParticleSystem").gameObject.GetComponent<ParticleSystem>();
+
+        Renderer objRenderer = GetComponent<Renderer>();
+        objRenderer.material.SetFloat("_Completion", 0.0f);
+        hittable.onHitOnce.AddListener(delegate() {
+            float completion = ((float)hittable.hitCount + 1.0f) / hittable.hitsToUnlock;
+            // Debug.Log(completion + " completion");
+            objRenderer.material.SetFloat("_Completion", completion);
+            // ps.Emit(5);
+        });
+
+        
+
         beatBlinkController.beatInfo = beatInfo;
     }
 
@@ -78,6 +93,12 @@ public class PercussionObject : MonoBehaviour
             hitSource.Play();
         }
     }
+
+    float GetCompletion() {
+        // hitsToUnlock / 
+        return 0.0f;
+    }
+        
     void LoopSourceOn()
     {
         if (loopSource != null)

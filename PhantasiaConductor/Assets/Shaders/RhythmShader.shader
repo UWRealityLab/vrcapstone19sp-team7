@@ -64,7 +64,8 @@
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
+            // o.Alpha = c2.a;
+            o.Alpha = _Color.a;
         }
 
         // void frag (Input IN, SurfaceOutputStandard o, inout fixed4 color) {
