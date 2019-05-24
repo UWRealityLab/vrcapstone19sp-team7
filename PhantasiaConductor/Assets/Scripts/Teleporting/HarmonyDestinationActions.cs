@@ -22,6 +22,5 @@ public class HarmonyDestinationActions : MonoBehaviour
     {
         yield return new WaitForSeconds(delayDepart);
         transform.localPosition = newLocalPosition;
-        transform.localScale = newLocalScale;
     }
 }

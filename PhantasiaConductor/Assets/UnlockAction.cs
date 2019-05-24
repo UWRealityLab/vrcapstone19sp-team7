@@ -35,20 +35,24 @@ public class UnlockAction : MonoBehaviour
 			}
 		}
 
-
-		float deltaRadius = radius - rhythmObject.transform.localPosition.x;
-		if (deltaRadius < .1f ) {
-			rhythmObject.transform.localPosition = new Vector3(radius, 0, 0);
-		} else {
-			rhythmObject.transform.localPosition += new Vector3(deltaRadius / 75, 0, 0);
+		if (rhythmObject != null) {
+			float deltaRadius = radius - rhythmObject.transform.localPosition.x;
+			if (deltaRadius < .1f ) {
+				rhythmObject.transform.localPosition = new Vector3(radius, 0, 0);
+			} else {
+				rhythmObject.transform.localPosition += new Vector3(deltaRadius / 75, 0, 0);
+			}
 		}
 
-
 		Vector3 deltaScale = centerScale - transform.localScale;
-		if (deltaScale.magnitude < .1f) {
+		if (deltaScale.magnitude < .1f && deltaScale.magnitude > -.1f)  {
 			transform.localScale = centerScale;
 		} else {
-			transform.localScale += deltaScale / 75;
+			if (deltaScale.magnitude > 0) {
+				transform.localScale += deltaScale / 75;
+			} else {
+				transform.localScale -= deltaScale / 75;		
+			}
 		}
 	}
 

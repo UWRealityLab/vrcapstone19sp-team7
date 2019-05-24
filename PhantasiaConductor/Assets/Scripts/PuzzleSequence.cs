@@ -19,6 +19,7 @@ namespace Valve.VR.InteractionSystem
         public GameObject rightHand;
 
         
+        public UnityEvent onNextPuzzle;
         public UnityEvent onPuzzleComplete;
         
         // Start is called before the first frame update
@@ -52,7 +53,7 @@ namespace Valve.VR.InteractionSystem
             if (currentPuzzle < puzzles.Length)
             {
                 puzzles[currentPuzzle].SetActive(true);
-
+                onNextPuzzle.Invoke();
             } else {
                 onPuzzleComplete.Invoke();
             }
@@ -61,12 +62,6 @@ namespace Valve.VR.InteractionSystem
         public void NewLoop(){
             for (int i = 0; i < puzzles.Length; i++) {
                 puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().NewLoop();
-            }
-        }
-
-        public void MoveAllToCenter(){
-            for (int i = 0; i < puzzles.Length; i++) {
-                // puzzles[i].GetComponent<UnlockAction>().Unlock();
             }
         }
     }
