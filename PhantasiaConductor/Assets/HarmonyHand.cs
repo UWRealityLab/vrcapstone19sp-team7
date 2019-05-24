@@ -26,7 +26,7 @@ public class HarmonyHand : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.HSVToRGB(transform.localPosition.y % 1f, .3f, 1f);
             Vector3 newPos = transform.position;
-            newPos.y = (leftHand.transform.position.y + rightHand.transform.position.y) / 2;
+            newPos.y = rightHand.transform.position.y;
             transform.position = newPos;
         }
 	}

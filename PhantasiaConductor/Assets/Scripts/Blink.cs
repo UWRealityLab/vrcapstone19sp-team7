@@ -13,7 +13,8 @@ public class Blink : MonoBehaviour
     public UnityEvent onBlinkOffToOn;
 
     public bool isPiano = false;
-
+    public float transparency;
+    
     // true is on, false is off
     private bool blinkState = true;
     private bool unlocked = false;
@@ -24,7 +25,7 @@ public class Blink : MonoBehaviour
             GetComponent<Collider>().enabled = true;
         }
         Color color = this.GetComponent<MeshRenderer>().material.color;
-        color.a = .25f;
+        color.a = .2f;
         this.GetComponent<MeshRenderer>().material.color = color;
     }
 

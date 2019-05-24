@@ -201,7 +201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3efabafc9571984fa1de390ee18d1cd, type: 2}
+  - {fileID: 2100000, guid: 122cd1bb000c1094e953e7177e9cb570, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   isPiano: 1
+  transparency: 0
 --- !u!114 &5565707658774724493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +346,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  useLoop: 0
   beatInfo: {fileID: 0}
   unlocked: 0
 --- !u!65 &5565707658774724492

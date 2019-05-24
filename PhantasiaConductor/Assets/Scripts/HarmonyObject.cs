@@ -83,6 +83,10 @@ public class HarmonyObject : MonoBehaviour
 				transform.localPosition += delta;
 			}
 		}
+
+		if (Input.GetKeyDown(KeyCode.N)) {
+			Unlock();
+		}
 	}
 
 	//runs slightly before each beat, so harmony object can get a head start moving
