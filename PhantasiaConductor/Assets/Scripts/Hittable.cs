@@ -12,6 +12,8 @@ public class Hittable : MonoBehaviour
     public UnityEvent onPinched;
     public UnityEvent onTracked;
 
+    public GameObject haptics;
+
     public bool inContact;
 
     public bool canHit;
@@ -31,10 +33,7 @@ public class Hittable : MonoBehaviour
 
     void Start()
     {
-        if (GetComponent<PObject>() != null)
-        {
-            // canHit = GetComponent<PObject>().IsAlive();
-        }
+        haptics = GameObject.Find("/Haptics");
     }
 
     void Update()
@@ -48,7 +47,7 @@ public class Hittable : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
         if (canHit)
         {
@@ -56,7 +55,13 @@ public class Hittable : MonoBehaviour
             {
                 canHit = false;
             }
+            if (other.gameObject.tag == "DrumstickLeft") {
 
+                haptics.GetComponent<Haptics>().PulseLeft();
+            } else if (other.gameObject.tag == "DrumstickRight")
+            {
+                haptics.GetComponent<Haptics>().PulseRight();
+            }
             onHitOnce.Invoke();
             hitCount++;
             

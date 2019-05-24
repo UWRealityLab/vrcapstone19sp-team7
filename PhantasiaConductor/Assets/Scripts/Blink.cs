@@ -25,7 +25,7 @@ public class Blink : MonoBehaviour
             GetComponent<Collider>().enabled = true;
         }
         Color color = this.GetComponent<MeshRenderer>().material.color;
-        color.a = .15f;
+        color.a = .1f;
         this.GetComponent<MeshRenderer>().material.color = color;
     }
 
@@ -61,7 +61,7 @@ public class Blink : MonoBehaviour
         blinkState = false;
 
         Color color = this.GetComponent<MeshRenderer>().material.color;
-        color.a = .15f;
+        color.a = .1f;
         this.GetComponent<MeshRenderer>().material.color = color;
         if (isPiano)
         {

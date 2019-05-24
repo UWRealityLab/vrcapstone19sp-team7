@@ -16,8 +16,7 @@ public class HarmonyObject : MonoBehaviour
 	public float speed = .0001f;
     public float cheatTime = .1f;  //master loop time - cheat time required to beat level
 	public int notesPerOctave = 12;
-
-	private float fadeIn = 1;
+    
     private float velocityGoal = 0;
 	private float velocity = 0;
 	private int beatCount = 0;
@@ -38,19 +37,7 @@ public class HarmonyObject : MonoBehaviour
 		positionGoal = ((float)notes[beatCount]) / notesPerOctave;
 		transform.localPosition = new Vector3(0, positionGoal, 0);
 	}
-
-	void OnEnable(){
-		FadeIn();
-	}
-
-	private void FadeIn() {
-		fadeIn -= .01f;
-		if (fadeIn > 0) {
-			Invoke("FadeIn", .01f);
-		} else {
-			fadeIn = 0;
-		}
-	}
+    
 
 	// Update is called once per frame
 	void Update()
@@ -60,11 +47,11 @@ public class HarmonyObject : MonoBehaviour
 
         if (unlocked || inContact) {
             color = Color.HSVToRGB(transform.localPosition.y % 1f, 1f, 1f);
-            color.a = .75f - fadeIn;
+            color.a = .75f;
 
 		} else {
             color = Color.HSVToRGB(0, 0, 1);
-            color.a = .75f - fadeIn;
+            color.a = .75f;
 		}
 		GetComponent<Renderer>().material.color = color;
 

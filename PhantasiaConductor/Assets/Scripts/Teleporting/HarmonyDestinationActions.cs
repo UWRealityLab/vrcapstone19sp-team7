@@ -12,15 +12,4 @@ public class HarmonyDestinationActions : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
-
-    public void Depart()
-    {
-        StartCoroutine(DelayDepart());
-    }
-
-    private IEnumerator DelayDepart()
-    {
-        yield return new WaitForSeconds(delayDepart);
-        transform.localPosition = newLocalPosition;
-    }
 }

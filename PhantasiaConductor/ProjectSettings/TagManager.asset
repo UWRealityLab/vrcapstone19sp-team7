@@ -6,6 +6,11 @@ TagManager:
   tags:
   - BeatObject
   - teleportDest
+  - projectile
+  - FxTemporaire
+  - Undefined
+  - DrumstickLeft
+  - DrumstickRight
   layers:
   - Default
   - TransparentFX
