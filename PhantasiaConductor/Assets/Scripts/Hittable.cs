@@ -12,6 +12,8 @@ public class Hittable : MonoBehaviour
     public UnityEvent onPinched;
     public UnityEvent onTracked;
 
+    public UnityEvent onHitCountReset;
+
     public bool inContact;
 
     public bool canHit;
@@ -121,6 +123,7 @@ public class Hittable : MonoBehaviour
         if (!HitFlag)
         {
             HitCount = 0;
+            onHitCountReset.Invoke();
         }
     }
 
@@ -150,12 +153,4 @@ public class Hittable : MonoBehaviour
         }
     }
 
-    public float completion
-    {
-        get
-        {
-            return (float) hitCount / hitsToUnlock;
-
-        }
-    }
 }

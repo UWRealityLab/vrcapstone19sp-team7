@@ -58,7 +58,9 @@ public class PercussionObject : MonoBehaviour
             // ps.Emit(5);
         });
 
-        
+        hittable.onHitCountReset.AddListener(delegate() {
+            objRenderer.material.SetFloat("_Completion", 0.0f);
+        });
 
         beatBlinkController.beatInfo = beatInfo;
     }
