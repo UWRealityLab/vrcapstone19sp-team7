@@ -27,6 +27,7 @@ public class BeatInfo : MonoBehaviour
     {
         numBeats = beats.Length;
         beatTime = MasterLoop.loopTime / beats.Length;
+
     }
 
 }
