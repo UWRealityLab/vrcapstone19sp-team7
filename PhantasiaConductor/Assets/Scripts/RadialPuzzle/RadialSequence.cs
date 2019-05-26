@@ -29,23 +29,19 @@ public class RadialSequence : MonoBehaviour
 
     // number of objects that fall
     private int totalObjectsToCatch;
-    private int objectsCaught;
+
+    private Dictionary<int, int> objectsCaughtByGroupId = new Dictionary<int, int>();
+
+    private int recentGroupId = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         timePerBeat = loopTime / beatInfos[0].beats.Length;
 
-        totalObjectsToCatch = 0;
-        foreach (var b in beatInfos[0].beats)
-        {
-            if (b)
-            {
-                totalObjectsToCatch++;
-            }
-        }
-
-        Debug.Log("total objects " + totalObjectsToCatch);
+        // should be same as length of spawnDegrees array
+        totalObjectsToCatch = spawnDegrees.Length;
+        // Debug.Log("total objects " + totalObjectsToCatch);
     }
 
     void NextBeat()
@@ -59,6 +55,14 @@ public class RadialSequence : MonoBehaviour
             RadialObject radialObject = obj.GetComponent<RadialObject>();
             radialObject.BindSequence(this);
 
+            if (rIndex == 0)
+            {
+                // first object so increment
+                recentGroupId++;
+                objectsCaughtByGroupId[recentGroupId] = 0;
+            }
+            radialObject.groupId = recentGroupId;
+
             obj.transform.parent = transform.parent;
 
             float deg = spawnDegrees[rIndex] + degOffset;
@@ -67,6 +71,9 @@ public class RadialSequence : MonoBehaviour
             obj.transform.localPosition = new Vector3(x, spawnHeight, z);
 
             rIndex++;
+
+            bool isLastObject = rIndex >= totalObjectsToCatch;
+            radialObject.isLastObject = isLastObject;
         }
 
         beatIndex++;
@@ -87,7 +94,6 @@ public class RadialSequence : MonoBehaviour
         if (beatInfoIndex >= beatInfos.Length)
         {
             // all beats spawned, go back
-            objectsCaught = 0;
             rIndex = 0;
             beatIndex = 0;
             beatInfoIndex = 0;
@@ -97,16 +103,23 @@ public class RadialSequence : MonoBehaviour
         }
     }
 
-    public void ObjectCaught()
+    public void ObjectCaught(int groupId)
     {
-        objectsCaught++;
+        objectsCaughtByGroupId[groupId]++;
+        int objectsCaught = objectsCaughtByGroupId[groupId];
         Debug.Log(objectsCaught);
         if (objectsCaught == totalObjectsToCatch)
         {
             onSuccess.Invoke();
-            Debug.Log("all objects caught");
+            // Debug.Log("all objects caught");
         }
     }
+
+    public void LastObjectDestroyed(int groupId) {
+        objectsCaughtByGroupId.Remove(groupId);
+        // Debug.Log("last object destroyed");
+    }
+    
 
     void OnEnable()
     {
