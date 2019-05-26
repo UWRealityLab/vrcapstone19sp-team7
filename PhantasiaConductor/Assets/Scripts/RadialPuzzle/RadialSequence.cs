@@ -35,7 +35,7 @@ public class RadialSequence : MonoBehaviour
     private int recentGroupId = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         timePerBeat = loopTime / beatInfos[0].beats.Length;
 
@@ -63,7 +63,7 @@ public class RadialSequence : MonoBehaviour
             }
             radialObject.groupId = recentGroupId;
 
-            obj.transform.parent = transform.parent;
+            obj.transform.parent = transform;
 
             float deg = spawnDegrees[rIndex] + degOffset;
             float x = Mathf.Cos(deg * Mathf.Deg2Rad) * radius;
@@ -110,8 +110,9 @@ public class RadialSequence : MonoBehaviour
         Debug.Log(objectsCaught);
         if (objectsCaught == totalObjectsToCatch)
         {
+            // this needs to be the last thing it does since we may inactive the sequence
             onSuccess.Invoke();
-            // Debug.Log("all objects caught");
+            Debug.Log("all objects caught");
         }
     }
 
@@ -119,7 +120,11 @@ public class RadialSequence : MonoBehaviour
         objectsCaughtByGroupId.Remove(groupId);
         // Debug.Log("last object destroyed");
     }
-    
+
+    // if completed
+    public void Unlock() {
+        gameObject.SetActive(false);
+    }
 
     void OnEnable()
     {
