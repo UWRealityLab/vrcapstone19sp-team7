@@ -14,6 +14,8 @@ public class RadialObject : MonoBehaviour
     public float lifetime = 4f;
 
     private float acc = 0f;
+    
+    private RadialSequence ownerSequence;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +31,19 @@ public class RadialObject : MonoBehaviour
             onFailed.Invoke();
             Destroy(gameObject);
         }
-        
+    }
+
+    // sequence this reports to for finishing
+    public void BindSequence(RadialSequence seq) {
+        ownerSequence = seq;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         onSuccess.Invoke();
+
+        ownerSequence.ObjectCaught();
+        
         Destroy(gameObject);
     }
 

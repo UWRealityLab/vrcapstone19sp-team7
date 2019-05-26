@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 public class RadialSequence : MonoBehaviour
 {
+    public UnityEvent onSuccess;
 
     public BeatInfo[] beatInfos;
 
@@ -24,10 +27,25 @@ public class RadialSequence : MonoBehaviour
 
     private float degOffset = 90;
 
+    // number of objects that fall
+    private int totalObjectsToCatch;
+    private int objectsCaught;
+
     // Start is called before the first frame update
     void Start()
     {
         timePerBeat = loopTime / beatInfos[0].beats.Length;
+
+        totalObjectsToCatch = 0;
+        foreach (var b in beatInfos[0].beats)
+        {
+            if (b)
+            {
+                totalObjectsToCatch++;
+            }
+        }
+
+        Debug.Log("total objects " + totalObjectsToCatch);
     }
 
     void NextBeat()
@@ -38,6 +56,9 @@ public class RadialSequence : MonoBehaviour
         if (shouldSpawn)
         {
             GameObject obj = Instantiate(radialObjectPrefab);
+            RadialObject radialObject = obj.GetComponent<RadialObject>();
+            radialObject.BindSequence(this);
+
             obj.transform.parent = transform.parent;
 
             float deg = spawnDegrees[rIndex] + degOffset;
@@ -65,12 +86,25 @@ public class RadialSequence : MonoBehaviour
     {
         if (beatInfoIndex >= beatInfos.Length)
         {
+            // all beats spawned, go back
+            objectsCaught = 0;
             rIndex = 0;
             beatIndex = 0;
             beatInfoIndex = 0;
 
             CancelInvoke();
             Invoke("NextBeat", timePerBeat);
+        }
+    }
+
+    public void ObjectCaught()
+    {
+        objectsCaught++;
+        Debug.Log(objectsCaught);
+        if (objectsCaught == totalObjectsToCatch)
+        {
+            onSuccess.Invoke();
+            Debug.Log("all objects caught");
         }
     }
 
