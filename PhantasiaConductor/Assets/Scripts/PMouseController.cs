@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PMouseController : MonoBehaviour
 {
-    public Camera playerCamera;
+    private Camera playerCamera;
+
+    void Start() {
+        playerCamera = Camera.main;
+    }
 
     // Update is called once per frame
     void Update()
