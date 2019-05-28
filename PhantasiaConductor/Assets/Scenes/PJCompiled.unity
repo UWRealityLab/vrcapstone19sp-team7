@@ -787,6 +787,21 @@ PrefabInstance:
       propertyPath: originTransform
       value: 
       objectReference: {fileID: 1709879470}
+    - target: {fileID: 4305914601143043256, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305914601143043256, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305914601143043256, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32cb8fe44c69fb74d9ed012c42e69438, type: 3}
 --- !u!4 &440702616 stripped
