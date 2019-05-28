@@ -2,42 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RadialController : MonoBehaviour
+namespace Valve.VR.InteractionSystem
 {
-
-    public float radius = 10f;
-
-    public float heightOffset = 0f;
-
-    public GameObject netObj;
-
-
-    private bool mouseMode = true;
-
-    // Start is called before the first frame update
-    void Start()
+    public class RadialController : MonoBehaviour
     {
-    }
 
-    void Update()
-    {
-        if (mouseMode)
+        public float radius = 10f;
+
+        public float heightOffset = 0f;
+
+        public GameObject netObj;
+
+        public Hand rightHand;
+
+        public Hand leftHand;
+
+        public Transform originTransform;
+
+        private bool mouseMode = true;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            ray.direction = new Vector3(ray.direction.x, 0, ray.direction.z).normalized;
-            ray.origin = transform.position;
-            Vector3 pos = ray.origin + (ray.direction * radius);
-
-            netObj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+            mouseMode = rightHand == null && leftHand == null;
         }
 
-    }
+        void Update()
+        {
+            if (mouseMode)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                ray.direction = new Vector3(ray.direction.x, 0, ray.direction.z).normalized;
+                ray.origin = transform.position;
+                Vector3 pos = ray.origin + (ray.direction * radius);
 
-    void OnEnable() {
+                netObj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+            }
+            else
+            {
+                // Vector3 transformPos = rightHand.transform.position;
+                Vector3 transformPos = originTransform.position;
+                Vector3 dir = (rightHand.transform.rotation * transform.forward).normalized;
 
-    }
+                Ray ray = new Ray();
+                ray.origin = transformPos;
+                ray.direction = new Vector3(dir.x, 0, dir.z).normalized;
+                
+                
+                Vector3 pos = ray.origin + (ray.direction * radius);
+                // netObj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+                netObj.transform.position = new Vector3(pos.x, rightHand.transform.position.y + heightOffset, pos.z);
+            }
+        }
 
-    void OnDisable() {
-        
+        void OnEnable()
+        {
+
+        }
+
+        void OnDisable()
+        {
+
+        }
     }
 }

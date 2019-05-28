@@ -19,6 +19,8 @@ public class RadialSequence : MonoBehaviour
     public float radius = 10f;
     public float spawnHeight = 5f;
 
+    public Transform originTransform;
+
     private int beatInfoIndex = 0;
     private int beatIndex = 0;
     private int rIndex = 0;
@@ -41,7 +43,8 @@ public class RadialSequence : MonoBehaviour
 
         // should be same as length of spawnDegrees array
         totalObjectsToCatch = spawnDegrees.Length;
-        // Debug.Log("total objects " + totalObjectsToCatch);
+
+        transform.position = originTransform.position;
     }
 
     void NextBeat()
@@ -107,12 +110,12 @@ public class RadialSequence : MonoBehaviour
     {
         objectsCaughtByGroupId[groupId]++;
         int objectsCaught = objectsCaughtByGroupId[groupId];
-        Debug.Log(objectsCaught);
+        // Debug.Log(objectsCaught);
         if (objectsCaught == totalObjectsToCatch)
         {
             // this needs to be the last thing it does since we may inactive the sequence
             onSuccess.Invoke();
-            Debug.Log("all objects caught");
+            // Debug.Log("all objects caught");
         }
     }
 
@@ -130,6 +133,7 @@ public class RadialSequence : MonoBehaviour
     {
         // allows new loop to start the beat sequence
         beatInfoIndex = beatInfos.Length;
+        transform.position = originTransform.position;
     }
 
     float loopTime
