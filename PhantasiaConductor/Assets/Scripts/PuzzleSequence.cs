@@ -14,6 +14,7 @@ namespace Valve.VR.InteractionSystem
 
         public int currentPuzzle;
         public bool handColliders;
+        public bool isRhythm;
 
         public GameObject leftHand;
         public GameObject rightHand;
@@ -60,9 +61,16 @@ namespace Valve.VR.InteractionSystem
         }
 
         public void NewLoop(){
+				Debug.Log("FSSAAAAAAAASSF");
+
             for (int i = 0; i < puzzles.Length; i++) {
-                puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().NewLoop();
+
+            	if (isRhythm) {
+            		 puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().NewLoop();
+            	} else {
+                   puzzles[i].GetComponent<HarmonyObject>().NewLoop();
+              }
             }
         }
-    }
+    }	
 }
