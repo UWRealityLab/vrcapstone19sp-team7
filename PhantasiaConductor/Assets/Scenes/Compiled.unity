@@ -135,12 +135,12 @@ GameObject:
   - component: {fileID: 15690125}
   - component: {fileID: 15690124}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: FantasiaInstructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &15690120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6302,6 +6302,7 @@ GameObject:
   - component: {fileID: 1386072571}
   - component: {fileID: 1386072570}
   - component: {fileID: 1386072572}
+  - component: {fileID: 1386072573}
   m_Layer: 0
   m_Name: MasterLoop
   m_TagString: Untagged
@@ -6348,36 +6349,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onFantasiaOn:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 451786442}
-        m_MethodName: FantasiaOn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 696359323}
-        m_MethodName: FantasiaOn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   fantasiaOn: 0
-  transitionSound: {fileID: 598675297}
-  fantasiaStartDelay: 0.5
 --- !u!4 &1386072571
 Transform:
   m_ObjectHideFlags: 0
@@ -6488,6 +6460,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1386072573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386072569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e959da431200e449557202ce328ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFantasiaOn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 451786442}
+        m_MethodName: FantasiaOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 696359323}
+        m_MethodName: FantasiaOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  transitionSound: {fileID: 598675297}
+  instructions: {fileID: 15690119}
+  fantasiaStartDelay: 0.5
 --- !u!1 &1396574002
 GameObject:
   m_ObjectHideFlags: 0
