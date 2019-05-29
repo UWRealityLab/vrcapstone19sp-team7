@@ -47,6 +47,8 @@ public class PathBeat : MonoBehaviour
 
     public string fileName;
 
+    public float completionTime = -1.0f;
+
     float timeElapsed;
     int index;
 
@@ -68,6 +70,10 @@ public class PathBeat : MonoBehaviour
         if (!string.IsNullOrEmpty(fileName))
         {
             LoadFromFile(fileName);
+        }
+
+        if (completionTime > 0.0f && pathMode == PathMode.SPEED_CONSTANT) {
+            SetCompletionTime(completionTime);
         }
 
         if (startLooping)
