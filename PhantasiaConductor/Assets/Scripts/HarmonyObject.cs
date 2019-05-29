@@ -25,6 +25,7 @@ public class HarmonyObject : MonoBehaviour
 	private bool moving = false;
 	private float beatTime;
 
+    public bool fantasiaOn = false;
     // Start is called before the first frame update
     
 	void Awake()
@@ -95,7 +96,10 @@ public class HarmonyObject : MonoBehaviour
 	public void NewLoop(){
         if (gameObject.activeInHierarchy)
         {
-            loopSource.Play();
+            if (!fantasiaOn)
+            {
+                loopSource.Play();
+            }
             beatCount = 0;
             Invoke("EarlyRunBeat", beatTime - (beatTime * earlyStart));
         }

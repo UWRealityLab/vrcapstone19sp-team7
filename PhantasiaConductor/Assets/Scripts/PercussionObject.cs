@@ -21,6 +21,7 @@ public class PercussionObject : MonoBehaviour
     private BeatInfo beatInfo;
 
     private ParticleSystem ps;
+    public bool fantasiaOn = false;
 
     // We can remove this and set values in the prefab
     void Awake()
@@ -69,7 +70,7 @@ public class PercussionObject : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             beatBlinkController.NewLoop();
-            if (!isPiano) // && !rhythmComplete)
+            if (!isPiano && !fantasiaOn) // && !rhythmComplete)
             {
                 loopSource.Play();
             }
@@ -107,6 +108,4 @@ public class PercussionObject : MonoBehaviour
             loopSource.volume = 1.0f;
         }
     }
-
-    
 }

@@ -146,11 +146,11 @@ namespace Valve.VR.InteractionSystem
             motionOverlay.SetActive(false);
 
             target.transform.parent.transform.GetComponent<DestinationActions>().onArrive();
-            if (string.Equals(target.name, "PodimTeleportInd"))
+            /* if (string.Equals(target.name, "PodimTeleportInd"))
             {
                 leftLaser.active = true;
                 rightLaser.active = true;
-            }
+            }*/
         }
 
         private IEnumerator FadeThenMove()
@@ -274,13 +274,25 @@ namespace Valve.VR.InteractionSystem
 
         public void TeleportTo(GameObject destination) 
         {
-            leftLaser.active = false;
-            rightLaser.active = false;
+            LasersOff();
+
             target = destination;
             targetPosition = new Vector3(target.transform.position.x, target.transform.position.y - 1.5f, target.transform.position.z);
             target.SetActive(false);
 
             StartCoroutine(FadeThenMove());
+        }
+
+        public void LasersOn()
+        {
+            leftLaser.active = true;
+            rightLaser.active = true;
+        }
+
+        public void LasersOff()
+        {
+            leftLaser.active = false;
+            rightLaser.active = false;
         }
     }
 }

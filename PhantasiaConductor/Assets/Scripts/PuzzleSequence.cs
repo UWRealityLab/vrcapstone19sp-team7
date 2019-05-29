@@ -61,8 +61,6 @@ namespace Valve.VR.InteractionSystem
         }
 
         public void NewLoop(){
-				Debug.Log("FSSAAAAAAAASSF");
-
             for (int i = 0; i < puzzles.Length; i++) {
 
             	if (isRhythm) {
@@ -70,6 +68,21 @@ namespace Valve.VR.InteractionSystem
             	} else {
                    puzzles[i].GetComponent<HarmonyObject>().NewLoop();
               }
+            }
+        }
+
+        public void FantasiaOn()
+        {
+            for (int i = 0; i < puzzles.Length; i++)
+            {
+                if (isRhythm)
+                {
+                    puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().fantasiaOn = true;
+                }
+                else
+                {
+                    puzzles[i].GetComponent<HarmonyObject>().fantasiaOn = true;
+                }
             }
         }
     }	

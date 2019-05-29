@@ -18,6 +18,8 @@ namespace Valve.VR.InteractionSystem
         public UnityEvent LoadPuzzle;
         public UnityEvent OnDepart;
 
+        public bool fantasiaOn = false;
+
         private GameController gameController;
 
         void Awake() {
@@ -32,9 +34,13 @@ namespace Valve.VR.InteractionSystem
                 Player.instance.GetComponent<PerspectiveShift>().teleportEnabled = false;
                 StartCoroutine(DelayedLoad());
             }
-            else
+            else // At Podium
             {
                 SetHands(true);
+                if (!fantasiaOn)
+                {
+                    Player.instance.GetComponent<PerspectiveShift>().LasersOn();
+                }
             }
         }
 
@@ -75,6 +81,18 @@ namespace Valve.VR.InteractionSystem
             Debug.Log("loading puzzle");
             LoadPuzzle.Invoke();
             SetHands(true);
+        }
+
+        public bool FantasiaOn
+        {
+            set
+            {
+                fantasiaOn = value;
+            }
+            get
+            {
+                return fantasiaOn;
+            }
         }
     }
 }
