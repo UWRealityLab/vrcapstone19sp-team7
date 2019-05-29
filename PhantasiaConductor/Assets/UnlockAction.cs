@@ -12,6 +12,7 @@ public class UnlockAction : MonoBehaviour
 
 	public GameObject rhythmObject;
 	private float y = 0;
+
 	void Awake () {
 		inCenter = false;
 		//rhythmObject = transform.parent.Find("RhythmObject");
@@ -29,7 +30,7 @@ public class UnlockAction : MonoBehaviour
 			Vector3 delta = centerPosition - transform.position;
 			if (delta.magnitude < .25f) {
 				inCenter = true;
-				transform.position = centerPosition;
+                transform.localPosition = centerPosition;
 			} else {
 				transform.position += delta / 75;
 			}
@@ -57,7 +58,7 @@ public class UnlockAction : MonoBehaviour
 	}
 
 	public void OnEnable(){
-		GameObject center = GameObject.Find("/CenterArea");
+		GameObject center = transform.parent.transform.Find("CenterArea").gameObject;
 		transform.SetParent(center.transform);
 	}
 }
