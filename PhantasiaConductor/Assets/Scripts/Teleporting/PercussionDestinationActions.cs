@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 public class PercussionDestinationActions : MonoBehaviour
 {
     public Vector3 puzzleCompleteOffset;
+    public GameObject center;
 
     public void Arrive()
     {
@@ -23,6 +24,6 @@ public class PercussionDestinationActions : MonoBehaviour
 
         Vector3 newPos = transform.position;
         newPos += puzzleCompleteOffset;
-        transform.position = newPos;
+        center.transform.position = newPos;
     }
 }
