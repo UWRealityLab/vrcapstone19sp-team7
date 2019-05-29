@@ -2,38 +2,85 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RadialController : MonoBehaviour
+// @AJSTEAMVR
+
+namespace Valve.VR.InteractionSystem
 {
-
-    public float radius = 10f;
-
-    public float heightOffset = 0f;
-
-    public GameObject objPrefab;
-
-    private GameObject obj;
-
-    private bool mouseMode = true;
-
-    // Start is called before the first frame update
-    void Start()
+    public class RadialController : MonoBehaviour
     {
-        // obj = Instantiate(objPrefab);
-        obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        obj.transform.parent = transform;
-    }
 
-    void Update()
-    {
-        if (mouseMode)
+        public float radius = 10f;
+
+        public float heightOffset = 0f;
+
+        public GameObject netObj;
+
+        public GameObject leftNetObj;
+
+        public Hand rightHand;
+
+        public Hand leftHand;
+
+
+        public Transform originTransform;
+
+        private bool mouseMode = true;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            ray.direction = new Vector3(ray.direction.x, 0, ray.direction.z).normalized;
-            ray.origin = transform.position;
-            Vector3 pos = ray.origin + (ray.direction * radius);
-
-            obj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+            mouseMode = rightHand == null && leftHand == null;
         }
 
+        void Update()
+        {
+            if (mouseMode)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                ray.direction = new Vector3(ray.direction.x, 0, ray.direction.z).normalized;
+                ray.origin = transform.position;
+                Vector3 pos = ray.origin + (ray.direction * radius);
+
+                netObj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+            }
+            else
+            {
+                {
+                    Vector3 transformPos = originTransform.position;
+                    Vector3 dir = (rightHand.transform.forward).normalized;
+
+                    Ray ray = new Ray();
+                    ray.origin = transformPos;
+                    ray.direction = new Vector3(dir.x, 0, dir.z).normalized;
+
+
+                    Vector3 pos = ray.origin + (ray.direction * radius);
+                    // netObj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+                    netObj.transform.position = new Vector3(pos.x, rightHand.transform.position.y + heightOffset, pos.z);
+                }
+                {
+                    Vector3 transformPos = originTransform.position;
+                    Vector3 dir = (leftHand.transform.forward).normalized;
+
+                    Ray ray = new Ray();
+                    ray.origin = transformPos;
+                    ray.direction = new Vector3(dir.x, 0, dir.z).normalized;
+
+                    Vector3 pos = ray.origin + (ray.direction * radius);
+                    // netObj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+                    leftNetObj.transform.position = new Vector3(pos.x, leftHand.transform.position.y + heightOffset, pos.z);
+                }
+            }
+        }
+
+        void OnEnable()
+        {
+
+        }
+
+        void OnDisable()
+        {
+
+        }
     }
 }

@@ -47,7 +47,7 @@ public class Flock : MonoBehaviour
     {
         neighborRadius = 3;
         searchLayer = LayerMask.GetMask("Boid");
-        rotationCoef = 6.0f;
+        rotationCoef = 5.0f;
 
         for (int i = 0; i < flockSize; i++)
         {

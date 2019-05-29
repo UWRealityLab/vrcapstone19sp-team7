@@ -8,11 +8,20 @@ public class FadeChildren : MonoBehaviour
     // publically editable speed
     public float fadeDelay = 0.0f;
     public float fadeTime = 2f;
+    public bool fadeInOnEnable;
 
     // store colours
     private Color[] colors;
 
     // allow automatic fading on the start of the scene
+
+    private void OnEnable()
+    {
+        if (fadeInOnEnable)
+        {
+            FadeIn();
+        }
+    }
 
     // check the alpha value of most opaque object
     float MaxAlpha()

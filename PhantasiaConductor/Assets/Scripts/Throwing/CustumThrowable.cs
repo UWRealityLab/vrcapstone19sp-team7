@@ -114,6 +114,9 @@ namespace Valve.VR.InteractionSystem
 
             rigidbody.velocity = velocity;
             rigidbody.angularVelocity = angularVelocity;
+            // Debug.Log(transform.forward);
+            // rigidbody.velocity = transform.forward * velocity.magnitude;
+            // rigidbody.angularVelocity = transform.forward * angularVelocity.magnitude;
         }
 
 
@@ -134,6 +137,8 @@ namespace Valve.VR.InteractionSystem
                     break;
                 case ReleaseStyle.GetFromHand:
                     velocity = hand.GetTrackedObjectVelocity(releaseVelocityTimeOffset);
+                    //velocity += hand.transform.forward * hand.GetTrackedObjectVelocity(releaseVelocityTimeOffset).magnitude;
+                    //velocity /= 2f;
                     angularVelocity = hand.GetTrackedObjectAngularVelocity(releaseVelocityTimeOffset);
                     break;
                 default:
@@ -153,22 +158,6 @@ namespace Valve.VR.InteractionSystem
             yield return new WaitForEndOfFrame();
 
             hand.DetachObject(gameObject, restoreOriginalParent);
-        }
-
-
-        //-------------------------------------------------
-        protected virtual void OnHandFocusAcquired(Hand hand)
-        {
-            gameObject.SetActive(true);
-            velocityEstimator.BeginEstimatingVelocity();
-        }
-
-
-        //-------------------------------------------------
-        protected virtual void OnHandFocusLost(Hand hand)
-        {
-            gameObject.SetActive(false);
-            velocityEstimator.FinishEstimatingVelocity();
         }
     }
 }

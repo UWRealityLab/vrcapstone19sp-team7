@@ -22,7 +22,55 @@ public class MelodyPuzzle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
- 
+
+    }
+
+    void OnEnable()
+    {
+        allPaths = new List<PathBeat>();
+
+        var path = CreateAndSetupPath("p1", MasterLoop.loopTime + 5f, 0);
+        // path.gameObject.SetActive(true);
+        var path1 = CreateAndSetupPath("p2", MasterLoop.loopTime, 1);
+        path1.gameObject.SetActive(false);
+
+        var path2 = CreateAndSetupPath("p3", MasterLoop.loopTime, 2);
+        path2.gameObject.SetActive(false);
+
+        var path3 = CreateAndSetupPath("p4", MasterLoop.loopTime, 2.5f);
+        path3.gameObject.SetActive(false);
+
+
+        foreach (var p in allPaths)
+        {
+            var go = p.obj.gameObject;
+            MelodyObject mo = go.GetComponent<MelodyObject>();
+            masterLoop.onNewLoop.AddListener(delegate ()
+            {
+                mo.NewLoop();
+            });
+        }
+
+        path.onSuccessful.AddListener(delegate ()
+        {
+            path1.gameObject.SetActive(true);
+            Debug.Log("success");
+        });
+
+        path1.onSuccessful.AddListener(delegate ()
+        {
+            path2.gameObject.SetActive(true);
+        });
+
+        path2.onSuccessful.AddListener(delegate ()
+        {
+            path3.gameObject.SetActive(true);
+        });
+
+        monitor.onPuzzleCompleted.AddListener(delegate ()
+        {
+            Debug.Log("All puzzles were completed");
+        });
     }
 
     PathBeat InstantiatePath(string fileName, float t = 3, float beatOffset = 0)
@@ -45,7 +93,7 @@ public class MelodyPuzzle : MonoBehaviour
     PathBeat CreateAndSetupPath(string fileName, float t = 3, float beatOffset = 0)
     {
         PathBeat pathBeat = InstantiatePath(fileName, t, beatOffset);
-        
+
         // BoidEmitter emitter = AddBoidEmitter(pathBeat);
 
         pathBeat.onReachedEnd.AddListener(delegate ()
@@ -80,50 +128,5 @@ public class MelodyPuzzle : MonoBehaviour
         return emitter;
     }
 
-    void OnEnable() {
-       allPaths = new List<PathBeat>();
 
-        // var loopTime = masterLoop.loopTime;
-
-        var path = CreateAndSetupPath("p1", MasterLoop.loopTime, 0);
-        // path.gameObject.SetActive(true);
-        var path1 = CreateAndSetupPath("p2", MasterLoop.loopTime, 1);
-        path1.gameObject.SetActive(false);
-
-        var path2 = CreateAndSetupPath("p3", MasterLoop.loopTime, 2);
-        path2.gameObject.SetActive(false);
-
-        var path3 = CreateAndSetupPath("p4", MasterLoop.loopTime, 2.5f);
-        path3.gameObject.SetActive(false);
-        
-
-        foreach (var p in allPaths) {
-            var go = p.obj.gameObject;
-            MelodyObject mo = go.GetComponent<MelodyObject>();
-            masterLoop.onNewLoop.AddListener(delegate() {
-                mo.NewLoop();
-            });
-        }
-        
-        path.onSuccessful.AddListener(delegate ()
-        {
-            path1.gameObject.SetActive(true);
-            Debug.Log("success");
-        });
-
-        path1.onSuccessful.AddListener(delegate ()
-        {
-            path2.gameObject.SetActive(true);
-        });
-
-        path2.onSuccessful.AddListener(delegate ()
-        {
-            path3.gameObject.SetActive(true);
-        });
-
-        monitor.onPuzzleCompleted.AddListener(delegate ()
-        {
-            Debug.Log("All puzzles were completed");
-        });
-    }
 }

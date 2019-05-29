@@ -47,7 +47,7 @@
                 return o;
             }
 
-            #define OFFSET 0.25
+            #define OFFSET 0.2
 
             fixed4 frag (v2f i) : SV_Target
             {
@@ -64,8 +64,8 @@
                     col.a = 0.;
                 } else {
                     float dif = dist + offset;
-                    col.a = clamp(offset + dist + dif*15., 0., 1.);
-                    // col.a = 1.;
+                    col.a = clamp(offset + dist + dif*30., 0., 1.);
+					// col.a = 1.;
                 }
                 
                 // apply fog

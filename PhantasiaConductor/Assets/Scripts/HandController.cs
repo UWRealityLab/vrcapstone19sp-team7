@@ -111,8 +111,8 @@ namespace Valve.VR.InteractionSystem
 
             if (debugMode)
             {
-                Debug.DrawRay(leftHand.transform.position, leftHand.transform.rotation * transform.forward * 1000, Color.green);
-                Debug.DrawRay(rightHand.transform.position, rightHand.transform.rotation * transform.forward * 1000, Color.blue);
+                Debug.DrawRay(leftHand.transform.position, leftHand.transform.forward * 1000, Color.green);
+                Debug.DrawRay(rightHand.transform.position, rightHand.transform.forward * 1000, Color.blue);
             }
             
             if (renderingLines)
@@ -120,7 +120,8 @@ namespace Valve.VR.InteractionSystem
                 if (leftLineRenderer != null)
                 {
                     Vector3 start = leftHand.transform.position;
-                    Vector3 end = leftHand.transform.rotation * transform.forward * 1000 + start;
+                    // Vector3 end = leftHand.transform.rotation * transform.forward * 1000 + start;
+                    Vector3 end = leftHand.transform.forward * 1000 + start;
 
                     leftLineRenderer.SetPosition(0, start);
                     leftLineRenderer.SetPosition(1, end);
@@ -129,7 +130,8 @@ namespace Valve.VR.InteractionSystem
                 if (rightLineRenderer != null)
                 {
                     Vector3 start = rightHand.transform.position;
-                    Vector3 end = rightHand.transform.rotation * transform.forward * 1000 + start;
+                    // Vector3 end = rightHand.transform.rotation * transform.forward * 1000 + start;
+                    Vector3 end = rightHand.transform.forward * 1000 + start;
 
                     rightLineRenderer.SetPosition(0, start);
                     rightLineRenderer.SetPosition(1, end);
@@ -142,7 +144,8 @@ namespace Valve.VR.InteractionSystem
             RaycastHit hit;
             // LayerMask layerMask = ~(1 << 2);
             LayerMask layerMask = LayerMask.GetMask("Interactable");
-            if (Physics.Raycast(hand.transform.position, hand.transform.rotation * transform.forward, out hit, Mathf.Infinity, layerMask))
+            // if (Physics.Raycast(hand.transform.position, hand.transform.rotation * transform.forward, out hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(hand.transform.position, hand.transform.forward, out hit, Mathf.Infinity, layerMask))
             {
                 GameObject obj = hit.collider.gameObject;
                 return obj;

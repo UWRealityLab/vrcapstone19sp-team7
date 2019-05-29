@@ -19,6 +19,9 @@ public class VrOverlay : MonoBehaviour
         // add extra padding just in case
         t.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, frustrumWidth + 0.1f);
         t.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, frustrumHeight + 0.1f);
+
+        GameObject overlay = transform.Find("Overlay").gameObject;
+        overlay.transform.localScale = new Vector3(frustrumWidth + 0.1f, frustrumHeight + 0.1f);
     }
 
     // Update is called once per frame

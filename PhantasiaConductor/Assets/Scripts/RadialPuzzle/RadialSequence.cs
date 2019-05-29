@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.Events;
+
 public class RadialSequence : MonoBehaviour
 {
+    public UnityEvent onSuccess;
 
     public BeatInfo[] beatInfos;
 
@@ -16,18 +19,32 @@ public class RadialSequence : MonoBehaviour
     public float radius = 10f;
     public float spawnHeight = 5f;
 
+    public Transform originTransform;
+
     private int beatInfoIndex = 0;
     private int beatIndex = 0;
     private int rIndex = 0;
 
     private float timePerBeat;
 
-    private float degOffset = 90;
+    private float degOffset = 0;
+
+    // number of objects that fall
+    private int totalObjectsToCatch;
+
+    private Dictionary<int, int> objectsCaughtByGroupId = new Dictionary<int, int>();
+
+    private int recentGroupId = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         timePerBeat = loopTime / beatInfos[0].beats.Length;
+
+        // should be same as length of spawnDegrees array
+        totalObjectsToCatch = spawnDegrees.Length;
+
+        transform.position = originTransform.position;
     }
 
     void NextBeat()
@@ -38,7 +55,18 @@ public class RadialSequence : MonoBehaviour
         if (shouldSpawn)
         {
             GameObject obj = Instantiate(radialObjectPrefab);
-            obj.transform.parent = transform.parent;
+            RadialObject radialObject = obj.GetComponent<RadialObject>();
+            radialObject.BindSequence(this);
+
+            if (rIndex == 0)
+            {
+                // first object so increment
+                recentGroupId++;
+                objectsCaughtByGroupId[recentGroupId] = 0;
+            }
+            radialObject.groupId = recentGroupId;
+
+            obj.transform.parent = transform;
 
             float deg = spawnDegrees[rIndex] + degOffset;
             float x = Mathf.Cos(deg * Mathf.Deg2Rad) * radius;
@@ -46,6 +74,9 @@ public class RadialSequence : MonoBehaviour
             obj.transform.localPosition = new Vector3(x, spawnHeight, z);
 
             rIndex++;
+
+            bool isLastObject = rIndex >= totalObjectsToCatch;
+            radialObject.isLastObject = isLastObject;
         }
 
         beatIndex++;
@@ -65,6 +96,7 @@ public class RadialSequence : MonoBehaviour
     {
         if (beatInfoIndex >= beatInfos.Length)
         {
+            // all beats spawned, go back
             rIndex = 0;
             beatIndex = 0;
             beatInfoIndex = 0;
@@ -74,10 +106,34 @@ public class RadialSequence : MonoBehaviour
         }
     }
 
+    public void ObjectCaught(int groupId)
+    {
+        objectsCaughtByGroupId[groupId]++;
+        int objectsCaught = objectsCaughtByGroupId[groupId];
+        // Debug.Log(objectsCaught);
+        if (objectsCaught == totalObjectsToCatch)
+        {
+            // this needs to be the last thing it does since we may inactive the sequence
+            onSuccess.Invoke();
+            // Debug.Log("all objects caught");
+        }
+    }
+
+    public void LastObjectDestroyed(int groupId) {
+        objectsCaughtByGroupId.Remove(groupId);
+        // Debug.Log("last object destroyed");
+    }
+
+    // if completed
+    public void Unlock() {
+        gameObject.SetActive(false);
+    }
+
     void OnEnable()
     {
         // allows new loop to start the beat sequence
         beatInfoIndex = beatInfos.Length;
+        transform.position = originTransform.position;
     }
 
     float loopTime

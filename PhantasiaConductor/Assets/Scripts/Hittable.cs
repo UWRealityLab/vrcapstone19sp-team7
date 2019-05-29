@@ -12,14 +12,19 @@ public class Hittable : MonoBehaviour
     public UnityEvent onPinched;
     public UnityEvent onTracked;
 
+    public GameObject haptics;
+
     public bool inContact;
-    
+
     public bool canHit;
     public bool canInteract;
     public bool preventRepeated = true;
 
+    private bool isUnlocked = false;
+
     // keep track of hit counts
-    private uint hitCount;
+    [HideInInspector]
+    public uint hitCount;
 
     // use hit flag to keep track of hits
     private bool hitFlag;
@@ -28,13 +33,21 @@ public class Hittable : MonoBehaviour
 
     void Start()
     {
-        if (GetComponent<PObject>() != null)
+        haptics = GameObject.Find("/Haptics");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
         {
-            // canHit = GetComponent<PObject>().IsAlive();
+            if (!isUnlocked)
+            {
+                Unlock();
+            }
         }
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
         if (canHit)
         {
@@ -42,18 +55,30 @@ public class Hittable : MonoBehaviour
             {
                 canHit = false;
             }
+            if (other.gameObject.tag == "DrumstickLeft") {
 
+                haptics.GetComponent<Haptics>().PulseLeft();
+            } else if (other.gameObject.tag == "DrumstickRight")
+            {
+                haptics.GetComponent<Haptics>().PulseRight();
+            }
             onHitOnce.Invoke();
             hitCount++;
-            //Debug.Log(hitCount + "       " + hitsToUnlock);
+            
             if (hitCount == hitsToUnlock)
             {
-                onUnlock.Invoke();
+                Unlock();
             }
 
 
             HitFlag = true;
         }
+    }
+
+    public void Unlock()
+    {
+        onUnlock.Invoke();
+        isUnlocked = true;
     }
 
     void OnPinched()
@@ -72,7 +97,7 @@ public class Hittable : MonoBehaviour
         }
     }
 
-    
+
 
     public void StopHit()
     {
@@ -127,6 +152,15 @@ public class Hittable : MonoBehaviour
         set
         {
             hitCount = value;
+        }
+    }
+
+    public float completion
+    {
+        get
+        {
+            return (float) hitCount / hitsToUnlock;
+
         }
     }
 }

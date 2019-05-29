@@ -11,6 +11,7 @@ public class PercussionObject : MonoBehaviour
     public uint hitsToUnlock = 4;
     public bool unlocked = false;
     public bool isPiano = false;
+    //public static rhythmComplete = false; //true 
 
     private Renderer hitRenderer;
     private BeatBlinkController beatBlinkController;
@@ -18,6 +19,9 @@ public class PercussionObject : MonoBehaviour
     private AudioSource loopSource;
     private Hittable hittable;
     private BeatInfo beatInfo;
+
+    private ParticleSystem ps;
+    public bool fantasiaOn = false;
 
     // We can remove this and set values in the prefab
     void Awake()
@@ -44,6 +48,20 @@ public class PercussionObject : MonoBehaviour
 
         hittable = GetComponent<Hittable>();
         hittable.hitsToUnlock = hitsToUnlock;
+        ps = transform.Find("ParticleSystem").gameObject.GetComponent<ParticleSystem>();
+
+        Renderer objRenderer = GetComponent<Renderer>();
+        objRenderer.material.SetFloat("_Completion", 0.0f);
+
+
+        hittable.onHitOnce.AddListener(delegate() {
+            float completion = ((float)hittable.hitCount + 1.0f) / hittable.hitsToUnlock;
+            // Debug.Log(completion + " completion");
+            objRenderer.material.SetFloat("_Completion", completion);
+            // ps.Emit(5);
+        });
+        
+
         beatBlinkController.beatInfo = beatInfo;
     }
 
@@ -52,7 +70,7 @@ public class PercussionObject : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             beatBlinkController.NewLoop();
-            if (!isPiano)
+            if (!isPiano && !fantasiaOn) // && !rhythmComplete)
             {
                 loopSource.Play();
             }
@@ -65,7 +83,9 @@ public class PercussionObject : MonoBehaviour
         Invoke("LoopSourceOn", hitClip.length + .1f);
         hitRenderer.material = unlockMaterial;
         GetComponent<Renderer>().material = unlockMaterial;
-        Debug.Log("AA");
+        Color color = this.GetComponent<MeshRenderer>().material.color;
+        color.a = .2f;
+        this.GetComponent<MeshRenderer>().material.color = color;
     }
 
     public void HitOnce()
@@ -75,6 +95,12 @@ public class PercussionObject : MonoBehaviour
             hitSource.Play();
         }
     }
+
+    float GetCompletion() {
+        // hitsToUnlock / 
+        return 0.0f;
+    }
+        
     void LoopSourceOn()
     {
         if (loopSource != null)
@@ -82,6 +108,4 @@ public class PercussionObject : MonoBehaviour
             loopSource.volume = 1.0f;
         }
     }
-
-    
 }

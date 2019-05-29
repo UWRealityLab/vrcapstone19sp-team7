@@ -9,32 +9,40 @@ public class RadialObject : MonoBehaviour
     public UnityEvent onSuccess;
 
     public UnityEvent onFailed;
-     
+
 
     public float lifetime = 4f;
 
-    private float acc = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    [HideInInspector]
+    public bool isLastObject;
+
+    private RadialSequence ownerSequence;
+
+    private int groupId_;
+
+
+    void Start() {
+        Invoke("EndOfLifetime", lifetime);
     }
 
-    // Update is called once per frame
-    void Update()
+    void EndOfLifetime()
     {
-        acc += Time.deltaTime;
-        if (acc >= lifetime)
-        {
-            onFailed.Invoke();
-            Destroy(gameObject);
-        }
-        
+        onFailed.Invoke();
+        Destroy(gameObject);
+    }
+
+    // sequence this reports to for finishing
+    public void BindSequence(RadialSequence seq)
+    {
+        ownerSequence = seq;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        // we caught it
         onSuccess.Invoke();
+        ownerSequence.ObjectCaught(groupId);
         Destroy(gameObject);
     }
 
@@ -42,4 +50,26 @@ public class RadialObject : MonoBehaviour
     {
 
     }
+
+    void OnDestroy()
+    {
+        if (isLastObject)
+        {
+            ownerSequence.LastObjectDestroyed(groupId);
+        }
+    }
+
+    public int groupId
+    {
+        get
+        {
+            return groupId_;
+        }
+
+        set
+        {
+            groupId_ = value;
+        }
+    }
+
 }

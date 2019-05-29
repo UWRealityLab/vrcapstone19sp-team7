@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 951903330706010246}
   - component: {fileID: 6978964039501026813}
   - component: {fileID: 8719263816801958296}
-  - component: {fileID: 1520997793323898060}
-  - component: {fileID: 1676238930313866137}
+  - component: {fileID: 3646914499749392443}
+  - component: {fileID: 7429282904330195979}
   m_Layer: 0
   m_Name: TeleportInd
   m_TagString: teleportDest
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48e653d24fddee848929b2c6cbd7f31a, type: 2}
+  - {fileID: 2100000, guid: bfa71f97c3a254247918df9af54ef267, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1520997793323898060
+--- !u!114 &3646914499749392443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4606907958407917430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d797372d343913642ab533eb3dd1ea8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowMaterial: {fileID: 2100000, guid: 48e653d24fddee848929b2c6cbd7f31a, type: 2}
+  normalMaterial: {fileID: 2100000, guid: bfa71f97c3a254247918df9af54ef267, type: 2}
+  growDuration: 2
+  growScale: 0.75
+--- !u!114 &7429282904330195979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,21 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d9e6939bbd72d41a91190ed4915ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowMaterial: {fileID: 2100000, guid: bfa71f97c3a254247918df9af54ef267, type: 2}
+  glowMaterial: {fileID: 2100000, guid: 48e653d24fddee848929b2c6cbd7f31a, type: 2}
   blinkFreq: 1
---- !u!114 &1676238930313866137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4606907958407917430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffbd488b638332c4a84d52142945681d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pulseOn: {fileID: 2100000, guid: 48e653d24fddee848929b2c6cbd7f31a, type: 2}
-  pulseOff: {fileID: 2100000, guid: b49dfe57c59e66842bb9e5d477b4ed32, type: 2}
-  pulseInterval: 1
-  enablePulse: 1

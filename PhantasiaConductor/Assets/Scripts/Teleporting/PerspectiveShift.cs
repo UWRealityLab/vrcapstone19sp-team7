@@ -18,6 +18,7 @@ namespace Valve.VR.InteractionSystem
         public float speed;
         public bool teleportEnabled;
         public float fadeTime = 1.0f;
+        public float teleportDelay = 0.5f;
 
         // to prevent motion sickness
         public GameObject motionOverlay;
@@ -26,6 +27,7 @@ namespace Valve.VR.InteractionSystem
 
         private bool teleporting;
         private float rotateSpeed;
+        private bool initializingTeleport = false;
 
         private GameObject target;
         private Vector3 targetPosition;
@@ -37,11 +39,11 @@ namespace Valve.VR.InteractionSystem
             leftLaser = leftHand.GetComponent<CustomLaserPointer>();
             rightLaser = rightHand.GetComponent<CustomLaserPointer>();
 
-            leftLaser.active = false;
+            leftLaser.active = true;
             leftLaser.PointerIn += onPointerIn;
             leftLaser.PointerOut += onPointerOut;
 
-            rightLaser.active = false;
+            rightLaser.active = true;
             rightLaser.PointerIn += onPointerIn;
             rightLaser.PointerOut += onPointerOut;
         } 
@@ -51,7 +53,6 @@ namespace Valve.VR.InteractionSystem
         {
             teleporting = false;
             target = null;
-            
         }
 
         // Update is called once per frame
@@ -78,6 +79,8 @@ namespace Valve.VR.InteractionSystem
 
                 }
             }
+
+            /*
             else if (teleportEnabled)
             {
                 if (WasTeleportButtonReleased(leftHand))
@@ -99,8 +102,10 @@ namespace Valve.VR.InteractionSystem
                     rightLaser.active = true;
                 }
             }
+            */
         }
 
+        /*
         private void teleport(Hand hand)
         {
             RaycastHit hit;
@@ -131,7 +136,7 @@ namespace Valve.VR.InteractionSystem
                 }
 
             }
-        }
+        } */
 
         private IEnumerator FadeThenFinish()
         {
@@ -141,6 +146,11 @@ namespace Valve.VR.InteractionSystem
             motionOverlay.SetActive(false);
 
             target.transform.parent.transform.GetComponent<DestinationActions>().onArrive();
+            /* if (string.Equals(target.name, "PodimTeleportInd"))
+            {
+                leftLaser.active = true;
+                rightLaser.active = true;
+            }*/
         }
 
         private IEnumerator FadeThenMove()
@@ -184,6 +194,7 @@ namespace Valve.VR.InteractionSystem
             canvas.alpha = endAlpha; // force the alpha to the end alpha before finishing – this is here to mitigate any rounding errors, e.g. leaving the alpha at 0.01 instead of 0
         }
 
+        /*
         private bool IsTeleportButtonDown(Hand hand)
         {
             if (MOUSE_DEBUG)
@@ -228,12 +239,60 @@ namespace Valve.VR.InteractionSystem
             }
         }
 
+    */
+
+        // Laser Pointer methods 
+        private void onPointerIn(object sender, PointerEventArgs e)
+        {
+            if (string.Equals(e.target.tag, "teleportDest"))
+            {
+                StartCoroutine(startTeleport(e.target.gameObject));
+            }
+        }
+
+        private void onPointerOut(object sender, PointerEventArgs e)
+        {
+            if (string.Equals(e.target.tag, "teleportDest"))
+            {
+                initializingTeleport = false;
+                e.target.gameObject.GetComponent<Grow>().StopGrow();
+            }
+        }
+
+        private IEnumerator startTeleport(GameObject target)
+        {
+            initializingTeleport = true;
+            yield return StartCoroutine(target.GetComponent<Grow>().GrowObject());
+
+            if (initializingTeleport)
+            {
+                yield return new WaitForSeconds(teleportDelay);
+                TeleportTo(target);
+                onLeavePodium.Invoke();
+            }
+        }
+
         public void TeleportTo(GameObject destination) 
         {
+            LasersOff();
+
             target = destination;
             targetPosition = new Vector3(target.transform.position.x, target.transform.position.y - 1.5f, target.transform.position.z);
+            target.SetActive(false);
 
             StartCoroutine(FadeThenMove());
+        }
+
+        public void LasersOn()
+        {
+            leftLaser.active = true;
+            rightLaser.active = true;
+        }
+
+        public void LasersOff()
+        {
+            leftLaser.active = false;
+            rightLaser.active = false;
         }
     }
 }

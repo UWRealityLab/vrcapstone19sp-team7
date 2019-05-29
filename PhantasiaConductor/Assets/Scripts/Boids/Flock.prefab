@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &124335380267662659
 Transform:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87c1c41b841d524f93a886a91aa4764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flockSize: 20
+  flockSize: 25
   minVelocity: 5
   maxVelocity: 20
   randomness: 1

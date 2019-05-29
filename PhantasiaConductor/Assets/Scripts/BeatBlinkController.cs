@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,13 +8,12 @@ public class BeatBlinkController : MonoBehaviour
 {
 
     public UnityEvent onHitUnlocked; // A 'hit' that plays  once a track is unlocked
-    public bool useLoop;
+    private Blink blink;
     public BeatInfo beatInfo;
     public bool unlocked = false;
-    private int beatCount = 0;
     private int hitCount = -1;
     private Vector3 originalPos;
-    private Blink blink;
+
     void Awake()
     {
         blink = GetComponent<Blink>();
@@ -30,16 +29,15 @@ public class BeatBlinkController : MonoBehaviour
 
     public void NewLoop()
     {
-        beatCount = -1;
-        NewBeat();
+        StartCoroutine(RunBeat(0));
     }
-
-    void NewBeat()
+ 
+    IEnumerator RunBeat(int beatCount)
     {
-        beatCount++;
+        // Debug.Log("BBBBBBBBB" + beatCount);
         bool isHit = beatInfo.beats[beatCount];
         bool isNextHit = beatInfo.beats[(beatCount + 1) % beatInfo.beats.Length];
-
+        
 
         if (unlocked)
         {
@@ -63,7 +61,8 @@ public class BeatBlinkController : MonoBehaviour
 
         if (beatCount < beatInfo.beats.Length - 1)
         {
-            Invoke("NewBeat", beatInfo.beatTime);
+            yield return new WaitForSeconds(beatInfo.beatTime);
+            StartCoroutine(RunBeat(beatCount + 1));
         }
     }
     
@@ -88,7 +87,7 @@ public class BeatBlinkController : MonoBehaviour
                 hitCount = 0;
             }
             transform.localPosition = originalPos + beatInfo.offsets[hitCount];
-            Debug.Log(beatInfo.offsets[hitCount]);
+            // Debug.Log(beatInfo.offsets[hitCount]);
         }
     }
 
