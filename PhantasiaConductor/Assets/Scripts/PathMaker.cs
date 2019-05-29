@@ -19,7 +19,7 @@ namespace Valve.VR.InteractionSystem
 
         public BezierCurve curveFitter;
 
-        public GameObject centerPoint;
+        // public GameObject centerPoint;
 
         public float radiusFromCenter = 25;
 
@@ -52,6 +52,8 @@ namespace Valve.VR.InteractionSystem
 
         void Start()
         {
+            lineRenderer.useWorldSpace = false;
+            curvedLineRenderer.useWorldSpace = false;
 
         }
 
@@ -115,7 +117,8 @@ namespace Valve.VR.InteractionSystem
 
         void AddVertexFromHand()
         {
-            Vector3 dir = (hand.transform.rotation * transform.forward);
+            // Vector3 dir = (hand.transform.forward);
+            Vector3 dir = hand.transform.localRotation * Vector3.forward;
             AddVertexFromDir(dir);
         }
 
@@ -129,7 +132,8 @@ namespace Valve.VR.InteractionSystem
         void AddVertexFromDir(Vector3 dir)
         {
             vertexCount = vertexCount + 1;
-            lineRenderer.SetPosition(vertexCount - 1, dir * radiusFromCenter + centerPoint.transform.position);
+            // lineRenderer.SetPosition(vertexCount - 1, dir * radiusFromCenter + centerPoint.transform.position);
+            lineRenderer.SetPosition(vertexCount - 1, dir * radiusFromCenter + transform.localPosition);
 
             if (curveFitter != null && (vertexCount == 4 || ((vertexCount - 4) % 3) == 0) && vertexCount > 3)
             {
