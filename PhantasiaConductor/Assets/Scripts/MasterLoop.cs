@@ -24,6 +24,5 @@ public class MasterLoop : MonoBehaviour
         onNewLoop.Invoke();
         loopCount++;
         Invoke("NewLoop", loopTime);
-        Debug.Log("WTF");
     }
 }
