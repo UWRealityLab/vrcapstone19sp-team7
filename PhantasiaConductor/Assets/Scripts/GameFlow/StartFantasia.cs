@@ -21,9 +21,9 @@ public class StartFantasia : MonoBehaviour
         transitionSound.Play();
 
         yield return new WaitForSeconds(2.5f);
-        
-        GetComponent<AudioSource>().Play();
 
+        GetComponent<FantasiaController>().StartFantasia();
+            
         yield return new WaitForSeconds(1f);
 
         StartCoroutine(FadeCanvas(instructions.GetComponent<CanvasGroup>(), 1.0f, 0.0f, 1f));
