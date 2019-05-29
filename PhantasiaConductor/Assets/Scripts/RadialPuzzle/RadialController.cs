@@ -47,7 +47,7 @@ namespace Valve.VR.InteractionSystem
             {
                 {
                     Vector3 transformPos = originTransform.position;
-                    Vector3 dir = (rightHand.transform.rotation * transform.forward).normalized;
+                    Vector3 dir = (rightHand.transform.forward).normalized;
 
                     Ray ray = new Ray();
                     ray.origin = transformPos;
@@ -60,7 +60,7 @@ namespace Valve.VR.InteractionSystem
                 }
                 {
                     Vector3 transformPos = originTransform.position;
-                    Vector3 dir = (leftHand.transform.rotation * transform.forward).normalized;
+                    Vector3 dir = (leftHand.transform.forward).normalized;
 
                     Ray ray = new Ray();
                     ray.origin = transformPos;
