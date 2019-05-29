@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angleRad: 0
   originalPos: {x: 0, y: 0, z: 0}
-  maxHeight: 4
+  maxHeight: 5
   frequencyScale: 2
-  distCoeff: 0
+  distCoeff: 0.01
   distFromCenter: 0

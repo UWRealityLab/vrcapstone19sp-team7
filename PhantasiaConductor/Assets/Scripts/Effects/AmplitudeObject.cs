@@ -31,7 +31,6 @@ public class AmplitudeObject : MonoBehaviour
         
         originalPos.y += distFromCenter * distCoeff;
         // Debug.Log(maxHeight + " " + originalPos.y);
-        maxHeight = maxHeight + originalPos.y;
 
         
     }
@@ -51,7 +50,7 @@ public class AmplitudeObject : MonoBehaviour
 
         float k = Mathf.Cos(distRad * frequencyScale);
 
-        float height = Mathf.Clamp(maxHeight * k + originalPos.y, 0.0f, maxHeight);
+        float height = Mathf.Clamp(maxHeight * k + originalPos.y, 0.0f, maxHeight + originalPos.y);
         transform.localPosition = originalPos + new Vector3(0, height, 0);
     }
 
