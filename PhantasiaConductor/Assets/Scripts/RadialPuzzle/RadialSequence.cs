@@ -27,7 +27,7 @@ public class RadialSequence : MonoBehaviour
 
     private float timePerBeat;
 
-    private float degOffset = 90;
+    private float degOffset = 0;
 
     // number of objects that fall
     private int totalObjectsToCatch;
