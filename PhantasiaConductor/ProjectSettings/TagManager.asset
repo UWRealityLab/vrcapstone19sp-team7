@@ -4,16 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - BeatObject
   - teleportDest
-<<<<<<< HEAD
-=======
-  - projectile
-  - FxTemporaire
-  - Undefined
-  - DrumstickLeft
-  - DrumstickRight
->>>>>>> 0af550a3a8f61e6918c1f3818770bbc26d5d4571
   layers:
   - Default
   - TransparentFX
@@ -23,12 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - Boid
-<<<<<<< HEAD
   - 
-=======
-  - Interactable
->>>>>>> 0af550a3a8f61e6918c1f3818770bbc26d5d4571
+  - 
   - 
   - 
   - 
