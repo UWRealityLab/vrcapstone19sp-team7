@@ -52,14 +52,13 @@ public class PercussionObject : MonoBehaviour
         Renderer objRenderer = GetComponent<Renderer>();
         objRenderer.material.SetFloat("_Completion", 0.0f);
 
-        /*
+
         hittable.onHitOnce.AddListener(delegate() {
             float completion = ((float)hittable.hitCount + 1.0f) / hittable.hitsToUnlock;
             // Debug.Log(completion + " completion");
             objRenderer.material.SetFloat("_Completion", completion);
             // ps.Emit(5);
         });
-        */
         
 
         beatBlinkController.beatInfo = beatInfo;

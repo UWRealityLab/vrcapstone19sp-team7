@@ -99,11 +99,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 2738397874234308497, guid: 57408575f948fcf47b1fc2a1d72032a1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7793390075119463934, guid: 57408575f948fcf47b1fc2a1d72032a1,
         type: 3}
       propertyPath: m_Enabled
@@ -133,6 +128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onHitUnlocked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605145439435445701, guid: 57408575f948fcf47b1fc2a1d72032a1,
+        type: 3}
+      propertyPath: onTracked.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5605145439435445701, guid: 57408575f948fcf47b1fc2a1d72032a1,
         type: 3}
@@ -174,9 +174,19 @@ PrefabInstance:
       propertyPath: onUnlock.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5856647561475272570, guid: 57408575f948fcf47b1fc2a1d72032a1,
+    - target: {fileID: 5605145439435445701, guid: 57408575f948fcf47b1fc2a1d72032a1,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: onTracked.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605145439435445701, guid: 57408575f948fcf47b1fc2a1d72032a1,
+        type: 3}
+      propertyPath: onTracked.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738397874234308497, guid: 57408575f948fcf47b1fc2a1d72032a1,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8615102722194774919, guid: 57408575f948fcf47b1fc2a1d72032a1,
@@ -193,6 +203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: beats.Array.data[3]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5856647561475272570, guid: 57408575f948fcf47b1fc2a1d72032a1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5605145439435445700, guid: 57408575f948fcf47b1fc2a1d72032a1, type: 3}
