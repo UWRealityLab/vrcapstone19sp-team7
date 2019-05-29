@@ -13,6 +13,8 @@ public class RadialObject : MonoBehaviour
 
     public float lifetime = 4f;
 
+    public float fallSpeed = 1.0f;
+
 
     [HideInInspector]
     public bool isLastObject;
@@ -49,6 +51,10 @@ public class RadialObject : MonoBehaviour
     void Fadeout()
     {
 
+    }
+
+    void Update() {
+        transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
     }
 
     void OnDestroy()

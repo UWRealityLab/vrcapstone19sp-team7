@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
-  heightOffset: 0
+  heightOffset: -5
   netObj: {fileID: 0}
   leftNetObj: {fileID: 0}
   rightHand: {fileID: 0}
