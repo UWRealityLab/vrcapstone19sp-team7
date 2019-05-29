@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03a765c2cf550d459d8d0baa79c5a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melodyPrefab: {fileID: 3279572442281290039, guid: 9b6afb276487eac409d86e72578efddc,
+  melodyPrefab: {fileID: 2166266573052790653, guid: 1f278077092cdbf42839afc700092ae9,
     type: 3}
   monitor: {fileID: 4226425878852379}
   flock: {fileID: 0}
@@ -158,3 +158,4 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  fantasiaOn: 0
