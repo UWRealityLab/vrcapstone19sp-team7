@@ -43,7 +43,7 @@ public class FantasiaController : MonoBehaviour
         } else if (measureCount == 5)
         {
             ObjectTracking.Invoke();
-        } else if (measureCount == 13)
+        } else if (measureCount == 14)
         {
             Walls.Invoke();
         } else if (measureCount == 24)

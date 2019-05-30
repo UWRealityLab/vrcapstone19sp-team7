@@ -27,7 +27,7 @@ public class UnlockAction : MonoBehaviour
 
 			//transform.rotation.y += 1;
 		} else {
-			Vector3 delta = centerPosition - transform.position;
+			Vector3 delta = centerPosition - transform.localPosition;
 			if (delta.magnitude < .25f) {
 				inCenter = true;
                 transform.localPosition = centerPosition;
