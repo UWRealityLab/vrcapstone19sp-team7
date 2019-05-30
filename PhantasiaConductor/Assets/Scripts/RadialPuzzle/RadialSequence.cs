@@ -8,6 +8,8 @@ public class RadialSequence : MonoBehaviour
 {
     public UnityEvent onSuccess;
 
+    public UnityEvent onObjectCaught;
+
     public BeatInfo[] beatInfos;
 
     public float[] spawnDegrees;
@@ -110,7 +112,7 @@ public class RadialSequence : MonoBehaviour
     {
         objectsCaughtByGroupId[groupId]++;
         int objectsCaught = objectsCaughtByGroupId[groupId];
-        // Debug.Log(objectsCaught);
+        onObjectCaught.Invoke();
         if (objectsCaught == totalObjectsToCatch)
         {
             // this needs to be the last thing it does since we may inactive the sequence
