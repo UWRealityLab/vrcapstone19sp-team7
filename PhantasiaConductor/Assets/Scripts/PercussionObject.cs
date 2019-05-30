@@ -11,6 +11,7 @@ public class PercussionObject : MonoBehaviour
     public uint hitsToUnlock = 4;
     public bool unlocked = false;
     public bool isPiano = false;
+    public float spatialBlend = .8f;
     //public static rhythmComplete = false; //true 
 
     private Renderer hitRenderer;
@@ -41,7 +42,7 @@ public class PercussionObject : MonoBehaviour
             hitSource.clip = hitClip;
             loopSource = transform.Find("LoopSource").GetComponent<AudioSource>();
             loopSource.pitch = loopClip.length / MasterLoop.loopTime;
-            loopSource.spatialBlend = 1.0f;
+            loopSource.spatialBlend = spatialBlend;
             loopSource.clip = loopClip;
             beatInfo = transform.Find("BeatInfo").GetComponent<BeatInfo>(); 
         }
