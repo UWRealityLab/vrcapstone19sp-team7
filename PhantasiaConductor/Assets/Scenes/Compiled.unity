@@ -3332,7 +3332,7 @@ PrefabInstance:
     - target: {fileID: 698274218379234064, guid: c299cd3c72e9238459f1c8be0587b684,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 698274218379234064, guid: c299cd3c72e9238459f1c8be0587b684,
         type: 3}
@@ -6524,6 +6524,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1694620772}
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   transitionSound: {fileID: 598675297}
@@ -7050,6 +7061,10 @@ PrefabInstance:
     - target: {fileID: 447570, guid: e0d256591363b1a41937eac5bc749a70, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437008, guid: e0d256591363b1a41937eac5bc749a70, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0d256591363b1a41937eac5bc749a70, type: 3}
@@ -7749,7 +7764,7 @@ BoxCollider:
   m_GameObject: {fileID: 1560075252}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -7997,6 +8012,12 @@ MonoBehaviour:
   degPerSecond: 5
   amp: 0.1
   freq: 0.25
+--- !u!82 &1694620772 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2238858972211527230, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+    type: 3}
+  m_PrefabInstance: {fileID: 1845436989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1701858831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8511,9 +8532,39 @@ PrefabInstance:
       objectReference: {fileID: 1144734742}
     - target: {fileID: 2836967715622142264, guid: 32cb8fe44c69fb74d9ed012c42e69438,
         type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2836967715622142264, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
       propertyPath: originTransform
       value: 
       objectReference: {fileID: 1144734742}
+    - target: {fileID: 2836967715622142264, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2836967715622142264, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2836967715622142264, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1694620772}
+    - target: {fileID: 2836967715622142264, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 2836967715622142264, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: onSuccess.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7743513899671810457, guid: 32cb8fe44c69fb74d9ed012c42e69438,
         type: 3}
       propertyPath: originTransform
@@ -8839,7 +8890,7 @@ PrefabInstance:
     - target: {fileID: 4606907958407917430, guid: b28d84b5b03ca9140b9355934cb34a05,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 741049311989468195, guid: b28d84b5b03ca9140b9355934cb34a05,
         type: 3}
