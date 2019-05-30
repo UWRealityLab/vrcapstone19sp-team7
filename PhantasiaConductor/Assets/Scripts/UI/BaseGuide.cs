@@ -36,20 +36,18 @@ public class BaseGuide : MonoBehaviour
             sphere.GetComponent<Renderer>().enabled = true;
             while (showTutorial && sphere.transform.position.y > net.transform.position.y + 0.01)
             {
-                if (net.transform.position.x != sphere.transform.position.x)
+                if (net.transform.localPosition.x != sphere.transform.localPosition.x)
                 {
-                    Debug.Log("moving x");
                     float netStep = speed * 2 * Time.deltaTime;
-                    Vector3 newPos = net.transform.position;
-                    newPos.x = sphere.transform.position.x;
-                    net.transform.position = Vector3.Lerp(net.transform.position, newPos, netStep);
+                    Vector3 newPos = net.transform.localPosition;
+                    newPos.x = sphere.transform.localPosition.x;
+                    net.transform.localPosition = Vector3.Lerp(net.transform.localPosition, newPos, netStep);
                 }
 
-                Debug.Log("moving y");
                 float step = speed * Time.deltaTime;
-                Vector3 newSpherePos = sphere.transform.position;
-                newSpherePos.y = net.transform.position.y;
-                sphere.transform.position = Vector3.Lerp(sphere.transform.position, newSpherePos, step);
+                Vector3 newSpherePos = sphere.transform.localPosition;
+                newSpherePos.y = net.transform.localPosition.y;
+                sphere.transform.localPosition = Vector3.Lerp(sphere.transform.localPosition, newSpherePos, step);
                 index++;
                 yield return null;
             }
@@ -58,8 +56,8 @@ public class BaseGuide : MonoBehaviour
                 break;
             }
             sphere.GetComponent<Renderer>().enabled = false;
-            Vector3 nextPos = new Vector3(xPos[index % xPos.Length], initialSPhereHeight, sphere.transform.position.z);
-            sphere.transform.position = nextPos;
+            Vector3 nextPos = new Vector3(xPos[index % xPos.Length], initialSPhereHeight, sphere.transform.localPosition.z);
+            sphere.transform.localPosition = nextPos;
 
             yield return new WaitForSeconds(delay);
         }
