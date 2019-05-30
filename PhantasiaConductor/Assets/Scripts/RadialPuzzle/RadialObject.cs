@@ -26,6 +26,8 @@ public class RadialObject : MonoBehaviour
 
     private int groupId_;
 
+    private bool hasBeenCaught = false;
+
 
     void Start()
     {
@@ -51,10 +53,16 @@ public class RadialObject : MonoBehaviour
             audioSource.Play();
         }
 
-        // we caught it
-        onSuccess.Invoke();
-        ownerSequence.ObjectCaught(groupId);
-        Destroy(gameObject);
+        if (!hasBeenCaught)
+        {
+            // we caught it
+            onSuccess.Invoke();
+            ownerSequence.ObjectCaught(groupId);
+            Destroy(gameObject);
+            hasBeenCaught = true;
+        }
+
+
     }
 
     void Fadeout()
