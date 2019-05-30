@@ -11,8 +11,9 @@ public class FantasiaController : MonoBehaviour
     public UnityEvent Walls;
 
     private MasterLoop masterLoop;
-    private float songLength = 63.0f;
+    private float normal = 63.0f;
     private float measureTIme;
+    private float beatTIme;
 
     private int measureCount;
 
@@ -20,7 +21,9 @@ public class FantasiaController : MonoBehaviour
     {
         masterLoop = GetComponent<MasterLoop>();
         measureCount = 0;
-        measureTIme = songLength / 29.0f;
+        measureTIme = normal / 29.0f;
+        beatTIme = measureTIme / 4.0f;
+        MasterLoop.loopTime = beatTIme * 8; 
     }
 
     public void StartFantasia()
