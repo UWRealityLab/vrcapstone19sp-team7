@@ -38,12 +38,11 @@ public class HarmonyObject : MonoBehaviour
 		positionGoal = ((float)notes[beatCount]) / notesPerOctave;
 		transform.localPosition = new Vector3(0, positionGoal, 0);
 	}
-    
 
-	// Update is called once per frame
-	void Update()
+
+    // Update is called once per frame
+    void Update()
 	{
-
         Color color;
 
         if (unlocked || inContact) {
