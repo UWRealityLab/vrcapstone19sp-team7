@@ -124,11 +124,13 @@ public class RadialSequence : MonoBehaviour
         objectsCaughtByGroupId[groupId]++;
         int objectsCaught = objectsCaughtByGroupId[groupId];
         onObjectCaught.Invoke();
+        // Debug.Log("objects caught" + objectsCaught);
         if (objectsCaught == totalObjectsToCatch)
         {
             // this needs to be the last thing it does since we may inactive the sequence
+            // Debug.Log("all objects caught" + objectsCaught);
             onSuccess.Invoke();
-            // Debug.Log("all objects caught");
+            
         }
     }
 
