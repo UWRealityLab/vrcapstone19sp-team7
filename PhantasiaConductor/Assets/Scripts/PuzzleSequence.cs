@@ -49,16 +49,18 @@ namespace Valve.VR.InteractionSystem
         }
 
         public void NextPuzzle() {
-            if (!isRhythm)
-            {
-                onPuzzleComplete.Invoke();
-            }
             winSource.Play();
             currentPuzzle++;
             if (currentPuzzle < puzzles.Length)
             {
-                puzzles[currentPuzzle].SetActive(true);
                 onNextPuzzle.Invoke();
+                if (!isRhythm)
+                {
+                    StartCoroutine(HarmonyDelay());
+                } else
+                {
+                    puzzles[currentPuzzle].SetActive(true);
+                }
             } else {
                 onPuzzleComplete.Invoke();
             }
@@ -88,6 +90,12 @@ namespace Valve.VR.InteractionSystem
                     puzzles[i].GetComponent<HarmonyObject>().fantasiaOn = true;
                 }
             }
+        }
+
+        private IEnumerator HarmonyDelay()
+        {
+            yield return new WaitForSeconds(3f);
+            puzzles[currentPuzzle].SetActive(true);
         }
     }	
 }

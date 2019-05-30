@@ -2762,7 +2762,7 @@ PrefabInstance:
     - target: {fileID: 7898583672118578123, guid: 1c87f1635618a514a859b725c9b08c8f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.85
       objectReference: {fileID: 0}
     - target: {fileID: 7898583672118578123, guid: 1c87f1635618a514a859b725c9b08c8f,
         type: 3}
@@ -2907,6 +2907,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Harmony 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673352826985951850, guid: 50b265bb6b4b2c3458424ad6e3cf6b50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8538908981790654585, guid: 50b265bb6b4b2c3458424ad6e3cf6b50,
         type: 3}
@@ -3890,7 +3895,7 @@ PrefabInstance:
     - target: {fileID: 304781952620473821, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 304781952620473821, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
@@ -3950,7 +3955,7 @@ PrefabInstance:
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: puzzles.Array.size
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
@@ -4102,7 +4107,7 @@ PrefabInstance:
         type: 3}
       propertyPath: puzzles.Array.data[5]
       value: 
-      objectReference: {fileID: 1597780821}
+      objectReference: {fileID: 231727190}
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: puzzles.Array.data[6]
@@ -4360,12 +4365,12 @@ PrefabInstance:
     - target: {fileID: 57136511531200916, guid: d50d32b8e2373034e9eb72197b5d2ace,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 57136511531200916, guid: d50d32b8e2373034e9eb72197b5d2ace,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 57136511531200916, guid: d50d32b8e2373034e9eb72197b5d2ace,
         type: 3}
@@ -6752,6 +6757,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Harmony 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4673352826985951850, guid: 50b265bb6b4b2c3458424ad6e3cf6b50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8538908981790654585, guid: 50b265bb6b4b2c3458424ad6e3cf6b50,
         type: 3}
       propertyPath: m_RootOrder
@@ -7731,12 +7741,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7898583672118578122, guid: 1c87f1635618a514a859b725c9b08c8f,
     type: 3}
   m_PrefabInstance: {fileID: 748882657}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1597780821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4673352826985951850, guid: 50b265bb6b4b2c3458424ad6e3cf6b50,
-    type: 3}
-  m_PrefabInstance: {fileID: 1413327098}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1597780822 stripped
 Transform:
