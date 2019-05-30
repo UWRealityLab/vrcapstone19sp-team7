@@ -133,5 +133,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   lifetime: 4
   fallSpeed: 10
+  particleSystemPrefab: {fileID: 5938782830839788814, guid: 4b130538fa0852d4c9d90b2b8497338a,
+    type: 3}
   audioSource: {fileID: 0}
   isLastObject: 0

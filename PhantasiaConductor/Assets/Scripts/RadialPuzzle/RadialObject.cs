@@ -15,6 +15,8 @@ public class RadialObject : MonoBehaviour
 
     public float fallSpeed = 1.0f;
 
+    public GameObject particleSystemPrefab;
+
     [HideInInspector]
     public AudioSource audioSource;
 
@@ -55,6 +57,13 @@ public class RadialObject : MonoBehaviour
 
         if (!hasBeenCaught)
         {
+            if (particleSystemPrefab != null)
+            {
+                ParticleSystem ps = Instantiate(particleSystemPrefab).GetComponent<ParticleSystem>();
+                ps.gameObject.transform.position = transform.position;
+                ps.Play();
+            }
+
             // we caught it
             onSuccess.Invoke();
             ownerSequence.ObjectCaught(groupId);
