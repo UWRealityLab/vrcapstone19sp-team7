@@ -22,14 +22,14 @@ public class FantasiaController : MonoBehaviour
     private void Awake()
     {
         masterLoop = GetComponent<MasterLoop>();
-        measureCount = 0;
-        measureTIme = normal / 29.0f;
-        beatTIme = measureTIme / 4.0f;
-        MasterLoop.loopTime = beatTIme * 8; 
     }
 
     public void StartFantasia()
     {
+        measureCount = 0;
+        measureTIme = normal / 29.0f;
+        beatTIme = measureTIme / 4.0f;
+        MasterLoop.loopTime = beatTIme * 8;
         GetComponent<AudioSource>().Play();
         MeasureLoop();
     }
