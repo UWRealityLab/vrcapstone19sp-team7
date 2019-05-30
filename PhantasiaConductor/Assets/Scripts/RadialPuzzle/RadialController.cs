@@ -34,14 +34,16 @@ namespace Valve.VR.InteractionSystem
 
         void Update()
         {
+            // we have to use world positions since this is not necessarily a child of originTransform
             if (mouseMode)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 ray.direction = new Vector3(ray.direction.x, 0, ray.direction.z).normalized;
-                ray.origin = transform.position;
+                // this doesn't really make sense unless it originTransform is the camera
+                ray.origin = originTransform.position;
                 Vector3 pos = ray.origin + (ray.direction * radius);
 
-                netObj.transform.position = new Vector3(pos.x, transform.position.y + heightOffset, pos.z);
+                netObj.transform.position = new Vector3(pos.x, originTransform.position.y + heightOffset, pos.z);
             }
             else
             {
