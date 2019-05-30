@@ -3972,6 +3972,11 @@ PrefabInstance:
       propertyPath: originTransform
       value: 
       objectReference: {fileID: 1709879470}
+    - target: {fileID: 7743513899671810457, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: originTransform
+      value: 
+      objectReference: {fileID: 1709879470}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32cb8fe44c69fb74d9ed012c42e69438, type: 3}
 --- !u!1001 &5717983603861043757

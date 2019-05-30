@@ -24,15 +24,19 @@ public class MasterLoop : MonoBehaviour
 
     public void NewLoop()
     {
-        onNewLoop.Invoke();
-        loopCount++;
-        if (!fantasiaOn)
-        {
-            Invoke("NewLoop", loopTime);
-        } else if (startFantasia)
+        if (fantasiaOn && startFantasia)
         {
             startFantasia = false;
-            Invoke("StartFantasia", loopTime);
+            StartFantasia();
+        }
+        else
+        {
+            onNewLoop.Invoke();
+            loopCount++;
+            if (!fantasiaOn)
+            {
+                Invoke("NewLoop", loopTime);
+            }
         }
     }
 

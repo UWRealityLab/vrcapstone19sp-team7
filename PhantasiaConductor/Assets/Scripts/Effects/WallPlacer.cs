@@ -14,6 +14,12 @@ public class WallPlacer : MonoBehaviour
 
     bool wasPlaced = false;
 
+    private GameObject[] walls;
+
+    private void Awake()
+    {
+        walls = new GameObject[(int) numWalls];
+    }
 
     void OnEnable()
     {
@@ -24,6 +30,7 @@ public class WallPlacer : MonoBehaviour
             for (int i = 0; i < numWalls; i++)
             {
                 GameObject wall = Instantiate(wallPrefab);
+                walls[i] = wall;
                 wall.transform.parent = transform;
 
                 float rad = deltaRad * i;
@@ -45,5 +52,12 @@ public class WallPlacer : MonoBehaviour
         }
     }
 
+    public void StopPulse()
+    {
+        foreach (GameObject wall in walls)
+        {
+            wall.GetComponent<ColorPulse>().StopBlink();
+        }
+    }
 
 }

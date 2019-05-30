@@ -25,7 +25,7 @@ public class ColorPulse : MonoBehaviour
     }
 
     void Start() {
-        ChangeColor();
+        BeatTick();
     }
 
     void BeatTick() {
@@ -48,10 +48,20 @@ public class ColorPulse : MonoBehaviour
         renderer.material.color = c;
     }
 
-    public void NewLoop() {
+    public void StopBlink()
+    {
         CancelInvoke();
+        Color c = ColorGenerator.GenerateColor();
+        c.a = alpha;
+        Renderer renderer = GetComponent<Renderer>();
+
+        renderer.material.color = c;
+    }
+
+    public void NewLoop() {
+        // CancelInvoke();
         // beatIndex = 0;
-        ChangeColor();
-        Invoke("BeatTick", timeBetweenPulse);
+        // ChangeColor();
+        // Invoke("BeatTick", timeBetweenPulse);
     }
 }

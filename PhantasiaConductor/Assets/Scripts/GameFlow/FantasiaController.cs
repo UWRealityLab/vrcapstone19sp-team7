@@ -9,6 +9,8 @@ public class FantasiaController : MonoBehaviour
     public UnityEvent ObjectTracking;
     public UnityEvent Confetti;
     public UnityEvent Walls;
+    public UnityEvent WallsOff;
+    public UnityEvent ObjectTrackingOff;
 
     private MasterLoop masterLoop;
     private float normal = 63.0f;
@@ -46,12 +48,19 @@ public class FantasiaController : MonoBehaviour
         } else if (measureCount == 5)
         {
             ObjectTracking.Invoke();
-        } else if (measureCount == 14)
+        } else if (measureCount == 17)
         {
+            ObjectTrackingOff.Invoke();
             Walls.Invoke();
+        } else if (measureCount == 20)
+        {
+            ObjectTracking.Invoke();
         } else if (measureCount == 24)
         {
             Confetti.Invoke();
+        } else if (measureCount == 26)
+        {
+            WallsOff.Invoke();
         }
 
         Invoke("MeasureLoop", measureTIme);
