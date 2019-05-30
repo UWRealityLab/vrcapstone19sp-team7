@@ -49,6 +49,10 @@ namespace Valve.VR.InteractionSystem
         }
 
         public void NextPuzzle() {
+            if (!isRhythm)
+            {
+                onPuzzleComplete.Invoke();
+            }
             winSource.Play();
             currentPuzzle++;
             if (currentPuzzle < puzzles.Length)

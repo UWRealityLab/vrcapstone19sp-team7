@@ -22,7 +22,7 @@ public class MasterLoop : MonoBehaviour
         Invoke("NewLoop", delay);
     }
 
-    void NewLoop()
+    public void NewLoop()
     {
         onNewLoop.Invoke();
         loopCount++;
