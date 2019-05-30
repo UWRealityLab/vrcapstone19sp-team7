@@ -14,6 +14,8 @@ public class RadialSequence : MonoBehaviour
 
     public float[] spawnDegrees;
 
+    // public int[] audioIndices;
+
     public MasterLoop masterLoop;
 
     public GameObject radialObjectPrefab;
@@ -22,6 +24,9 @@ public class RadialSequence : MonoBehaviour
     public float spawnHeight = 5f;
 
     public Transform originTransform;
+
+    // public AudioSourceList audioSourcesList;
+    public AudioSource[] audioSources;
 
     private int beatInfoIndex = 0;
     private int beatIndex = 0;
@@ -67,6 +72,11 @@ public class RadialSequence : MonoBehaviour
                 objectsCaughtByGroupId[recentGroupId] = 0;
             }
             radialObject.groupId = recentGroupId;
+            if (audioSources != null)
+            {
+                // radialObject.audioSource = audioSources.Get(audioIndices[rIndex]);
+                radialObject.audioSource = audioSources[rIndex];
+            }
 
             obj.transform.parent = transform;
 
@@ -74,6 +84,7 @@ public class RadialSequence : MonoBehaviour
             float x = Mathf.Cos(deg * Mathf.Deg2Rad) * radius;
             float z = Mathf.Sin(deg * Mathf.Deg2Rad) * radius;
             obj.transform.localPosition = new Vector3(x, spawnHeight, z);
+
 
             rIndex++;
 
@@ -121,13 +132,15 @@ public class RadialSequence : MonoBehaviour
         }
     }
 
-    public void LastObjectDestroyed(int groupId) {
+    public void LastObjectDestroyed(int groupId)
+    {
         objectsCaughtByGroupId.Remove(groupId);
         // Debug.Log("last object destroyed");
     }
 
     // if completed
-    public void Unlock() {
+    public void Unlock()
+    {
         gameObject.SetActive(false);
     }
 

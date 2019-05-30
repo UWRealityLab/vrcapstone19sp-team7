@@ -15,6 +15,9 @@ public class RadialObject : MonoBehaviour
 
     public float fallSpeed = 1.0f;
 
+    [HideInInspector]
+    public AudioSource audioSource;
+
 
     [HideInInspector]
     public bool isLastObject;
@@ -24,7 +27,8 @@ public class RadialObject : MonoBehaviour
     private int groupId_;
 
 
-    void Start() {
+    void Start()
+    {
         Invoke("EndOfLifetime", lifetime);
     }
 
@@ -42,6 +46,11 @@ public class RadialObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+
         // we caught it
         onSuccess.Invoke();
         ownerSequence.ObjectCaught(groupId);
@@ -53,7 +62,8 @@ public class RadialObject : MonoBehaviour
 
     }
 
-    void Update() {
+    void Update()
+    {
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
     }
 
