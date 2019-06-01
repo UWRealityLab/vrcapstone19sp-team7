@@ -6,6 +6,7 @@ using System;
 
 public class HarmonyObject : MonoBehaviour
 {
+	public GameObject click;
 	public AudioSource loopSource;
     public AudioClip loopClip;
     public UnityEvent onUnlock;
@@ -108,6 +109,7 @@ public class HarmonyObject : MonoBehaviour
 	{
 	  loopSource.volume = 1;
 	  inContact = true;
+	  click.GetComponent<AudioSource>().Play();
 	  Invoke("Unlock", MasterLoop.loopTime - cheatTime);
 	}
 
@@ -115,6 +117,7 @@ public class HarmonyObject : MonoBehaviour
 	{
 	  inContact = false;
 	  loopSource.volume = 0;
+	  click.GetComponent<AudioSource>().Play();
 	  CancelInvoke("Unlock");
 	}
 
