@@ -39,20 +39,23 @@ public class TempoController : MonoBehaviour
         cumRight = 0;
         sampleCount = 0;
 
-        Debug.Log(Mathf.Max(averageL, averageR));
-        if (Mathf.Max(averageL, averageR) < stopThreshhold)
+        float average = Mathf.Max(averageL, averageR);
+        Debug.Log(average);
+        if (average < stopThreshhold)
         {
             StartCoroutine(shiftTempo(normal.pitch, 0));
-            stopped = true;
-        } else if (stopped)
+        } else if (average <= fastThreshhold)
         {
-            StartCoroutine(shiftTempo(0, 1.0f));
-            stopped = false;
+            Debug.Log("normal speed");
+            StartCoroutine(shiftTempo(normal.pitch, 1));
+        } else // average > fastThreshhold
+        {
+            StartCoroutine(shiftTempo(normal.pitch, fastPitch));
         }
         Invoke("TrackVelocity", averagingTime);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         float leftVelocity = (prevLeft - leftHand.transform.position).magnitude / Time.deltaTime;
         float rightVelocity = (prevRight - rightHand.transform.position).magnitude / Time.deltaTime;

@@ -394,8 +394,8 @@ MonoBehaviour:
   changeDuration: 0.3
   fastPitch: 1.2
   slowPitch: 0.8
-  slowThreshhold: 0.5
-  fastThreshhold: 1.2
+  slowThreshhold: 0.1
+  fastThreshhold: 0.75
   stopThreshhold: 0.1
   averagingTime: 2
 --- !u!4 &782531900
