@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PercussionObject : MonoBehaviour
 {
-
+    public Baton baton;
     public AudioClip hitClip;
     public AudioClip loopClip;
     public Material unlockMaterial;
@@ -52,13 +52,14 @@ public class PercussionObject : MonoBehaviour
         ps = transform.Find("ParticleSystem").gameObject.GetComponent<ParticleSystem>();
 
         Renderer objRenderer = GetComponent<Renderer>();
-        objRenderer.material.SetFloat("_Completion", 0.0f);
+        //objRenderer.material.SetFloat("_Completion", 0.0f);
 
 
         hittable.onHitOnce.AddListener(delegate() {
             float completion = ((float)hittable.hitCount + 1.0f) / hittable.hitsToUnlock;
+            baton.setCompletion(completion);
             // Debug.Log(completion + " completion");
-            objRenderer.material.SetFloat("_Completion", completion);
+            // objRenderer.material.SetFloat("_Completion", completion);
             // ps.Emit(5);
         });
         

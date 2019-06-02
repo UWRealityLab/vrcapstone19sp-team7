@@ -159,8 +159,8 @@ public class Hittable : MonoBehaviour
     {
         get
         {
-            return (float) hitCount / hitsToUnlock;
-
+            //return (float) hitCount / hitsToUnlock;
+            return 0;
         }
     }
 }
