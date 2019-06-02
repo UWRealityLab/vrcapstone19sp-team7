@@ -21,4 +21,9 @@ public class ConfettiController : MonoBehaviour
     public void ConfettiOn() {
         confettiOn = true;
     }
+
+    public void ConfettiOff()
+    {
+        confettiOn = false;
+    }
 }

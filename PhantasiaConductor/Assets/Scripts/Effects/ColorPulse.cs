@@ -15,6 +15,7 @@ public class ColorPulse : MonoBehaviour
     private int beatIndex;
     private int colorIndex;
     private Color[] colors;
+    private float prevTime;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class ColorPulse : MonoBehaviour
     }
 
     void Start() {
+        prevTime = Time.time;
         BeatTick();
     }
 
@@ -34,6 +36,8 @@ public class ColorPulse : MonoBehaviour
             ChangeColor();
         }
         beatIndex++;
+        prevTime = Time.time;
+
         Invoke("BeatTick", beatInfo.beatTime);
     }
 
@@ -56,6 +60,17 @@ public class ColorPulse : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>();
 
         renderer.material.color = c;
+    }
+
+    public void PauseBlink()
+    {
+        CancelInvoke();
+    }
+
+    public void ResumeBlink()
+    {
+        beatIndex = 0;
+        BeatTick();
     }
 
     public void NewLoop() {

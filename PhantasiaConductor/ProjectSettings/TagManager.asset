@@ -11,6 +11,7 @@ TagManager:
   - Undefined
   - DrumstickLeft
   - DrumstickRight
+  - BeatWall
   layers:
   - Default
   - TransparentFX

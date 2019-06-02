@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 //@COMMENTEDOUT
 public class TempoController : MonoBehaviour
@@ -7,21 +8,24 @@ public class TempoController : MonoBehaviour
     public GameObject leftHand;
     public GameObject rightHand;
 
-    public AudioSource normal;
-    public float changeDuration = 0.3f;
-    public float fastPitch = 1.2f;
-    public float slowPitch = 0.8f;
-    public float slowThreshhold = 0.5f;
-    public float fastThreshhold = 1.2f;
+    public UnityEvent onStop;
+    public UnityEvent onStart;
+
+    public AudioSource song;
+    public static float slowDownTime = 0.3f;
+    // public float fastPitch = 1.2f;
+    // public float slowPitch = 0.8f;
+    // public float slowThreshhold = 0.5f;
+    // public float fastThreshhold = 1.2f;
     public float stopThreshhold = 0.1f; 
-    public float averagingTime = 2f;
+    public float averagingTime = 1f;
 
     private float cumLeft;
     private float cumRight;
     private Vector3 prevLeft;
     private Vector3 prevRight;
     private float sampleCount;
-    private bool stopped = false;
+    private bool stopped;
 
     private void OnEnable()
     {
@@ -40,18 +44,17 @@ public class TempoController : MonoBehaviour
         sampleCount = 0;
 
         float average = Mathf.Max(averageL, averageR);
-        Debug.Log(average);
-        if (average < stopThreshhold)
+        if (!stopped && average < stopThreshhold)
         {
-            StartCoroutine(shiftTempo(normal.pitch, 0));
-        } else if (average <= fastThreshhold)
-        {
-            Debug.Log("normal speed");
-            StartCoroutine(shiftTempo(normal.pitch, 1));
-        } else // average > fastThreshhold
-        {
-            StartCoroutine(shiftTempo(normal.pitch, fastPitch));
+            onStop.Invoke();
+            stopped = true;
         }
+        else if (stopped && average > stopThreshhold)
+        {
+            onStart.Invoke();
+            stopped = false;
+        }
+
         Invoke("TrackVelocity", averagingTime);
     }
 
@@ -67,21 +70,24 @@ public class TempoController : MonoBehaviour
         sampleCount++;
     }
 
-    private void switchAudio()
+    public void StopPlaying()
     {
-        Debug.Log(normal.clip.length);
-        normal.pitch = 1.2f;
-        Debug.Log(normal.clip.length);
+        StartCoroutine(shiftTempo(song.pitch, 0));
+    }
+
+    public void StartPlaying()
+    {
+        StartCoroutine(shiftTempo(song.pitch, 1));
     }
 
     private IEnumerator shiftTempo(float initial, float final)
     {
         float counter = 0;
-        while (normal.pitch != final && counter < changeDuration)
+        while (song.pitch != final && counter < slowDownTime)
         {
             counter += Time.deltaTime;
 
-            normal.pitch += Time.deltaTime * (final - initial) / changeDuration;
+            song.pitch += Time.deltaTime * (final - initial) / slowDownTime;
             yield return null; ;
         }
     }
