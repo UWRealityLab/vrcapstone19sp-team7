@@ -6,14 +6,13 @@ public class BaseGuide : MonoBehaviour
 {
     public GameObject sphere;
     public GameObject net;
-    public float speed = 3f;
+    public float speed = 2f;
     public float delay = 0.5f;
     public bool showTutorial = true;
 
     private float initialSPhereHeight;
     private float[] xPos;
     private int index;
-
     private void Awake()
     {
         index = 1;
