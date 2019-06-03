@@ -15,7 +15,7 @@ namespace Valve.VR.InteractionSystem
         public int currentPuzzle;
         public bool handColliders;
         public bool isRhythm;
-
+        
         public GameObject leftHand;
         public GameObject rightHand;
 
@@ -26,6 +26,7 @@ namespace Valve.VR.InteractionSystem
         // Start is called before the first frame update
         void Awake()
         {
+            
             if (handColliders)
             {
                 leftHand.GetComponent<Collider>().enabled = true;
@@ -35,7 +36,7 @@ namespace Valve.VR.InteractionSystem
                 leftHand.GetComponent<Collider>().enabled = false;
                 rightHand.GetComponent<Collider>().enabled = false;
             }
-
+            
 
             winSource = GetComponent<AudioSource>();
             winSource.clip = winClip;

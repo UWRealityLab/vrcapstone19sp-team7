@@ -912,6 +912,16 @@ PrefabInstance:
       propertyPath: LoadPuzzle.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
+        type: 3}
+      propertyPath: rightHandObject
+      value: 
+      objectReference: {fileID: 1558014257}
+    - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
+        type: 3}
+      propertyPath: leftHandObject
+      value: 
+      objectReference: {fileID: 781621627}
     m_RemovedComponents:
     - {fileID: 441327812120867267, guid: 118106622eff7584caf82d1f0da89503, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 118106622eff7584caf82d1f0da89503, type: 3}
@@ -2989,6 +2999,16 @@ PrefabInstance:
       propertyPath: colorMaterials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 871678045fc44a946a45179dd4c43dd1, type: 2}
+    - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
+        type: 3}
+      propertyPath: leftHandObject
+      value: 
+      objectReference: {fileID: 781621627}
+    - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
+        type: 3}
+      propertyPath: rightHandObject
+      value: 
+      objectReference: {fileID: 1558014257}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118106622eff7584caf82d1f0da89503, type: 3}
 --- !u!4 &719990100 stripped
@@ -3208,6 +3228,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1122636226}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &781621629 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3261066491168730136, guid: 8a83454104c6ad54dab6072635c3892b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1122636226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &781621631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3220,8 +3246,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4b562e6427b9d439fb09747c8b6d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batonLevel: 0
-  renderer: {fileID: 0}
+  rend: {fileID: 781621629}
+  other: {fileID: 1558014261}
+--- !u!65 &781621632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781621627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07585319, y: 0.07585316, z: 1.5387951}
+  m_Center: {x: -0.00000002607704, y: 0, z: 0.52879465}
+--- !u!54 &781621633
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781621627}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &785183165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3497,12 +3552,6 @@ Transform:
   m_Father: {fileID: 130850543}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &885859003 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7324811399459057005, guid: 8a83454104c6ad54dab6072635c3892b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1122636226}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &885859004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7324811399459057000, guid: 8a83454104c6ad54dab6072635c3892b,
@@ -4226,12 +4275,12 @@ PrefabInstance:
         type: 3}
       propertyPath: rightHandObject
       value: 
-      objectReference: {fileID: 1228651260}
+      objectReference: {fileID: 1558014257}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: leftHandObject
       value: 
-      objectReference: {fileID: 74080790}
+      objectReference: {fileID: 781621627}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: LoadPuzzle.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -4435,12 +4484,6 @@ Transform:
   m_Father: {fileID: 897903021}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!1 &1066786340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7324811400333152615, guid: 8a83454104c6ad54dab6072635c3892b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1122636226}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1066786341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7324811400333152610, guid: 8a83454104c6ad54dab6072635c3892b,
@@ -4556,12 +4599,12 @@ PrefabInstance:
         type: 3}
       propertyPath: leftHand
       value: 
-      objectReference: {fileID: 74080790}
+      objectReference: {fileID: 781621627}
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: rightHand
       value: 
-      objectReference: {fileID: 1228651260}
+      objectReference: {fileID: 1558014257}
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: handObject
@@ -5211,6 +5254,21 @@ PrefabInstance:
       propertyPath: thickness
       value: 0.004
       objectReference: {fileID: 0}
+    - target: {fileID: 3261066491168730136, guid: 8a83454104c6ad54dab6072635c3892b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e636eaa51d5ab744b054815b678d4ec, type: 2}
+    - target: {fileID: 3261066491168730136, guid: 8a83454104c6ad54dab6072635c3892b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e636eaa51d5ab744b054815b678d4ec, type: 2}
+    - target: {fileID: 3261066491168730136, guid: 8a83454104c6ad54dab6072635c3892b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e636eaa51d5ab744b054815b678d4ec, type: 2}
     - target: {fileID: 226918748544602168, guid: 8a83454104c6ad54dab6072635c3892b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -5724,12 +5782,12 @@ PrefabInstance:
         type: 3}
       propertyPath: leftHandObject
       value: 
-      objectReference: {fileID: 885859003}
+      objectReference: {fileID: 781621627}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: rightHandObject
       value: 
-      objectReference: {fileID: 1066786340}
+      objectReference: {fileID: 1558014257}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: LoadPuzzle.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
@@ -6874,6 +6932,21 @@ PrefabInstance:
       propertyPath: onHitLocked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 9211528928801753904, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: baton
+      value: 
+      objectReference: {fileID: 781621631}
+    - target: {fileID: 9211528930090875850, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: baton
+      value: 
+      objectReference: {fileID: 781621631}
+    - target: {fileID: 9211528930382191311, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: baton
+      value: 
+      objectReference: {fileID: 781621631}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a796801a65e7134c850b1096e10774d, type: 3}
 --- !u!1 &1367391864 stripped
@@ -8538,12 +8611,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1122636226}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1558014259 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3261066491082331895, guid: 8a83454104c6ad54dab6072635c3892b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1122636226}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1558014261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8556,8 +8623,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4b562e6427b9d439fb09747c8b6d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batonLevel: 0
-  renderer: {fileID: 1558014259}
+  rend: {fileID: 0}
+  other: {fileID: 0}
+--- !u!65 &1558014262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558014257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07585319, y: 0.07585316, z: 1.5387951}
+  m_Center: {x: 0.0000006891787, y: 0, z: 0.52879655}
+--- !u!54 &1558014263
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558014257}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1560075252
 GameObject:
   m_ObjectHideFlags: 0

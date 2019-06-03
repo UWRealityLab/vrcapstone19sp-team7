@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class Baton : MonoBehaviour
 {
-
-    public float batonLevel = 0;
+    
     // Start is called before the first frame update
-    public Renderer renderer;
-
-    void Start()
+    public Renderer rend;
+    public Baton other;
+    void Awake()
     {
-        renderer = GetComponent<MeshRenderer>();
+        rend = GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        renderer.material.SetFloat("_Completion", 0.0f);
-    }
 
-    public void setCompletion(float completion)
+    public void setCompletion(float completion, float time)
     {
-        Debug.Log("HI");
-        renderer.material.SetFloat("_Completion", 0.0f);
+        //Debug.Log("HI" + other);
+        //other.setCompletion(completion, time);
+        
+        rend.materials[1].SetFloat("_Completion", completion);
+        
         if (completion == 1.0f)
         {
             //some particle thing
+            Invoke("Reset", .25f);
         }
+    }
+
+    public void Reset()
+    {
+        rend.materials[1].SetFloat("_Completion", 0);
+        other.Reset();
     }
 }

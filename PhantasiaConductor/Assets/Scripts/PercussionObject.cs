@@ -57,9 +57,11 @@ public class PercussionObject : MonoBehaviour
 
         hittable.onHitOnce.AddListener(delegate() {
             float completion = ((float)hittable.hitCount + 1.0f) / hittable.hitsToUnlock;
-            baton.setCompletion(completion);
-            // Debug.Log(completion + " completion");
-            // objRenderer.material.SetFloat("_Completion", completion);
+            Debug.Log(completion + " completion");
+            baton.setCompletion(completion, .1f);
+
+             Debug.Log(completion + " completion");
+             //objRenderer.material.SetFloat("_Completion", completion);
             // ps.Emit(5);
         });
         
