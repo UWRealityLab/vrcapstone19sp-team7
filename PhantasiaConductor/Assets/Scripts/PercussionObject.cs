@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PercussionObject : MonoBehaviour
 {
-    public Baton baton;
+
     public AudioClip hitClip;
     public AudioClip loopClip;
     public Material unlockMaterial;
@@ -22,20 +22,24 @@ public class PercussionObject : MonoBehaviour
     private BeatInfo beatInfo;
 
     private ParticleSystem ps;
+
     public bool fantasiaOn = false;
+
+
 
     // We can remove this and set values in the prefab
     void Awake()
     {
         beatBlinkController = GetComponent<BeatBlinkController>();
         hitRenderer = transform.Find("HitAnimation").GetComponent<Renderer>();
-        
+
 
         if (isPiano)
         {
             hitSource = GetComponent<AudioSource>();
             beatInfo = GetComponent<BeatInfo>();
-        } else
+        }
+        else
         {
             hitSource = transform.Find("HitSource").GetComponent<AudioSource>();
             hitSource.spatialBlend = 1.0f;
@@ -44,7 +48,7 @@ public class PercussionObject : MonoBehaviour
             loopSource.pitch = loopClip.length / MasterLoop.loopTime;
             loopSource.spatialBlend = spatialBlend;
             loopSource.clip = loopClip;
-            beatInfo = transform.Find("BeatInfo").GetComponent<BeatInfo>(); 
+            beatInfo = transform.Find("BeatInfo").GetComponent<BeatInfo>();
         }
 
         hittable = GetComponent<Hittable>();
@@ -55,18 +59,21 @@ public class PercussionObject : MonoBehaviour
         //objRenderer.material.SetFloat("_Completion", 0.0f);
 
 
-        hittable.onHitOnce.AddListener(delegate() {
+        hittable.onHitOnce.AddListener(delegate ()
+        {
             float completion = ((float)hittable.hitCount + 1.0f) / hittable.hitsToUnlock;
-            baton.SetCompletion(completion, .1f);
+            Debug.Log("setting completion");
+            AgnosticHand.GetRightBaton().SetCompletion(completion, .1f);
+            // baton.SetCompletion(completion, .1f);
 
-             //objRenderer.material.SetFloat("_Completion", completion);
+            //objRenderer.material.SetFloat("_Completion", completion);
             // ps.Emit(5);
         });
 
-        hittable.onMiss.AddListener(delegate () {
-            
-            baton.SetCompletion(0, 0);
-            
+        hittable.onMiss.AddListener(delegate ()
+        {
+            AgnosticHand.GetRightBaton().SetCompletion(0, 0);
+            // baton.SetCompletion(0, 0);
         });
 
         beatBlinkController.beatInfo = beatInfo;
@@ -103,11 +110,12 @@ public class PercussionObject : MonoBehaviour
         }
     }
 
-    float GetCompletion() {
+    float GetCompletion()
+    {
         // hitsToUnlock / 
         return 0.0f;
     }
-        
+
     void LoopSourceOn()
     {
         if (loopSource != null)
