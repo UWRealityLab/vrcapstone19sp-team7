@@ -637,7 +637,7 @@ PrefabInstance:
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: OnDepart.m_PersistentCalls.m_Calls.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
@@ -1013,7 +1013,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnDepart.m_PersistentCalls.m_Calls.Array.data[6].m_Target
       value: 
-      objectReference: {fileID: 616760784}
+      objectReference: {fileID: 332270034}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: OnDepart.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
@@ -4550,12 +4550,12 @@ PrefabInstance:
         type: 3}
       propertyPath: rightHandObject
       value: 
-      objectReference: {fileID: 58068658}
+      objectReference: {fileID: 1714741406}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: leftHandObject
       value: 
-      objectReference: {fileID: 1720759658}
+      objectReference: {fileID: 128463634}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: LoadPuzzle.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -4588,6 +4588,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 118106622eff7584caf82d1f0da89503, type: 3}
+--- !u!114 &1003629822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6032642714853065584, guid: 1a796801a65e7134c850b1096e10774d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1367391863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a6eaa763fd8af4da7e32fa4a6fe3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1033767946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4868,12 +4880,12 @@ PrefabInstance:
         type: 3}
       propertyPath: leftHand
       value: 
-      objectReference: {fileID: 1446758431}
+      objectReference: {fileID: 128463634}
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: rightHand
       value: 
-      objectReference: {fileID: 692979999}
+      objectReference: {fileID: 1714741406}
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: handObject
@@ -6027,7 +6039,7 @@ PrefabInstance:
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
       propertyPath: OnDepart.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6630393060951285137, guid: 118106622eff7584caf82d1f0da89503,
         type: 3}
@@ -6809,6 +6821,21 @@ PrefabInstance:
         type: 3}
       propertyPath: onUnlock.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211528928835167476, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: onUnlock.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1003629822}
+    - target: {fileID: 9211528928835167476, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: onUnlock.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211528928835167476, guid: 1a796801a65e7134c850b1096e10774d,
+        type: 3}
+      propertyPath: onUnlock.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9211528929033521108, guid: 1a796801a65e7134c850b1096e10774d,
         type: 3}
