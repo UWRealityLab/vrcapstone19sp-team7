@@ -71,12 +71,13 @@ public class BeatBlinkController : MonoBehaviour
     void BlinkOn()
     {
         blink.BlinkOnOnce();
+        updateOffset();
     }
 
     void BlinkOff()
     {
         blink.BlinkOffOnce();
-        updateOffset();
+        
     }
 
     private void updateOffset()
