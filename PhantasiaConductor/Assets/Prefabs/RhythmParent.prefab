@@ -438,12 +438,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675f1f4fd68e8354fb787896c4b5bd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baton: {fileID: 0}
   hitClip: {fileID: 8300000, guid: b6d08d737477e1a47ae68de4d2498900, type: 3}
   loopClip: {fileID: 8300000, guid: 27fcf9ee46b764f41bb0dd29d9ff60a0, type: 3}
   unlockMaterial: {fileID: 2100000, guid: 6db66adb191f4b94d904c517cfc0eebd, type: 2}
   hitsToUnlock: 2
   unlocked: 0
   isPiano: 0
+  spatialBlend: 0.8
+  fantasiaOn: 0
 --- !u!114 &5605145439435445701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +496,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onMiss:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onUnlock:
@@ -566,10 +574,12 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  haptics: {fileID: 0}
   inContact: 0
   canHit: 0
   canInteract: 0
   preventRepeated: 1
+  hitCount: 0
 --- !u!23 &7793390075119463934
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -587,7 +597,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3e636eaa51d5ab744b054815b678d4ec, type: 2}
+  - {fileID: 2100000, guid: c3efabafc9571984fa1de390ee18d1cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -732,6 +742,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHitLocked:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   beatInfo: {fileID: 8615102722194774919}

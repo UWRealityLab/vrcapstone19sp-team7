@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Grow : MonoBehaviour
 {
+    public Baton baton;
     public Material glowMaterial;
     public Material normalMaterial;
     public float growDuration;
@@ -40,6 +41,7 @@ public class Grow : MonoBehaviour
         {
             counter += Time.deltaTime;
             float newScalePoint = (initialScale + (counter / growDuration)) * growScale;
+            baton.SetCompletion(counter / growDuration, 0);
             Vector3 newScale = new Vector3(newScalePoint, newScalePoint, newScalePoint);
             transform.localScale = newScale;
             yield return null;
@@ -52,5 +54,6 @@ public class Grow : MonoBehaviour
         StopAllCoroutines();
         GetComponent<Renderer>().material = normalMaterial;
         transform.localScale = normalScale;
+        baton.SetCompletion(0, 0);
     }
 }

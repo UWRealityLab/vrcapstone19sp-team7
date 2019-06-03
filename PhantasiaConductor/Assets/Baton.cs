@@ -14,32 +14,33 @@ public class Baton : MonoBehaviour
     }
 
 
-    public void setCompletion(float completion, float time)
+    public void SetCompletion(float completion, float time)
     {
         //Debug.Log("HI" + other);
         if (other != null)
         {
-            other.setCompletion(completion, time);
+            other.SetCompletion(completion, time);
         }
-        rend.materials[1].SetFloat("_Completion", scaled(completion));
+        rend.materials[1].SetFloat("_Completion", Scaled(completion));
         
         if (completion == 1.0f)
         {
             //some particle thing
-            Invoke("Reset", .5f);
+            Invoke("ResetCompletion", .25f);
         }
     }
+    
 
-    public void Reset()
+    public void ResetCompletion()
     {
         rend.materials[1].SetFloat("_Completion", 0);
         if (other != null)
         {
-            other.Reset();
+            other.ResetCompletion();
         }
     }
 
-    private float scaled(float input)
+    private float Scaled(float input)
     {
         if (input < .5)
         {

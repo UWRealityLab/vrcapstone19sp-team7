@@ -8,6 +8,7 @@ public class Hittable : MonoBehaviour
     public uint hitsToUnlock;
 
     public UnityEvent onHitOnce;
+    public UnityEvent onMiss;
     public UnityEvent onUnlock;
     public UnityEvent onPinched;
     public UnityEvent onTracked;
@@ -121,6 +122,7 @@ public class Hittable : MonoBehaviour
     {
         if (hitCount != 0)
         {
+            onMiss.Invoke();
             //Play miss sound quietly?
         }
         if (!HitFlag)

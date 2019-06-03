@@ -1151,7 +1151,7 @@ namespace Valve.VR.InteractionSystem
                             mainRenderModel.SetHandPosition(targetHandPosition);
                         if (hoverhighlightRenderModel != null)
                             hoverhighlightRenderModel.SetHandPosition(targetHandPosition);
-                    }
+                    }   
                 }
             }
         }
