@@ -62,7 +62,6 @@ public class PercussionObject : MonoBehaviour
         hittable.onHitOnce.AddListener(delegate ()
         {
             float completion = ((float)hittable.hitCount + 1.0f) / hittable.hitsToUnlock;
-            Debug.Log("setting completion");
             AgnosticHand.GetRightBaton().SetCompletion(completion, .1f);
             // baton.SetCompletion(completion, .1f);
 
