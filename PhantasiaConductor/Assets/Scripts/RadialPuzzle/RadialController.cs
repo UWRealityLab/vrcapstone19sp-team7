@@ -17,9 +17,12 @@ namespace Valve.VR.InteractionSystem
 
         public GameObject leftNetObj;
 
-        public Hand rightHand;
+        // public Hand rightHand;
 
-        public Hand leftHand;
+        // public Hand leftHand;
+
+        public GameObject rightHand;
+        public GameObject leftHand;
 
 
         public Transform originTransform;
