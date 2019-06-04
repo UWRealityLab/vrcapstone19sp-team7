@@ -28,6 +28,10 @@ public class FantasiaController : MonoBehaviour
     public UnityEvent ObjectTrackingOff;
     public UnityEvent ConfettiOff;
 
+
+    // End of Fantasia
+    public UnityEvent onFinish;
+
     private MasterLoop masterLoop;
     private TempoController tempo;
     private float normal = 63.0f; // song length
@@ -116,6 +120,9 @@ public class FantasiaController : MonoBehaviour
         {
             WallsPulseOff.Invoke();
             wallsPulse = false;
+        } else if (measureCount == 30)
+        {
+            onFinish.Invoke();
         }
 
         prevMeasureTime = Time.time;

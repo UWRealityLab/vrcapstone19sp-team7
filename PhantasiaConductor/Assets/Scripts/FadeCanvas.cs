@@ -12,7 +12,17 @@ public class FadeCanvas : MonoBehaviour
         canvas = GetComponent<CanvasGroup>();
     }
 
-    public IEnumerator Fade(float startAlpha, float endAlpha)
+    public void FadeIn()
+    {
+        StartCoroutine(Fade(0, 1));
+    }
+
+    public void FadeOut()
+    {
+        StartCoroutine(Fade(1, 0));
+    }
+
+    private IEnumerator Fade(float startAlpha, float endAlpha)
     {
         // keep track of when the fading started, when it should finish, and how long it has been running&lt;/p&gt; &lt;p&gt;&a
         var startTime = Time.time;
