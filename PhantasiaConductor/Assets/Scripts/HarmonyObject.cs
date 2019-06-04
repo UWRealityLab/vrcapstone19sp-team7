@@ -19,7 +19,10 @@ public class HarmonyObject : MonoBehaviour
 	public float speed = .0001f;
     public float cheatTime = .1f;  //master loop time - cheat time required to beat level
 	public int notesPerOctave = 12;
-    
+
+    private Renderer rend;
+    private Fade fade;
+    private bool loopFlag = false;
     private float velocityGoal = 0;
 	private float velocity = 0;
 	private int beatCount = 0;
@@ -44,8 +47,15 @@ public class HarmonyObject : MonoBehaviour
 		beatTime = MasterLoop.loopTime / notes.Length;
 		positionGoal = ((float)notes[beatCount]) / notesPerOctave;
 		transform.localPosition = new Vector3(0, positionGoal, 0);
+        fade = GetComponent<Fade>();
+        rend = GetComponent<Renderer>();
 	}
 
+    private void OnEnable()
+    {
+        fade.FadeIn(gameObject);
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -64,14 +74,17 @@ public class HarmonyObject : MonoBehaviour
 
         //COLOR
         Color color;
+        float initialA = GetComponent<Renderer>().material.color.a;
         if (unlocked || inContact) {
             color = Color.HSVToRGB(transform.localPosition.y % 1f, 1f, 1f);
-            color.a = .75f;
-
 		} else {
             color = Color.HSVToRGB(0, 0, 1);
-            color.a = .75f;
 		}
+        if (fade.done) {
+            color.a = .75f;
+        } else {
+            color.a = initialA;
+        }
 		GetComponent<Renderer>().material.color = color;
 
 		if (moving) {
@@ -113,6 +126,7 @@ public class HarmonyObject : MonoBehaviour
 	}
 
 	public void NewLoop(){
+        loopFlag = true;
         if (gameObject.activeInHierarchy)
         {
             if (!fantasiaOn)
@@ -127,19 +141,25 @@ public class HarmonyObject : MonoBehaviour
 
 	public void OnTriggerEnter()
 	{
-	  loopSource.volume = 1;
-	  inContact = true;
-	  click.GetComponent<AudioSource>().Play();
+        if (loopFlag)
+        {
+            loopSource.volume = 1;
+            inContact = true;
+            click.GetComponent<AudioSource>().Play();
 
-	  Invoke("Unlock", MasterLoop.loopTime - cheatTime);
+            Invoke("Unlock", MasterLoop.loopTime - cheatTime);
+        }
 	}
 
 	public void OnTriggerExit()
 	{
-	  inContact = false;
-	  loopSource.volume = 0;
-	  click.GetComponent<AudioSource>().Play();
-	  CancelInvoke("Unlock");
+        if (loopFlag)
+        {
+            inContact = false;
+            loopSource.volume = 0;
+            click.GetComponent<AudioSource>().Play();
+            CancelInvoke("Unlock");
+        }
 	}
 
 	private void Unlock()
