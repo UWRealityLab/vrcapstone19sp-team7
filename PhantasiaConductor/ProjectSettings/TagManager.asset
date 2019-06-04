@@ -12,6 +12,8 @@ TagManager:
   - DrumstickLeft
   - DrumstickRight
   - BeatWall
+  - RightNet
+  - LeftNet
   layers:
   - Default
   - TransparentFX

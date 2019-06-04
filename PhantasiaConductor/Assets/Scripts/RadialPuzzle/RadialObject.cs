@@ -26,13 +26,15 @@ public class RadialObject : MonoBehaviour
     public bool isLastObject;
 
     [HideInInspector]
-    public float emissionIntensity = 3.0f;
+    public float emissionIntensity = 1.0f;
 
     private RadialSequence ownerSequence;
 
     private int groupId_;
 
     private bool hasBeenCaught = false;
+
+    private CaptureType captureType;
 
 
     void Start()
@@ -58,7 +60,13 @@ public class RadialObject : MonoBehaviour
         Material mat = GetComponent<Renderer>().material;
         mat.color = c;
         Vector4 v = c;
-        mat.SetColor("_EmissionColor", v * emissionIntensity);
+        // mat.SetColor("_EmissionColor", v * emissionIntensity);
+        mat.SetColor("_EmissionColor", v);
+    }
+
+    public void SetCaptureType(CaptureType type)
+    {
+        captureType = type;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -70,6 +78,15 @@ public class RadialObject : MonoBehaviour
 
         if (!hasBeenCaught)
         {
+            GameObject net = collision.gameObject;
+            if (net.tag == "RightNet" && captureType == CaptureType.LEFT ||
+                net.tag == "LeftNet" && captureType == CaptureType.RIGHT)
+            {
+                return;
+            }
+
+
+            // we caught it
             if (particleSystemPrefab != null)
             {
                 ParticleSystem ps = Instantiate(particleSystemPrefab).GetComponent<ParticleSystem>();
@@ -77,7 +94,7 @@ public class RadialObject : MonoBehaviour
                 ps.Play();
             }
 
-            // we caught it
+
             onSuccess.Invoke();
             ownerSequence.ObjectCaught(groupId);
             Destroy(gameObject);

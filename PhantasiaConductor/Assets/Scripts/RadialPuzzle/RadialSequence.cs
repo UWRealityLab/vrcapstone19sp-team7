@@ -14,8 +14,6 @@ public class RadialSequence : MonoBehaviour
 
     public float[] spawnDegrees;
 
-    public Dictionary<int, CaptureType> captureTypes = new Dictionary<int, CaptureType>();
-
 
     public MasterLoop masterLoop;
 
@@ -28,8 +26,12 @@ public class RadialSequence : MonoBehaviour
 
     // public AudioSourceList audioSourcesList;
     public AudioSource[] audioSources;
+
+    public CaptureType[] captureTypes;
     public AudioSource loopSource;
     public bool isLastSequence = false;
+
+    
 
     private int beatInfoIndex = 0;
     private int beatIndex = 0;
@@ -79,8 +81,9 @@ public class RadialSequence : MonoBehaviour
             RadialObject radialObject = obj.GetComponent<RadialObject>();
             radialObject.BindSequence(this);
 
-            if (captureTypes.ContainsKey(rIndex)) {
+            if (rIndex < captureTypes.Length) {
                 radialObject.SetColor(captureTypes[rIndex].GetColor());
+                radialObject.SetCaptureType(captureTypes[rIndex]);
             }
             
             if (rIndex == 0)
@@ -215,9 +218,9 @@ public class RadialSequence : MonoBehaviour
 
 public enum CaptureType
 {
+    BOTH,
     RIGHT,
-    LEFT,
-    BOTH
+    LEFT
 }
 
 // extension methods
