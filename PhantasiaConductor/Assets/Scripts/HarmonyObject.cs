@@ -54,7 +54,7 @@ public class HarmonyObject : MonoBehaviour
     private void OnEnable()
     {
         fade.FadeIn(gameObject);
-
+        Debug.Log("fading in");
     }
 
     // Update is called once per frame
@@ -84,6 +84,7 @@ public class HarmonyObject : MonoBehaviour
             color.a = .75f;
         } else {
             color.a = initialA;
+            Debug.Log("InitialA:" + initialA);
         }
 		GetComponent<Renderer>().material.color = color;
 
