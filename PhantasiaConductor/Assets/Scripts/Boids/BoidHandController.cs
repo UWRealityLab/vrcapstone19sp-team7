@@ -10,7 +10,6 @@ namespace Valve.VR.InteractionSystem
         public Hand leftHand;
         public Hand rightHand;
 
-        public GameObject haptics;
         public GameObject rightTarget;
         public GameObject leftTarget;
 
@@ -20,7 +19,7 @@ namespace Valve.VR.InteractionSystem
 
         void Start()
             {
-                haptics = GameObject.Find("/Haptics");
+               
             }
 
         // Update is called once per frame
@@ -47,13 +46,5 @@ namespace Valve.VR.InteractionSystem
             targ.transform.position = pos;
         }
 
-        void OnEnable() {
-            InvokeRepeating("goodVibes", 0, 4f);
-        }
-
-        void goodVibes () {
-            haptics.GetComponent<Haptics>().sweepHandRight();
-            haptics.GetComponent<Haptics>().sweepHandLeft();
-        }
     }
 }
