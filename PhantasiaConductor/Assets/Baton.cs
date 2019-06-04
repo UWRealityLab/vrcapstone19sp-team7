@@ -8,6 +8,7 @@ public class Baton : MonoBehaviour
     // Start is called before the first frame update
     public Renderer rend;
     public Baton other;
+
     void Awake()
     {
         rend = GetComponent<Renderer>();
@@ -50,4 +51,6 @@ public class Baton : MonoBehaviour
             return .365f + (input - .5f) * 1.27f;
         }
     }
+
+    
 }

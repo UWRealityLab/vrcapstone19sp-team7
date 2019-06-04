@@ -58,7 +58,7 @@ public class UnlockAction : MonoBehaviour
 	}
 
 	public void OnEnable(){
-		GameObject center = transform.parent.transform.Find("CenterArea").gameObject;
-		transform.SetParent(center.transform);
+		// GameObject center = transform.parent.transform.Find("CenterArea").gameObject;
+		// transform.SetParent(center.transform);
 	}
 }

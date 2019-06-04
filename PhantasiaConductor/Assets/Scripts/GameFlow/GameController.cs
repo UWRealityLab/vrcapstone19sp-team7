@@ -89,13 +89,15 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(returnDelay);
 
-        Player.instance.GetComponent<PerspectiveShift>().TeleportTo(podiumPosition);
+        // Player.instance.GetComponent<PerspectiveShift>().TeleportTo(podiumPosition);
+        AgnosticPlayer.GetPlayer().GetComponent<PerspectiveShift>().TeleportTo(podiumPosition);
         podiumPosition.GetComponent<Glow>().GlowOff();
         podiumPosition.SetActive(false);
 
         yield return new WaitForSeconds(fadeDelay);
 
-        Player.instance.GetComponent<PerspectiveShift>().teleportEnabled = true;
+        // Player.instance.GetComponent<PerspectiveShift>().teleportEnabled = true;
+        AgnosticPlayer.GetPlayer().GetComponent<PerspectiveShift>().teleportEnabled = true;
 
         // Fade In
         FadeInAll();
