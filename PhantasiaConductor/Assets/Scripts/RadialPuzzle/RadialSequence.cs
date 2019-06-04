@@ -28,10 +28,13 @@ public class RadialSequence : MonoBehaviour
     public AudioSource[] audioSources;
 
     public CaptureType[] captureTypes;
+
+    public float[] angularSpeeds;
+
     public AudioSource loopSource;
     public bool isLastSequence = false;
 
-    
+
 
     private int beatInfoIndex = 0;
     private int beatIndex = 0;
@@ -81,11 +84,12 @@ public class RadialSequence : MonoBehaviour
             RadialObject radialObject = obj.GetComponent<RadialObject>();
             radialObject.BindSequence(this);
 
-            if (rIndex < captureTypes.Length) {
+            if (rIndex < captureTypes.Length)
+            {
                 radialObject.SetColor(captureTypes[rIndex].GetColor());
                 radialObject.SetCaptureType(captureTypes[rIndex]);
             }
-            
+
             if (rIndex == 0)
             {
                 // first object so increment
@@ -106,7 +110,12 @@ public class RadialSequence : MonoBehaviour
             float x = Mathf.Cos(deg * Mathf.Deg2Rad) * radius;
             float z = Mathf.Sin(deg * Mathf.Deg2Rad) * radius;
             obj.transform.localPosition = new Vector3(x, spawnHeight, z);
-
+            radialObject.startAngle = deg;
+            if (rIndex < angularSpeeds.Length)
+            {
+                radialObject.angularSpeed = angularSpeeds[rIndex];
+            }
+            radialObject.centerOfRotation = obj.transform.localPosition;
 
             rIndex++;
 
@@ -228,15 +237,16 @@ static class CaptureTypeMethods
 {
     public static Color GetColor(this CaptureType ct)
     {
-        switch (ct) {
+        switch (ct)
+        {
             case CaptureType.RIGHT:
-            return Color.red;
+                return Color.red;
             case CaptureType.LEFT:
-            return Color.blue;
+                return Color.blue;
             case CaptureType.BOTH:
-            return Color.white;
+                return Color.white;
             default:
-            return Color.white;
+                return Color.white;
         }
 
     }
