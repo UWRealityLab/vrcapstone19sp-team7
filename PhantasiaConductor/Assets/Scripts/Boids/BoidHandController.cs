@@ -10,11 +10,16 @@ namespace Valve.VR.InteractionSystem
         public Hand leftHand;
         public Hand rightHand;
 
+        public GameObject haptics;
         public GameObject rightTarget;
         public GameObject leftTarget;
 
         public float placementRadius = 35;
 
+        void Start()
+            {
+                haptics = GameObject.Find("/Haptics");
+            }
 
         // Update is called once per frame
         void Update()
@@ -22,11 +27,15 @@ namespace Valve.VR.InteractionSystem
             if (rightHand != null && rightTarget != null)
             {
                 PlaceTarget(rightTarget, rightHand);
+                haptics.GetComponent<Haptics>().PulseRight();
+                haptics.GetComponent<Haptics>().PulseLeft();
             }
 
             if (leftHand != null && leftTarget != null)
             {
                 PlaceTarget(leftTarget, leftHand);
+                haptics.GetComponent<Haptics>().PulseRight();
+                haptics.GetComponent<Haptics>().PulseLeft();
             }
 
         }
