@@ -7,6 +7,12 @@ public class FantasiaController : MonoBehaviour
 {
     public GameObject tempoController;
 
+    // Pause puzzle effects
+    public UnityEvent PausePuzzles;
+
+    // Resume puzzle effects
+    public UnityEvent ResumePuzzles;
+
     // Turn effects on
     public UnityEvent BattonTrails;
     public UnityEvent ObjectTracking;
@@ -126,6 +132,7 @@ public class FantasiaController : MonoBehaviour
         if (delay < 0) { delay = 0; }
 
         tempo.StopPlaying();
+        PausePuzzles.Invoke();
         EffectsOff();
     }
 
@@ -134,6 +141,7 @@ public class FantasiaController : MonoBehaviour
     {
         Invoke("MeasureLoop", delay);
         tempo.StartPlaying();
+        ResumePuzzles.Invoke();
         EffectsOn();
     }
 

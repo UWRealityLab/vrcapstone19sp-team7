@@ -27,8 +27,11 @@ public class HarmonyObject : MonoBehaviour
 	private float beatTime;
 
     public bool fantasiaOn = false;
-    // Start is called before the first frame update
-    
+
+    private float prevTime;
+    private float delay;
+    private bool prevMoving;
+
 	void Awake()
 	{
 		loopSource = GetComponent<AudioSource>();
@@ -83,6 +86,7 @@ public class HarmonyObject : MonoBehaviour
 		if (beatCount == notes.Length) {
 			beatCount = 0;
 		} else {
+            prevTime = Time.time;
 			Invoke("EarlyRunBeat", beatTime);
 		}
 		if (positionGoal != ((float)notes[beatCount]) / notesPerOctave) {
@@ -101,6 +105,7 @@ public class HarmonyObject : MonoBehaviour
                 loopSource.Play();
             }
             beatCount = 0;
+            prevTime = Time.time;
             Invoke("EarlyRunBeat", beatTime - (beatTime * earlyStart));
         }
 	}
@@ -127,4 +132,19 @@ public class HarmonyObject : MonoBehaviour
 	  	loopSource.volume = 1;
 	  	onUnlock.Invoke();
 	}
+
+    public void PauseFantasia()
+    {
+        prevMoving = moving;
+        moving = false;
+        delay = beatTime - (Time.time - prevTime);
+        if (delay < 0) { delay = 0; }
+        CancelInvoke();
+    }
+
+    public void ResumeFantasia()
+    {
+        moving = prevMoving;
+        Invoke("EarlyRunBeat", delay);
+    }
 }

@@ -93,6 +93,36 @@ namespace Valve.VR.InteractionSystem
             }
         }
 
+        public void PauseFantasia()
+        {
+            for (int i = 0; i < puzzles.Length; i++)
+            {
+                if (isRhythm)
+                {
+                    puzzles[i].transform.Find("RhythmObject").GetComponent<BeatBlinkController>().PauseFantasia();
+                }
+                else
+                {
+                    puzzles[i].GetComponent<HarmonyObject>().PauseFantasia();
+                }
+            }
+        }
+
+        public void ResumeeFantasia()
+        {
+            for (int i = 0; i < puzzles.Length; i++)
+            {
+                if (isRhythm)
+                {
+                    puzzles[i].transform.Find("RhythmObject").GetComponent<BeatBlinkController>().ResumeFantasia();
+                }
+                else
+                {
+                    puzzles[i].GetComponent<HarmonyObject>().ResumeFantasia();
+                }
+            }
+        }
+
         private IEnumerator HarmonyDelay()
         {
             yield return new WaitForSeconds(3f);

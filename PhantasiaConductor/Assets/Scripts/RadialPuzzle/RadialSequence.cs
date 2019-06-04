@@ -27,13 +27,12 @@ public class RadialSequence : MonoBehaviour
 
     // public AudioSourceList audioSourcesList;
     public AudioSource[] audioSources;
+    public AudioSource loopSource;
     public bool isLastSequence = false;
 
     private int beatInfoIndex = 0;
     private int beatIndex = 0;
     private int rIndex = 0;
-
-    private float timePerBeat;
 
     private float degOffset = 0;
 
@@ -43,16 +42,29 @@ public class RadialSequence : MonoBehaviour
     private Dictionary<int, int> objectsCaughtByGroupId = new Dictionary<int, int>();
 
     private int recentGroupId = 0;
+    private bool complete = false;
+    private bool fantasiaOn;
+    private float delay;
+
+    private float prevTime;
 
     // Start is called before the first frame update
     void Awake()
     {
-        timePerBeat = loopTime / beatInfos[0].beats.Length;
 
         // should be same as length of spawnDegrees array
         totalObjectsToCatch = spawnDegrees.Length;
 
         transform.position = originTransform.position;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            onSuccess.Invoke();
+            complete = true;
+        }
     }
 
     void NextBeat()
@@ -102,12 +114,17 @@ public class RadialSequence : MonoBehaviour
 
         if (beatInfoIndex < beatInfos.Length)
         {
-            Invoke("NextBeat", timePerBeat);
+            prevTime = Time.time;
+            Invoke("NextBeat", beatInfos[beatInfoIndex].beatTime);
         }
     }
 
     public void NewLoop()
     {
+        if (isLastSequence && complete && !fantasiaOn)
+        {
+            loopSource.Play();
+        }
         if (beatInfoIndex >= beatInfos.Length)
         {
             // all beats spawned, go back
@@ -116,7 +133,8 @@ public class RadialSequence : MonoBehaviour
             beatInfoIndex = 0;
 
             CancelInvoke();
-            Invoke("NextBeat", timePerBeat);
+            prevTime = Time.time;
+            Invoke("NextBeat", beatInfos[beatInfoIndex].beatTime);
         }
     }
 
@@ -130,6 +148,7 @@ public class RadialSequence : MonoBehaviour
         {
             // this needs to be the last thing it does since we may inactive the sequence
             // Debug.Log("all objects caught" + objectsCaught);
+            complete = true;
             onSuccess.Invoke();
             
         }
@@ -144,6 +163,7 @@ public class RadialSequence : MonoBehaviour
     // if completed
     public void Unlock()
     {
+        complete = true;
         if (!isLastSequence)
         {
             gameObject.SetActive(false);
@@ -155,6 +175,23 @@ public class RadialSequence : MonoBehaviour
         // allows new loop to start the beat sequence
         beatInfoIndex = beatInfos.Length;
         transform.position = originTransform.position;
+    }
+
+    public void FantasiaOn()
+    {
+        fantasiaOn = true;
+    }
+
+    public void PauseFantasia()
+    {
+        delay = beatInfos[beatInfoIndex % beatInfos.Length].beatTime - (Time.time - prevTime);
+        if (delay < 0) { delay = 0; }
+        CancelInvoke();
+    }
+
+    public void ResumeFantasia()
+    {
+        Invoke("NextBeat", delay);
     }
 
     float loopTime

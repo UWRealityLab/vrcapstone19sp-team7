@@ -15,6 +15,10 @@ public class BeatBlinkController : MonoBehaviour
     private int hitCount = -1;
     private Vector3 originalPos;
 
+    private float prevTime;
+    private float delay;
+    private int beatIndex;
+
     void Awake()
     {
         blink = GetComponent<Blink>();
@@ -30,12 +34,13 @@ public class BeatBlinkController : MonoBehaviour
 
     public void NewLoop()
     {
+        prevTime = Time.time;
         StartCoroutine(RunBeat(0));
     }
  
     IEnumerator RunBeat(int beatCount)
     {
-        // Debug.Log("BBBBBBBBB" + beatCount);
+        beatIndex = beatCount;
         bool isHit = beatInfo.beats[beatCount];
         bool isNextHit = beatInfo.beats[(beatCount + 1) % beatInfo.beats.Length];
         
@@ -63,6 +68,7 @@ public class BeatBlinkController : MonoBehaviour
 
         if (beatCount < beatInfo.beats.Length - 1)
         {
+            prevTime = Time.time;
             yield return new WaitForSeconds(beatInfo.beatTime);
             StartCoroutine(RunBeat(beatCount + 1));
         }
@@ -98,4 +104,23 @@ public class BeatBlinkController : MonoBehaviour
     {
         CancelInvoke();
     }
+
+    public void PauseFantasia()
+    {
+        delay = beatInfo.beatTime - (Time.time - prevTime);
+        if (delay < 0) { delay = 0; }
+        StopAllCoroutines();
+    }
+
+    public void ResumeFantasia()
+    {
+        StartCoroutine(DelayedResume());
+    }
+
+    private IEnumerator DelayedResume()
+    {
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(RunBeat((beatIndex + 1) % beatInfo.beats.Length));
+    }
+
 }
