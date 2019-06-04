@@ -100,8 +100,6 @@ public class RadialObject : MonoBehaviour
             Destroy(gameObject);
             hasBeenCaught = true;
         }
-
-
     }
 
     void Fadeout()
