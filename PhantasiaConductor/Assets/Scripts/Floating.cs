@@ -31,5 +31,13 @@ public class Floating : MonoBehaviour
         temp.y += Mathf.Sin(Time.fixedTime * Mathf.PI * freq) * amp;
 
         transform.position = temp;
+
+        if(FindObjectOfType<FantasiaController>().isActiveAndEnabled)
+        {
+            amp = 2f;
+            degPerSecond = 15.0f;
+            freq = 0.25f;
+        }
+
     }
 }
