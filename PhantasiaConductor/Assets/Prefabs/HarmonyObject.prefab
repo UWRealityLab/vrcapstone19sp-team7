@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3745579495657040741}
   - component: {fileID: 3745579495657040743}
   - component: {fileID: 3745579495657040742}
+  - component: {fileID: 3262225546547968279}
   m_Layer: 0
   m_Name: HarmonyObject
   m_TagString: Untagged
@@ -203,6 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e8cbe51cb597149bf3ffdc6cfa0fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  click: {fileID: 0}
+  baton: {fileID: 0}
   loopSource: {fileID: 3745579495657040741}
   loopClip: {fileID: 8300000, guid: 68ba87ba75c6c924d8c5f15946f63e8c, type: 3}
   onUnlock:
@@ -250,6 +253,22 @@ MonoBehaviour:
   speed: 0.001
   cheatTime: 0.1
   notesPerOctave: 12
+  fantasiaOn: 0
+--- !u!114 &3262225546547968279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673352826985951850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4edd6fd4b4f09b459e65d3e491515ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
+  done: 0
+  fadeInOnEnable: 1
 --- !u!114 &751448476
 MonoBehaviour:
   m_ObjectHideFlags: 0

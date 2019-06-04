@@ -5,6 +5,9 @@ using UnityEngine;
 public class Fade : MonoBehaviour
 {
     public float fadeTime = 2f;
+    public bool done;
+  
+
 
     private IEnumerator FadeTo(Material material, float targetOpacity, float duration)
     {
@@ -32,20 +35,25 @@ public class Fade : MonoBehaviour
             // Wait one frame, and repeat.
             yield return null;
         }
+        done = true;
     }
 
+    
     public void FadeIn(GameObject obj)
     {
+        done = false;
         StartCoroutine(FadeTo(obj.GetComponent<Renderer>().material, 1.0f, fadeTime));
     }
 
     public void FadeOut(GameObject obj)
     {
+        done = false;
         StartCoroutine(FadeTo(obj.GetComponent<Renderer>().material, 0.0f, fadeTime));
     }
 
     public void FadeInAll(GameObject[] objs, float[] alphaValues)
     {
+        done = false;
         for (int i = 0; i < objs.Length; i++)
         {
             Debug.Log("fading in to " + alphaValues[i]);
@@ -55,6 +63,7 @@ public class Fade : MonoBehaviour
 
     public void FadeOutAll(GameObject[] objs)
     {
+        done = false;
         for (int i = 0; i < objs.Length; i++)
         {
             StartCoroutine(FadeTo(objs[i].GetComponent<Renderer>().material, 0.0f, fadeTime));
