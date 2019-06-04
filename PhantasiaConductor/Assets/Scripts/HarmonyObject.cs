@@ -7,7 +7,9 @@ using System;
 public class HarmonyObject : MonoBehaviour
 {
 	public GameObject click;
-	public AudioSource loopSource;
+
+    public Baton baton;
+    public AudioSource loopSource;
     public AudioClip loopClip;
     public UnityEvent onUnlock;
 	public int[] notes;
@@ -25,6 +27,7 @@ public class HarmonyObject : MonoBehaviour
 	private bool inContact = false;
 	private bool moving = false;
 	private float beatTime;
+    private float completion;
 
     public bool fantasiaOn = false;
 
@@ -47,8 +50,20 @@ public class HarmonyObject : MonoBehaviour
     // Update is called once per frame
     void Update()
 	{
-        Color color;
+        
+        //BATON
+        if (inContact)
+        {
+            completion += Time.deltaTime / (MasterLoop.loopTime - cheatTime);
+        } else
+        {
+            completion = 0;
+        }
+        AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+        AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
 
+        //COLOR
+        Color color;
         if (unlocked || inContact) {
             color = Color.HSVToRGB(transform.localPosition.y % 1f, 1f, 1f);
             color.a = .75f;
@@ -115,6 +130,7 @@ public class HarmonyObject : MonoBehaviour
 	  loopSource.volume = 1;
 	  inContact = true;
 	  click.GetComponent<AudioSource>().Play();
+
 	  Invoke("Unlock", MasterLoop.loopTime - cheatTime);
 	}
 
