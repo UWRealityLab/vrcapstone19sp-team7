@@ -69,7 +69,7 @@ public class RadialObject : MonoBehaviour
         captureType = type;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         if (audioSource != null)
         {
@@ -78,7 +78,7 @@ public class RadialObject : MonoBehaviour
 
         if (!hasBeenCaught)
         {
-            GameObject net = collision.gameObject;
+            GameObject net = collider.gameObject;
             if (net.tag == "RightNet" && captureType == CaptureType.LEFT ||
                 net.tag == "LeftNet" && captureType == CaptureType.RIGHT)
             {
