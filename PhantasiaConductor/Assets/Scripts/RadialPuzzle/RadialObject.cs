@@ -17,6 +17,15 @@ public class RadialObject : MonoBehaviour
 
     public GameObject particleSystemPrefab;
 
+    [HideInInspector]
+    public Vector3 centerOfRotation;
+
+    [HideInInspector]
+    public float startAngle;
+
+    [HideInInspector]
+    public float angularSpeed;
+
 
     [HideInInspector]
     public AudioSource audioSource;
@@ -109,6 +118,9 @@ public class RadialObject : MonoBehaviour
 
     void Update()
     {
+        // float currentX = transform.localPosition.x;
+        // float currentZ = transform.localPosition.z;
+        // Vector3 newXZ = new Vector3(Mathf.Cos(Mathf.Deg2Rad * ()), 0.0f, Mathf.Sin(Mathf.Deg2Rad * (startAngle)));
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
     }
 
