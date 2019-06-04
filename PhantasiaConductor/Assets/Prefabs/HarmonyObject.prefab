@@ -266,9 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4edd6fd4b4f09b459e65d3e491515ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 2
+  fadeTime: 1
   done: 0
-  fadeInOnEnable: 1
 --- !u!114 &751448476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,16 +290,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8538908981790654585}
     m_Modifications:
-    - target: {fileID: 2716767855825998476, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
-        type: 3}
-      propertyPath: m_Name
-      value: BoidEmitter
-      objectReference: {fileID: 0}
-    - target: {fileID: 2716767855825998476, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2716767855825998474, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -354,6 +343,16 @@ PrefabInstance:
     - target: {fileID: 2716767855825998474, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716767855825998476, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
+        type: 3}
+      propertyPath: m_Name
+      value: BoidEmitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716767855825998476, guid: 6fd7dcac2d2a86e49bbf78f9c24a9fa7,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

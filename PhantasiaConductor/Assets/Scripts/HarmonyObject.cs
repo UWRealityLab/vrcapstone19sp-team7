@@ -21,7 +21,7 @@ public class HarmonyObject : MonoBehaviour
 	public int notesPerOctave = 12;
 
     private Renderer rend;
-    private Fade fade;
+    public Fade fade;
     private bool loopFlag = false;
     private float velocityGoal = 0;
 	private float velocity = 0;
@@ -50,12 +50,7 @@ public class HarmonyObject : MonoBehaviour
         fade = GetComponent<Fade>();
         rend = GetComponent<Renderer>();
 	}
-
-    private void OnEnable()
-    {
-        fade.FadeIn(gameObject);
-
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -84,6 +79,7 @@ public class HarmonyObject : MonoBehaviour
             color.a = .75f;
         } else {
             color.a = initialA;
+            //Debug.Log("InitialA:" + initialA);
         }
 		GetComponent<Renderer>().material.color = color;
 
@@ -126,9 +122,14 @@ public class HarmonyObject : MonoBehaviour
 	}
 
 	public void NewLoop(){
-        loopFlag = true;
+        
         if (gameObject.activeInHierarchy)
         {
+            if (!loopFlag)
+            {
+              fade.FadeIn(gameObject);
+            }
+            loopFlag = true;
             if (!fantasiaOn)
             {
                 loopSource.Play();
