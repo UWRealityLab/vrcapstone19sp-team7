@@ -17,12 +17,16 @@ public class RadialObject : MonoBehaviour
 
     public GameObject particleSystemPrefab;
 
+
     [HideInInspector]
     public AudioSource audioSource;
 
 
     [HideInInspector]
     public bool isLastObject;
+
+    [HideInInspector]
+    public float emissionIntensity = 3.0f;
 
     private RadialSequence ownerSequence;
 
@@ -33,6 +37,7 @@ public class RadialObject : MonoBehaviour
 
     void Start()
     {
+
         Invoke("EndOfLifetime", lifetime);
     }
 
@@ -46,6 +51,14 @@ public class RadialObject : MonoBehaviour
     public void BindSequence(RadialSequence seq)
     {
         ownerSequence = seq;
+    }
+
+    public void SetColor(Color c)
+    {
+        Material mat = GetComponent<Renderer>().material;
+        mat.color = c;
+        Vector4 v = c;
+        mat.SetColor("_EmissionColor", v * emissionIntensity);
     }
 
     private void OnCollisionEnter(Collision collision)

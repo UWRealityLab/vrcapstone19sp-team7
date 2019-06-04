@@ -14,7 +14,8 @@ public class RadialSequence : MonoBehaviour
 
     public float[] spawnDegrees;
 
-    // public int[] audioIndices;
+    public Dictionary<int, CaptureType> captureTypes = new Dictionary<int, CaptureType>();
+
 
     public MasterLoop masterLoop;
 
@@ -78,12 +79,17 @@ public class RadialSequence : MonoBehaviour
             RadialObject radialObject = obj.GetComponent<RadialObject>();
             radialObject.BindSequence(this);
 
+            if (captureTypes.ContainsKey(rIndex)) {
+                radialObject.SetColor(captureTypes[rIndex].GetColor());
+            }
+            
             if (rIndex == 0)
             {
                 // first object so increment
                 recentGroupId++;
                 objectsCaughtByGroupId[recentGroupId] = 0;
             }
+
             radialObject.groupId = recentGroupId;
             if (audioSources != null)
             {
@@ -150,7 +156,7 @@ public class RadialSequence : MonoBehaviour
             // Debug.Log("all objects caught" + objectsCaught);
             complete = true;
             onSuccess.Invoke();
-            
+
         }
     }
 
@@ -200,5 +206,35 @@ public class RadialSequence : MonoBehaviour
         {
             return MasterLoop.loopTime;
         }
+    }
+
+
+
+
+}
+
+public enum CaptureType
+{
+    RIGHT,
+    LEFT,
+    BOTH
+}
+
+// extension methods
+static class CaptureTypeMethods
+{
+    public static Color GetColor(this CaptureType ct)
+    {
+        switch (ct) {
+            case CaptureType.RIGHT:
+            return Color.red;
+            case CaptureType.LEFT:
+            return Color.blue;
+            case CaptureType.BOTH:
+            return Color.white;
+            default:
+            return Color.white;
+        }
+
     }
 }
