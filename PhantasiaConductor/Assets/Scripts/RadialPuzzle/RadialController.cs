@@ -28,6 +28,7 @@ namespace Valve.VR.InteractionSystem
         public Transform originTransform;
 
         private bool mouseMode = true;
+        private bool netActive = true;
 
         // Start is called before the first frame update
         void Start()
@@ -38,7 +39,7 @@ namespace Valve.VR.InteractionSystem
         void Update()
         {
             // we have to use world positions since this is not necessarily a child of originTransform
-            if (mouseMode)
+            if (mouseMode && netActive)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 ray.direction = new Vector3(ray.direction.x, 0, ray.direction.z).normalized;
@@ -48,7 +49,7 @@ namespace Valve.VR.InteractionSystem
 
                 netObj.transform.position = new Vector3(pos.x, originTransform.position.y + heightOffset, pos.z);
             }
-            else
+            else if (netActive)
             {
                 {
                     Vector3 transformPos = originTransform.position;
@@ -76,6 +77,13 @@ namespace Valve.VR.InteractionSystem
                     leftNetObj.transform.position = new Vector3(pos.x, leftHand.transform.position.y + heightOffset, pos.z);
                 }
             }
+        }
+
+        public void DisableNetObject()
+        {
+            leftNetObj.SetActive(false);
+            netObj.SetActive(false);
+            netActive = false;
         }
 
         void OnEnable()

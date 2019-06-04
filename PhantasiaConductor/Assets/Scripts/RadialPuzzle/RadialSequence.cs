@@ -27,6 +27,7 @@ public class RadialSequence : MonoBehaviour
 
     // public AudioSourceList audioSourcesList;
     public AudioSource[] audioSources;
+    public bool isLastSequence = false;
 
     private int beatInfoIndex = 0;
     private int beatIndex = 0;
@@ -143,7 +144,10 @@ public class RadialSequence : MonoBehaviour
     // if completed
     public void Unlock()
     {
-        gameObject.SetActive(false);
+        if (!isLastSequence)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void OnEnable()
