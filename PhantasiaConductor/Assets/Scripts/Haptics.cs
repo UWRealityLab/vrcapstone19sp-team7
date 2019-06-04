@@ -18,4 +18,20 @@ public class Haptics : MonoBehaviour
         hapticAction.Execute(0, 1, 150, 75, SteamVR_Input_Sources.RightHand);
 
     }
+
+    public void sweepHandRight() {
+        //hapticAction.Execute(0, 1, 75, 75, SteamVR_Input_Sources.RightHand);
+        //hapticAction.Execute(0, 0.5f, 100, 75, SteamVR_Input_Sources.RightHand);
+        hapticAction.Execute(0, 1, 125, 60, SteamVR_Input_Sources.RightHand);
+        hapticAction.Execute(0, 1, 150, 75, SteamVR_Input_Sources.RightHand);
+
+
+    }
+    public void sweepHandLeft() {
+        //hapticAction.Execute(0, 1, 75, 20, SteamVR_Input_Sources.LeftHand);
+        //hapticAction.Execute(0, 0.5f, 100, 40, SteamVR_Input_Sources.LeftHand);
+        hapticAction.Execute(0, 1, 125, 60, SteamVR_Input_Sources.LeftHand);
+        hapticAction.Execute(0, 1, 150, 75, SteamVR_Input_Sources.LeftHand);
+
+    }
 }

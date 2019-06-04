@@ -16,6 +16,8 @@ namespace Valve.VR.InteractionSystem
 
         public float placementRadius = 35;
 
+       
+
         void Start()
             {
                 haptics = GameObject.Find("/Haptics");
@@ -27,15 +29,12 @@ namespace Valve.VR.InteractionSystem
             if (rightHand != null && rightTarget != null)
             {
                 PlaceTarget(rightTarget, rightHand);
-                haptics.GetComponent<Haptics>().PulseRight();
-                haptics.GetComponent<Haptics>().PulseLeft();
+                
             }
 
             if (leftHand != null && leftTarget != null)
             {
                 PlaceTarget(leftTarget, leftHand);
-                haptics.GetComponent<Haptics>().PulseRight();
-                haptics.GetComponent<Haptics>().PulseLeft();
             }
 
         }
@@ -46,6 +45,15 @@ namespace Valve.VR.InteractionSystem
             var pos = placementRadius * dir + hand.transform.position;
 
             targ.transform.position = pos;
+        }
+
+        void OnEnable() {
+            InvokeRepeating("goodVibes", 0, 4f);
+        }
+
+        void goodVibes () {
+            haptics.GetComponent<Haptics>().sweepHandRight();
+            haptics.GetComponent<Haptics>().sweepHandLeft();
         }
     }
 }
