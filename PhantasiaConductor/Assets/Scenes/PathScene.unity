@@ -150,12 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e3e4511966ba94d8ba0b98c6c62f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!20 &541940247 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2349265327485215777, guid: efedbcab771c64f4d88948dfa2538960,
-    type: 3}
-  m_PrefabInstance: {fileID: 757103625}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &664580773
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +216,7 @@ MonoBehaviour:
   isRenderingLine: 1
   startLooping: 0
   fileName: 
+  completionTime: -1
 --- !u!4 &664580776
 Transform:
   m_ObjectHideFlags: 0
@@ -658,7 +653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edccae3ae56c3448a116c6433d08a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 541940247}
 --- !u!4 &1691096468
 Transform:
   m_ObjectHideFlags: 0
@@ -783,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4226425933831056, guid: 401fbddef9dc6eb43a1aeab8c9251ef2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4226425933831062, guid: 401fbddef9dc6eb43a1aeab8c9251ef2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -872,6 +866,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  fantasiaOn: 0
 --- !u!1001 &2948743263019685832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -971,22 +966,22 @@ PrefabInstance:
     - target: {fileID: 3913596181071325278, guid: e270c8974f5391a489d349cf22569143,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3913596181071325280, guid: e270c8974f5391a489d349cf22569143,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8811307
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3913596181071325280, guid: e270c8974f5391a489d349cf22569143,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24018472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3913596181071325280, guid: e270c8974f5391a489d349cf22569143,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.2396548
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3913596181071325280, guid: e270c8974f5391a489d349cf22569143,
         type: 3}
