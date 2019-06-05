@@ -16,7 +16,11 @@ public class MelodyPuzzle : MonoBehaviour
 
     public MasterLoop masterLoop;
 
-    private List<PathBeat> allPaths;
+    public float pathTime = 4f;
+
+    public string[] filenames;
+
+    private PathBeat[] allPaths;
 
 
     // Start is called before the first frame update
@@ -27,8 +31,9 @@ public class MelodyPuzzle : MonoBehaviour
 
     void OnEnable()
     {
-        allPaths = new List<PathBeat>();
+        allPaths = new PathBeat[filenames.Length];
 
+        /*
         var path = CreateAndSetupPath("p1", MasterLoop.loopTime + 5f, 0);
         // path.gameObject.SetActive(true);
         var path1 = CreateAndSetupPath("p2", MasterLoop.loopTime, 1);
@@ -39,24 +44,42 @@ public class MelodyPuzzle : MonoBehaviour
 
         var path3 = CreateAndSetupPath("p4", MasterLoop.loopTime, 2.5f);
         path3.gameObject.SetActive(false);
+        */
 
-
-        foreach (var p in allPaths)
+        for (int i = 0; i < allPaths.Length; i ++)
         {
+            var p = CreateAndSetupPath(filenames[i], i, pathTime, 0);
+
+            if (i != 0)
+            {
+                p.gameObject.SetActive(false);
+            }
+
             var go = p.obj.gameObject;
             MelodyObject mo = go.GetComponent<MelodyObject>();
             masterLoop.onNewLoop.AddListener(delegate ()
             {
                 mo.NewLoop();
             });
+            
+            if (i != filenames.Length - 1)
+            {
+                p.onSuccessful.AddListener(delegate ()
+                {
+                    allPaths[i + 1].gameObject.SetActive(true);
+                    Debug.Log("success");
+                });
+            }
         }
 
+        /*
         path.onSuccessful.AddListener(delegate ()
         {
             path1.gameObject.SetActive(true);
             Debug.Log("success");
         });
 
+        
         path1.onSuccessful.AddListener(delegate ()
         {
             path2.gameObject.SetActive(true);
@@ -66,6 +89,7 @@ public class MelodyPuzzle : MonoBehaviour
         {
             path3.gameObject.SetActive(true);
         });
+        */
 
         monitor.onPuzzleCompleted.AddListener(delegate ()
         {
@@ -90,7 +114,7 @@ public class MelodyPuzzle : MonoBehaviour
     }
 
     // Creates and path and puts it into all paths list
-    PathBeat CreateAndSetupPath(string fileName, float t = 3, float beatOffset = 0)
+    PathBeat CreateAndSetupPath(string fileName, int index, float t = 3, float beatOffset = 0)
     {
         PathBeat pathBeat = InstantiatePath(fileName, t, beatOffset);
 
@@ -112,7 +136,7 @@ public class MelodyPuzzle : MonoBehaviour
             Debug.Log("failed");
         });
 
-        allPaths.Add(pathBeat);
+        allPaths[index] = pathBeat;
         return pathBeat;
     }
 

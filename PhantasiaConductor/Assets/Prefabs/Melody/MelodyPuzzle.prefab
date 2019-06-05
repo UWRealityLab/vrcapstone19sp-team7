@@ -110,6 +110,9 @@ MonoBehaviour:
   flock: {fileID: 0}
   boidEmitterPrefab: {fileID: 0}
   masterLoop: {fileID: 3155533090836507594}
+  pathTime: 4
+  filenames:
+  - melody1
 --- !u!1 &6476406043078653560
 GameObject:
   m_ObjectHideFlags: 0
