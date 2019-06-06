@@ -30,6 +30,9 @@ public class RadialObject : MonoBehaviour
     [HideInInspector]
     public AudioSource audioSource;
 
+    [HideInInspector]
+    public int numObjectsInSeq;
+
 
     [HideInInspector]
     public bool isLastObject;

@@ -10,6 +10,10 @@ public class RadialSequence : MonoBehaviour
 
     public UnityEvent onObjectCaught;
 
+    public UnityEvent onReachedEndFail;
+
+
+
     public BeatInfo[] beatInfos;
 
     public float[] spawnDegrees;
@@ -116,6 +120,7 @@ public class RadialSequence : MonoBehaviour
                 radialObject.angularSpeed = angularSpeeds[rIndex];
             }
             radialObject.centerOfRotation = obj.transform.localPosition;
+            radialObject.numObjectsInSeq = totalObjectsToCatch;
 
             rIndex++;
 
@@ -162,6 +167,8 @@ public class RadialSequence : MonoBehaviour
         int objectsCaught = objectsCaughtByGroupId[groupId];
         onObjectCaught.Invoke();
         // Debug.Log("objects caught" + objectsCaught);
+        Baton baton = AgnosticHand.GetRightBaton();
+        baton.SetCompletion((float)objectsCaught / totalObjectsToCatch , 1.0f);
         if (objectsCaught == totalObjectsToCatch)
         {
             // this needs to be the last thing it does since we may inactive the sequence
@@ -176,6 +183,8 @@ public class RadialSequence : MonoBehaviour
     {
         objectsCaughtByGroupId.Remove(groupId);
         // Debug.Log("last object destroyed");
+        Baton baton = AgnosticHand.GetRightBaton();
+        baton.SetCompletion(0.0f, 1.0f);
     }
 
     // if completed
