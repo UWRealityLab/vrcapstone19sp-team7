@@ -21,13 +21,13 @@ public class HarmonyObject : MonoBehaviour
 	public int notesPerOctave = 12;
 
     private Renderer rend;
-    public Fade fade;
+    private Fade fade;
     private bool loopFlag = false;
     private float velocityGoal = 0;
 	private float velocity = 0;
 	private int beatCount = 0;
 	private float positionGoal = 0;
-	private bool inContact = false;
+    public bool inContact = false;
 	private bool moving = false;
 	private float beatTime;
     private float completion;
@@ -50,12 +50,16 @@ public class HarmonyObject : MonoBehaviour
         fade = GetComponent<Fade>();
         rend = GetComponent<Renderer>();
 	}
-    
+
+    private void OnEnable()
+    {
+        fade.FadeIn(gameObject);
+    }
+
 
     // Update is called once per frame
     void Update()
 	{
-        
         //BATON
         if (inContact)
         {
@@ -76,10 +80,15 @@ public class HarmonyObject : MonoBehaviour
             color = Color.HSVToRGB(0, 0, 1);
 		}
         if (fade.done) {
-            color.a = .75f;
+            if (unlocked)
+            {
+                color.a = .55f;
+            } else
+            {
+                color.a = .85f;
+            }
         } else {
             color.a = initialA;
-            //Debug.Log("InitialA:" + initialA);
         }
 		GetComponent<Renderer>().material.color = color;
 
@@ -125,11 +134,6 @@ public class HarmonyObject : MonoBehaviour
         
         if (gameObject.activeInHierarchy)
         {
-            if (!loopFlag)
-            {
-              fade.FadeIn(gameObject);
-            }
-            loopFlag = true;
             if (!fantasiaOn)
             {
                 loopSource.Play();
@@ -142,31 +146,27 @@ public class HarmonyObject : MonoBehaviour
 
 	public void OnTriggerEnter()
 	{
-        if (loopFlag)
-        {
-            loopSource.volume = 1;
-            inContact = true;
-            click.GetComponent<AudioSource>().Play();
+        inContact = true;
+        loopSource.volume = 1;
+        click.GetComponent<AudioSource>().Play();
 
-            Invoke("Unlock", MasterLoop.loopTime - cheatTime);
-        }
-	}
+        Invoke("Unlock", MasterLoop.loopTime - cheatTime);
+    }
+    
 
 	public void OnTriggerExit()
 	{
-        if (loopFlag)
-        {
-            inContact = false;
-            loopSource.volume = 0;
-            click.GetComponent<AudioSource>().Play();
-            CancelInvoke("Unlock");
-        }
-	}
+        inContact = false;
+        loopSource.volume = 0;
+        click.GetComponent<AudioSource>().Play();
+        CancelInvoke("Unlock");
+    }
 
-	private void Unlock()
+    private void Unlock()
 	{
 		GetComponent<Collider>().enabled = false;
 	  	loopSource.volume = 1;
+        unlocked = true;
 	  	onUnlock.Invoke();
 	}
 

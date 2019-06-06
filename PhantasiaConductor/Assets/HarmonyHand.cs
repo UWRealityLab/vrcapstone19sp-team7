@@ -9,6 +9,7 @@ public class HarmonyHand : MonoBehaviour
 	public GameObject leftHand;
     public GameObject rightHand;
     public bool unlocked;
+    public bool hidden;
     private void Awake()
     {
         //hand.GetComponent<Collider>().enabled = false;
@@ -24,10 +25,23 @@ public class HarmonyHand : MonoBehaviour
             //transform.rotation = Quaternion.Euler(-90, transform.position.y % 1f * 180, 0);
         } else
         {
-            GetComponent<Renderer>().material.color = Color.HSVToRGB(transform.localPosition.y % 1f, .3f, 1f);
+            //GetComponent<Renderer>().material.color = Color.HSVToRGB(transform.localPosition.y % 1f, .3f, 1f);
             Vector3 newPos = transform.position;
             newPos.y = rightHand.transform.position.y;
             transform.position = newPos;
         }
 	}
+    /*
+    public void Hide(float time)
+    {
+        GetComponent<Renderer>().enabled = false;
+        GetComponent<Collider>().enabled = false;
+        Invoke("Show", time);
+    }
+
+    private void Show()
+    {
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<Collider>().enabled = true;
+    }*/
 }

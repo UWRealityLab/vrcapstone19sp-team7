@@ -12,7 +12,7 @@ public class TempoController : MonoBehaviour
     public UnityEvent onStart;
 
     public AudioSource song;
-    public static float slowDownTime = 0.3f;
+    public static float slowDownTime = 0.75f;
     // public float fastPitch = 1.2f;
     // public float slowPitch = 0.8f;
     // public float slowThreshhold = 0.5f;
