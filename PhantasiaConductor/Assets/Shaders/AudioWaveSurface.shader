@@ -93,7 +93,7 @@
                                 glowWidth * (2.0f - sin(_Time.y * 0.23f)),
                                 glowWidth * (2.0f - cos(_Time.y * 0.19f)));
             }
-            // c = clamp(c, 0, 1);
+            c = clamp(c, 0.0, 1.0);
             
             // return float4(color, 1.0f);            
             color += float4(c, 0.0);
