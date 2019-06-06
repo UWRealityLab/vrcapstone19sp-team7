@@ -160,7 +160,7 @@ public class RadialSequence : MonoBehaviour
             Invoke("NextBeat", beatInfos[beatInfoIndex].beatTime);
         }
     }
-
+    
     public void ObjectCaught(int groupId)
     {
         objectsCaughtByGroupId[groupId]++;
