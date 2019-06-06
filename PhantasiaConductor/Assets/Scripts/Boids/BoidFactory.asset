@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19f5cac75fd1f74599c4f224ec60371, type: 3}
+  m_Name: BoidFactory
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 8628009440924230482, guid: 0da833b9216e4994180285116f650c62, type: 3}
+  - {fileID: 373984825504989165, guid: bfd3a05d0142f8242b3b4b6e514b080f, type: 3}

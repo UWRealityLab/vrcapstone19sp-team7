@@ -16,6 +16,8 @@ public class GpuFlock : MonoBehaviour
 
     public int numThreadGroups = 6;
 
+    public BoidFactory factory;
+
     public GameObject boidPrefab;
 
     public int numBoids = 100;
@@ -44,7 +46,9 @@ public class GpuFlock : MonoBehaviour
         for (int i = 0; i < numBoids; i++)
         {
             boidsData[i] = CreateBoidData();
-            allBoids[i] = Instantiate(boidPrefab, boidsData[i].position, Quaternion.Euler(boidsData[i].direction));
+            allBoids[i] = factory.GetRandomBoid();
+            allBoids[i].transform.position = boidsData[i].position;
+            allBoids[i].transform.rotation = Quaternion.Euler(boidsData[i].direction);
             allBoids[i].transform.parent = transform;
 
             boidsData[i].direction = allBoids[i].transform.forward;
@@ -60,7 +64,7 @@ public class GpuFlock : MonoBehaviour
     }
 
     private GameObject InstantiateBoid() {
-        GameObject boid = Instantiate(boidPrefab);
+        GameObject boid = factory.GetRandomBoid();
         boid.transform.parent = transform;
         return boid;
     }
@@ -87,7 +91,7 @@ public class GpuFlock : MonoBehaviour
             newBoidData[i].direction = boid.transform.forward;
             newBoidData[i].noiseOffset = GetNoiseOffset();
         }
-        
+
         boidsData = newBoidData;
         allBoids = newAllBoids;
     }
@@ -122,7 +126,7 @@ public class GpuFlock : MonoBehaviour
 
         for (int i = 0; i < boidsData.Length; i++) {
             allBoids[i].transform.localPosition = boidsData[i].position;
-            if (boidsData[i].direction.Equals(Vector3.zero)) {
+            if (!boidsData[i].direction.Equals(Vector3.zero)) {
                 allBoids[i].transform.rotation = Quaternion.LookRotation(boidsData[i].direction);
             }
         }

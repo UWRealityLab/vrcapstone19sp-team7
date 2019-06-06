@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 1709551406549141652}
   - component: {fileID: 6632378250037673899}
   - component: {fileID: -6482449946659250856}
+  - component: {fileID: 6118569262849675217}
+  - component: {fileID: 5982454548495897903}
+  - component: {fileID: -7131084501654598523}
   m_Layer: 0
   m_Name: GpuBoid
   m_TagString: Untagged
@@ -59,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bfa71f97c3a254247918df9af54ef267, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,7 +113,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,7 +133,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.7
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -187,3 +190,47 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &6118569262849675217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628009440924230482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421113ab2f5c3b24e8ca461b486ea3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityScale: 1.5
+--- !u!114 &5982454548495897903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628009440924230482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b30680e8c7d8bd41a743a8a6527af6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minScale: 0.3
+  maxScale: 0.5
+--- !u!114 &-7131084501654598523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628009440924230482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a10ecd734b9f2f46a25985e61a5aa2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailChance: 0.3
+  minTrailTime: 0.3
+  maxTrailTime: 0.8
+  minTrailWidth: 0.3
+  maxTrailWidth: 0.8
