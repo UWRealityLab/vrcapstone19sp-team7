@@ -5,6 +5,7 @@ using UnityEngine;
 public class MelodyObject : MonoBehaviour
 {
     public Material windowOnMat;
+    public Material windowOffMat;
 
     // mat to use while successfully following
     public Material trackingMat;
