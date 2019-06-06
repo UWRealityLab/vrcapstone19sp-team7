@@ -32,11 +32,17 @@ public class Floating : MonoBehaviour
 
         transform.position = temp;
 
-        if(FindObjectOfType<FantasiaController>().isActiveAndEnabled)
+        if(FindObjectOfType<FantasiaController>().tracking)
         {
             amp = 2f;
             degPerSecond = 15.0f;
             freq = 0.25f;
+        }
+        else
+        {
+            amp = 0.5f;
+            degPerSecond = 10.0f;
+            freq = 0.5f;
         }
 
     }

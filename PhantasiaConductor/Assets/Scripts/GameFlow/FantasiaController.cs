@@ -47,7 +47,7 @@ public class FantasiaController : MonoBehaviour
 
     // Keep track of which effects are on
     private bool trail = false;
-    private bool tracking = false;
+    public bool tracking = false;
     private bool wallsPulse = false;
     private bool walls = false; 
     private bool confetti = false;

@@ -15,11 +15,11 @@ public class Vanish : MonoBehaviour
     {
         if(!GetComponentInParent<MeshRenderer>().isVisible)
         {
-            GetComponent<MeshRenderer>().enabled = false;
+            GetComponentInChildren<MeshRenderer>().enabled = false;
         }
         if (GetComponentInParent<MeshRenderer>().isVisible)
         {
-            GetComponent<MeshRenderer>().enabled = true;
+            GetComponentInChildren<MeshRenderer>().enabled = true;
         }
 
     }
