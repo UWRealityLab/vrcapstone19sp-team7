@@ -90,5 +90,6 @@ public class TempoController : MonoBehaviour
             song.pitch += Time.deltaTime * (final - initial) / slowDownTime;
             yield return null; ;
         }
+        song.pitch = final;
     }
 }
