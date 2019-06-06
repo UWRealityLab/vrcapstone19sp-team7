@@ -9,15 +9,6 @@ public class GpuBoidEmitter : MonoBehaviour
 
     public float emitRadius = 1.5f;
 
-    void Start() {
-        Invoke("TimedEmit", 1.0f);
-    }
-
-    void TimedEmit() {
-        EmitBoids(3);
-        Invoke("TimedEmit", 1.0f);
-    }
-
 
     public void EmitBoids(int n) {
         Vector3[] positions = new Vector3[n];
