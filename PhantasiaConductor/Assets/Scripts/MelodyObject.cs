@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class MelodyObject : MonoBehaviour
 {
-
-    public AudioClip loopClip;
-
     public Material windowOnMat;
-
-    public Material windowOffMat;
-
 
     // mat to use while successfully following
     public Material trackingMat;
@@ -18,16 +12,15 @@ public class MelodyObject : MonoBehaviour
     // mat to use after failed
     public Material failMat;
 
+    public Material unlockedMat;
+
     public PathBeat pathBeat;
-
-    // only for determining when it starts currently
-    public BeatInfo beatInfo;
-
     
     public float windowLength = 1f;
     public bool unlocked = false;
 
     public float beatOffset = 0;
+    public bool fantasiaOn;
 
     private AudioSource loopSource;
     private Collider coll;
@@ -44,11 +37,6 @@ public class MelodyObject : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
         loopSource = GetComponent<AudioSource>();
         rend.material = windowOffMat;
-
-        // loopSource.clip = loopClip;
-        // loopSource.pitch = loopClip.length / MasterLoop.loopTime;
-        // loopSource.spatialBlend = 1.0f;
-        // loopSource.clip = loopClip;
 
         hittable = GetComponent<Hittable>();
     }
@@ -85,18 +73,16 @@ public class MelodyObject : MonoBehaviour
             if (unlocked)
             {
                 pathBeat.Invoke("ResetPosition", beatOffset);
+                if (!fantasiaOn)
+                {
+                    loopSource.Play();
+                }
             }
             
             // if still locked and not moving then handle the window indicator
             Invoke("WindowOn", beatOffset);
             Invoke("WindowOff", windowLength + beatOffset);
         }
-
-
-        // loopSource.Play();
-        // Invoke("StartWindow", MasterLoop.loopTime * startTime);
-        // Invoke("StartPlay", MasterLoop.loopTime * (startTime + windowLength));
-        // Invoke("EndPlay", MasterLoop.loopTime * endTime);
     }
 
     public void WindowOn()
@@ -131,6 +117,7 @@ public class MelodyObject : MonoBehaviour
     public void UnlockObject()
     {
         unlocked = true;
+        rend.material = unlockedMat;
     }
 
     public void ObjectFailed()
@@ -139,4 +126,18 @@ public class MelodyObject : MonoBehaviour
         rend.material = GetWindowMaterial();
     }
 
+    public void SetTrackingMat()
+    {
+        rend.material = trackingMat;
+    }
+
+    public void SetFailedMat()
+    {
+        rend.material = failMat;
+    }
+
+    public void ResetMaterial()
+    {
+        rend.material = GetWindowMaterial();
+    }
 }

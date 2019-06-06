@@ -18,18 +18,11 @@ public class PathBeat : MonoBehaviour
     // invoked when failed
     public UnityEvent onFailed;
 
-    public Material goodMat;
-
-    public Material failedMat;
-
-
     public enum PathMode
     {
         SPEED_CONSTANT,
         TIMED
     }
-
-    public LineRenderer lineRenderer;
 
     // time spent at each part of the line
     public List<float> timeMap = new List<float>();
@@ -49,6 +42,8 @@ public class PathBeat : MonoBehaviour
 
     public float completionTime = -1.0f;
 
+    private LineRenderer lineRenderer;
+
     float timeElapsed;
     int index;
 
@@ -63,6 +58,11 @@ public class PathBeat : MonoBehaviour
     bool wasMarked = false;
 
     const string directory = "Assets/Paths/";
+
+    private void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
 
     void Start()
     {
@@ -180,8 +180,8 @@ public class PathBeat : MonoBehaviour
         moving = false;
         hasFailed = false;
 
-        Renderer renderer = obj.GetComponent<Renderer>();
-        renderer.material = goodMat;
+        MelodyObject mObj = obj.GetComponent<MelodyObject>();
+        mObj.ResetMaterial();
     }
 
     public void Begin()
@@ -374,10 +374,10 @@ public class PathBeat : MonoBehaviour
         hasFailed = true;
 
 
-        Renderer renderer = obj.GetComponent<Renderer>();
-        if (renderer != null)
+        MelodyObject mObj = obj.GetComponent<MelodyObject>();
+        if (mObj != null)
         {
-            renderer.material = failedMat;
+            mObj.SetFailedMat();
         }
 
         onFailed.Invoke();
@@ -385,10 +385,11 @@ public class PathBeat : MonoBehaviour
 
     private void OnSuccess()
     {
-
+        /*
         Renderer renderer = obj.GetComponent<Renderer>();
         var color = renderer.material.color;
         renderer.material.color = new Color(color.r, color.g, color.b, 1);
+        */
 
         hasSuccessfullyCompleted = true;
 
