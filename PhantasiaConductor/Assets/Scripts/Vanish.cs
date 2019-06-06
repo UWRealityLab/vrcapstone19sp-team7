@@ -16,6 +16,7 @@ public class Vanish : MonoBehaviour
         if(!GetComponentInParent<MeshRenderer>().isVisible)
         {
             GetComponentInChildren<MeshRenderer>().enabled = false;
+
         }
         if (GetComponentInParent<MeshRenderer>().isVisible)
         {
