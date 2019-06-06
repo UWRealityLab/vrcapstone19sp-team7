@@ -79,7 +79,7 @@ public class HarmonyObject : MonoBehaviour
 		} else {
             color = Color.HSVToRGB(0, 0, 1);
 		}
-        if (fade.done) {
+        if (!fade.done) {
             if (unlocked)
             {
                 color.a = .55f;

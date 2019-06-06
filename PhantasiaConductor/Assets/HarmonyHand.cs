@@ -31,17 +31,4 @@ public class HarmonyHand : MonoBehaviour
             transform.position = newPos;
         }
 	}
-    /*
-    public void Hide(float time)
-    {
-        GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
-        Invoke("Show", time);
-    }
-
-    private void Show()
-    {
-        GetComponent<Renderer>().enabled = true;
-        GetComponent<Collider>().enabled = true;
-    }*/
 }
