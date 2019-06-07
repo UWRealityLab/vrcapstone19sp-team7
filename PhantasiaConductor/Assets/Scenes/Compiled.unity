@@ -3509,6 +3509,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7898583672592604326, guid: 1c87f1635618a514a859b725c9b08c8f,
+        type: 3}
+      propertyPath: m_DynamicPixelsPerUnit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898583671808147822, guid: 1c87f1635618a514a859b725c9b08c8f,
+        type: 3}
+      propertyPath: m_Text
+      value: Keep the spheres in line with the plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898583671808147822, guid: 1c87f1635618a514a859b725c9b08c8f,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4c90d3c4d98a33647872e06a6f654f9f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c87f1635618a514a859b725c9b08c8f, type: 3}
 --- !u!1 &772369034 stripped
@@ -4068,6 +4084,17 @@ PrefabInstance:
       propertyPath: m_DynamicPixelsPerUnit
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 698274218361264709, guid: c299cd3c72e9238459f1c8be0587b684,
+        type: 3}
+      propertyPath: m_Text
+      value: Catch the spheres as they fall
+      objectReference: {fileID: 0}
+    - target: {fileID: 698274218361264709, guid: c299cd3c72e9238459f1c8be0587b684,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 4c90d3c4d98a33647872e06a6f654f9f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c299cd3c72e9238459f1c8be0587b684, type: 3}
 --- !u!1001 &991662827
@@ -5135,7 +5162,7 @@ PrefabInstance:
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
       propertyPath: cheat
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7601687522240738742, guid: 138177e7863b85945bcf2d498a5fe4bf,
         type: 3}
@@ -5637,12 +5664,12 @@ PrefabInstance:
     - target: {fileID: 57136511941091566, guid: d50d32b8e2373034e9eb72197b5d2ace,
         type: 3}
       propertyPath: m_DynamicPixelsPerUnit
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 57136511360965959, guid: d50d32b8e2373034e9eb72197b5d2ace,
         type: 3}
       propertyPath: m_Text
-      value: Hit the red spheres when they flash on!
+      value: Hit the red spheres when they flash on
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50d32b8e2373034e9eb72197b5d2ace, type: 3}
@@ -10007,6 +10034,11 @@ PrefabInstance:
       propertyPath: trackedCamera
       value: 
       objectReference: {fileID: 1824795482}
+    - target: {fileID: 8932614563594730462, guid: c8047d5f71dc0a3498d345b99c62ae1d,
+        type: 3}
+      propertyPath: m_DynamicPixelsPerUnit
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8047d5f71dc0a3498d345b99c62ae1d, type: 3}
 --- !u!1 &1510475304
