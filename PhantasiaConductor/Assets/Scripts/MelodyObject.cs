@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MelodyObject : MonoBehaviour
 {
-    public Material windowOnMat;
-    public Material windowOffMat;
+    public Material normalMat;
 
     // mat to use while successfully following
     public Material trackingMat;
@@ -37,7 +36,8 @@ public class MelodyObject : MonoBehaviour
         coll = GetComponent<Collider>();
         rend = GetComponent<MeshRenderer>();
         loopSource = GetComponent<AudioSource>();
-        rend.material = windowOffMat;
+        rend.material = normalMat;
+        ChangeAlpha(0.1f);
 
         hittable = GetComponent<Hittable>();
     }
@@ -92,7 +92,8 @@ public class MelodyObject : MonoBehaviour
         windowStatus = true;
         if (!pathBeat.moving)
         {
-            rend.material = windowOnMat;
+            rend.material = normalMat;
+            ChangeAlpha(1f);
             hittable.canInteract = true;
         }
 
@@ -105,14 +106,15 @@ public class MelodyObject : MonoBehaviour
         // only if  not moving
         if (!pathBeat.moving)
         {
-            rend.material = windowOffMat;
+            rend.material = normalMat;
+            ChangeAlpha(0.1f);
             hittable.canInteract = false;
         }
     }
 
-    public Material GetWindowMaterial()
+    public float GetWindowAlpha()
     {
-        return windowStatus ? windowOnMat : windowOffMat;
+        return windowStatus ? 1f : 0.1f;
     }
 
     public void UnlockObject()
@@ -124,7 +126,8 @@ public class MelodyObject : MonoBehaviour
     public void ObjectFailed()
     {
         pathBeat.Reset();
-        rend.material = GetWindowMaterial();
+        rend.material = normalMat;
+        ChangeAlpha(GetWindowAlpha());
     }
 
     public void SetTrackingMat()
@@ -139,6 +142,12 @@ public class MelodyObject : MonoBehaviour
 
     public void ResetMaterial()
     {
-        rend.material = GetWindowMaterial();
+        rend.material = normalMat;
+        ChangeAlpha(GetWindowAlpha());
+    }
+
+    private void ChangeAlpha(float a) {
+        Color c = rend.material.color;
+        rend.material.color = new Color(c.r, c.g, c.b, a);
     }
 }
