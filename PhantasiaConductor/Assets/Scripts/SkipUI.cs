@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkipUI : MonoBehaviour
 {
     public float holdTime = 3f;
+    public CountDown cd;
     private float holdTimer = 0f;
 
     // Update is called once per frame
@@ -14,17 +15,19 @@ public class SkipUI : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             holdTimer += Time.deltaTime;
+            //Debug.Log(holdTimer);
 
             if (holdTimer > holdTime)
             {
-                FindObjectOfType<CountDown>().enabled = true;
+                Debug.Log(holdTimer);
+                cd.enabled = true;
                 Invoke("Reset", 5.5f);
             }
         }
     }
     private void Reset()
     {
-        FindObjectOfType<CountDown>().enabled = false;
+        cd.enabled = false;
         holdTimer = 0f;
     }
 }

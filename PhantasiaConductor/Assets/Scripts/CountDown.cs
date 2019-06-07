@@ -11,6 +11,7 @@ public class CountDown : MonoBehaviour
     public GameController controller;
     void OnEnabled()
     {
+        Debug.Log("eh?");
         Invoke("Dim", 0);
         countdown.GetComponent<Text>().enabled = true;
         StartCoroutine("LoseTime");
