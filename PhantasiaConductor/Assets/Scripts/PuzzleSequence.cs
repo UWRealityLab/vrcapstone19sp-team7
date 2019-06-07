@@ -11,7 +11,7 @@ namespace Valve.VR.InteractionSystem
         public GameObject[] puzzles;
         private AudioSource winSource;
         public AudioClip winClip;
-
+        public int cheat = 0;
         public int currentPuzzle;
         public bool handColliders;
         public bool isRhythm;
@@ -22,6 +22,7 @@ namespace Valve.VR.InteractionSystem
         
         public UnityEvent onNextPuzzle;
         public UnityEvent onPuzzleComplete;
+        private bool waitingToEnableNext = true;
         
         // Start is called before the first frame update
         void Awake()
@@ -43,7 +44,7 @@ namespace Valve.VR.InteractionSystem
             winSource.volume = .75f;
             currentPuzzle = 0;
             puzzles[0].SetActive(true);
-            for (int i = 1; i < puzzles.Length; i++)
+            for (int i = 0; i < puzzles.Length; i++)
             {
                 puzzles[i].SetActive(false);
             }
@@ -52,22 +53,24 @@ namespace Valve.VR.InteractionSystem
         public void NextPuzzle() {
             winSource.Play();
             currentPuzzle++;
-            if (currentPuzzle < puzzles.Length)
+            onNextPuzzle.Invoke();
+            if (currentPuzzle < puzzles.Length - cheat)
             {
-                onNextPuzzle.Invoke();
-                if (!isRhythm)
-                {
-                    StartCoroutine(HarmonyDelay());
-                } else
-                {
-                    puzzles[currentPuzzle].SetActive(true);
-                }
+                waitingToEnableNext = true;
+                
             } else {
                 onPuzzleComplete.Invoke();
             }
         }
 
         public void NewLoop(){
+
+            if (gameObject.activeInHierarchy && waitingToEnableNext)
+            {
+                waitingToEnableNext = false;
+                puzzles[currentPuzzle].SetActive(true);
+                Debug.Log("HI?");
+            }
             for (int i = 0; i < puzzles.Length; i++) {
 
             	if (isRhythm) {
@@ -122,11 +125,6 @@ namespace Valve.VR.InteractionSystem
                 }
             }
         }
-
-        private IEnumerator HarmonyDelay()
-        {
-            yield return new WaitForSeconds(3f);
-            puzzles[currentPuzzle].SetActive(true);
-        }
+        
     }	
 }

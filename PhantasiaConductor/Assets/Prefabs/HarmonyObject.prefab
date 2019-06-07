@@ -253,7 +253,7 @@ MonoBehaviour:
   speed: 0.001
   cheatTime: 0.1
   notesPerOctave: 12
-  fade: {fileID: 0}
+  inContact: 0
   fantasiaOn: 0
 --- !u!114 &3262225546547968279
 MonoBehaviour:
@@ -284,6 +284,7 @@ MonoBehaviour:
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
   unlocked: 1
+  hidden: 0
 --- !u!1001 &819756495593116474
 PrefabInstance:
   m_ObjectHideFlags: 0
