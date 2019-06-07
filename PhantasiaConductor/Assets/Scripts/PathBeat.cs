@@ -73,6 +73,7 @@ public class PathBeat : MonoBehaviour
         }
 
         if (completionTime > 0.0f && pathMode == PathMode.SPEED_CONSTANT) {
+            Debug.Log("setting completion time");
             SetCompletionTime(completionTime);
         }
 

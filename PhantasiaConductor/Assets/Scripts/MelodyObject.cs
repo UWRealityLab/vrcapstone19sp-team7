@@ -29,6 +29,7 @@ public class MelodyObject : MonoBehaviour
     private Hittable hittable;
 
     private bool windowStatus = false;
+    private float offAlpha = 0.3f;
 
 
     void Awake()
@@ -37,7 +38,7 @@ public class MelodyObject : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
         loopSource = GetComponent<AudioSource>();
         rend.material = normalMat;
-        ChangeAlpha(0.1f);
+        ChangeAlpha(offAlpha);
 
         hittable = GetComponent<Hittable>();
     }
@@ -107,14 +108,14 @@ public class MelodyObject : MonoBehaviour
         if (!pathBeat.moving)
         {
             rend.material = normalMat;
-            ChangeAlpha(0.1f);
+            ChangeAlpha(offAlpha);
             hittable.canInteract = false;
         }
     }
 
     public float GetWindowAlpha()
     {
-        return windowStatus ? 1f : 0.1f;
+        return windowStatus ? 1f : offAlpha;
     }
 
     public void UnlockObject()
