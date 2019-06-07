@@ -6,6 +6,7 @@ public class UnlockAction : MonoBehaviour
 {
 	public Vector3 centerPosition;
 	public Vector3 centerScale;
+	public bool moveCenterDown = false;
 	public bool inCenter = false;
 	public float radius;
 	public float rotationSpeed = 1; //negative for counterclockwise
@@ -30,7 +31,7 @@ public class UnlockAction : MonoBehaviour
 			Vector3 delta = centerPosition - transform.localPosition;
 			if (delta.magnitude < .25f) {
 				inCenter = true;
-                transform.localPosition = centerPosition;
+            transform.localPosition = centerPosition;
 			} else {
 				transform.position += delta / 75;
 			}
@@ -59,7 +60,9 @@ public class UnlockAction : MonoBehaviour
 
 	public void OnEnable(){
         GameObject center = GameObject.Find("/CenterArea");
-     
+        if (moveCenterDown) {
+        	 center.GetComponent<MoveDown>().Move();
+     	  }
         transform.SetParent(center.transform);
 	}
 }

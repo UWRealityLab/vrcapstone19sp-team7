@@ -185,7 +185,7 @@ namespace Valve.VR.InteractionSystem
             List<string> paths = new List<string>();
             paths.Add("Assets/Paths/melody1.txt");
             if (curvedLineRenderer != null) {
-                paths.Add("Assets/Paths/melody1.txt");
+                paths.Add("Assets/Paths/curve.txt");
             }
 
             Vector3[][] ps = {positions, bezierPositions};
