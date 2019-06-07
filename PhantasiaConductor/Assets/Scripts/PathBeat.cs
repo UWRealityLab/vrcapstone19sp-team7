@@ -373,12 +373,14 @@ public class PathBeat : MonoBehaviour
     private void OnFailed()
     {
         hasFailed = true;
+        moving = false;
 
 
         MelodyObject mObj = obj.GetComponent<MelodyObject>();
         if (mObj != null)
         {
             mObj.SetFailedMat();
+            mObj.WindowOff();
         }
 
         onFailed.Invoke();
@@ -402,8 +404,8 @@ public class PathBeat : MonoBehaviour
         
         Reset();
         // mark so that we don't immediately fail
-        wasMarked = true;
-        moving = true;
+        wasMarked = false;
+        moving = false;
 
         onReachedEndBad.Invoke();
     }
