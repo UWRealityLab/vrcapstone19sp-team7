@@ -42,6 +42,22 @@ public class Haptics : MonoBehaviour
     void Start() {
         Debug.Log("Hello Android");
     }
+
+    public void PulseLeft() {
+
+    }
+
+    public void PulseRight() {
+
+    }
+
+    public void sweepHandRight() {
+
+    }
+
+    public void sweepHandLeft() {
+        
+    }
     #else
     void Start() {
         Debug.Log("Unrecognized platform, check Haptics.cs");
