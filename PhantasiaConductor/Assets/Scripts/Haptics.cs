@@ -5,7 +5,11 @@ using Valve.VR;
 
 public class Haptics : MonoBehaviour
 {
+    #if UNITY_EDITOR
     public SteamVR_Action_Vibration hapticAction;
+    void Start() {
+        Debug.Log("Hello Windows Haptics");
+    }
 
     public void PulseLeft()
     {
@@ -34,4 +38,14 @@ public class Haptics : MonoBehaviour
         hapticAction.Execute(0, 1, 150, 75, SteamVR_Input_Sources.LeftHand);
 
     }
+    #elif UNITY_ANDROID
+    void Start() {
+        Debug.Log("Hello Android");
+    }
+    #else
+    void Start() {
+        Debug.Log("Unrecognized platform, check Haptics.cs");
+    }
+    #endif
+    
 }

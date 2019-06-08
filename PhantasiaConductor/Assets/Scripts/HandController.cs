@@ -8,22 +8,32 @@ namespace Valve.VR.InteractionSystem
     {
         public bool debugMode = true;
 
+        #if UnityEditor
         public Hand leftHand;
         public Hand rightHand;
+        #else 
+        public GameObject leftHand;
+        public GameObject rightHand;
+        
+        #endif
+
 
         // private int lastInstanceIdLeft;
         // private bool interactedLastFrameLeft;
 
         public bool renderingLines = true;
 
-        private Dictionary<Hand, int> lastInstanceIds = new Dictionary<Hand, int>();
 
-        private Dictionary<Hand, bool> interactedLastFrame = new Dictionary<Hand, bool>();
+        private Dictionary<GameObject, int> lastInstanceIds = new Dictionary<GameObject, int>();
+
+        private Dictionary<GameObject, bool> interactedLastFrame = new Dictionary<GameObject, bool>();
 
         // private int lastInstanceIdRight;
         // private bool interactedLastFrameRight;
 
-        private List<Hand> hands = new List<Hand>();
+        private List<GameObject> hands = new List<GameObject>();
+
+        
 
 
         public LineRenderer leftLineRenderer;
@@ -35,11 +45,12 @@ namespace Valve.VR.InteractionSystem
         private List<LineRenderer> leftExtraLineRenderers;
         private List<LineRenderer> rightExtraLineRenderers;
 
-
+        #if UnityEditor
         private SteamVR_Action_Boolean gripAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabGrip");
         private SteamVR_Action_Boolean pinchAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabPinch");
 
         private SteamVR_Action_Boolean teleportAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("Teleport");
+        #endif
 
         // [EnumFlags]
         // public Hand.AttachmentFlags attachmentFlags = Hand.AttachmentFlags.
@@ -83,15 +94,21 @@ namespace Valve.VR.InteractionSystem
                     continue;
                 }
 
-                if (pinchAction.GetStateDown(hand.handType))
+                #if UnityEditor
+                SteamVR_Input_Sources handType = hand.gameObject.GetComponent<Hand>();
+                
+
+                if (pinchAction.GetStateDown(handType))
                 {
                     obj.SendMessage("OnPinched", SendMessageOptions.DontRequireReceiver);
                 }
 
-                if (gripAction.GetStateDown(hand.handType))
+                if (gripAction.GetStateDown(handType))
                 {
                     obj.SendMessage("OnGripped", SendMessageOptions.DontRequireReceiver);
                 }
+
+                #endif
 
                 if (!interactedLastFrame[hand])
                 {
@@ -139,7 +156,7 @@ namespace Valve.VR.InteractionSystem
             }
         }
 
-        private GameObject PerformRaycast(Hand hand)
+        private GameObject PerformRaycast(GameObject hand)
         {
             RaycastHit hit;
             // LayerMask layerMask = ~(1 << 2);
