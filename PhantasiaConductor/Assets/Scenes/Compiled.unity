@@ -2019,7 +2019,7 @@ GameObject:
   - component: {fileID: 301627404}
   - component: {fileID: 301627403}
   m_Layer: 5
-  m_Name: darkCanvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
