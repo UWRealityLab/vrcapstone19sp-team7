@@ -8,7 +8,7 @@ public class BeatBlinkController : MonoBehaviour
 {
 
     public UnityEvent onHitUnlocked; // A 'hit' that plays  once a track is unlocked
-     public UnityEvent onHitLocked;
+    public UnityEvent onHitLocked;
     private Blink blink;
     public BeatInfo beatInfo;
     public bool unlocked = false;

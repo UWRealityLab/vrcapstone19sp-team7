@@ -9,9 +9,8 @@ public class CountDown : MonoBehaviour
     public Canvas darkCanvas;
     public Text countdown;
     public GameController controller;
-    void OnEnabled()
+    void OnEnable()
     {
-        Debug.Log("eh?");
         Invoke("Dim", 0);
         countdown.GetComponent<Text>().enabled = true;
         StartCoroutine("LoseTime");
@@ -19,7 +18,7 @@ public class CountDown : MonoBehaviour
     }
     void Update()
     {
-        countdown.text = ("Skip puzzle in " + timeLeft); 
+        countdown.text = ("Skip puzzle in " + timeLeft);
         if (timeLeft == 0)
         {
             countdown.GetComponent<Text>().enabled = true;
@@ -42,6 +41,7 @@ public class CountDown : MonoBehaviour
 
     void Dim()
     {
+        Debug.Log("blargen");
         darkCanvas.enabled = true;
     }
 }
