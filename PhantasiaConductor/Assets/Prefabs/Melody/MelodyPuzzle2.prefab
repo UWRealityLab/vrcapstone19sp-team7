@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!82 &3980519061613286935
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681315112704835051}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 892c03c0b03c6fc4d81ac081254a46f1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4594148022300859886
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4594148022300859887}
+  - component: {fileID: 9129848116713093128}
   m_Layer: 0
   m_Name: MelodyPuzzle2
   m_TagString: Untagged
@@ -32,6 +129,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9129848116713093128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594148022300859886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11077006d41d2bd4a9a6a67623b1a6f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayDepart: 4
+  MoveToCenter:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &4594148023913099374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,14 +234,44 @@ PrefabInstance:
       propertyPath: puzzles.Array.data[0]
       value: 
       objectReference: {fileID: 4594148022676241428}
+    - target: {fileID: 7873509397721782364, guid: bc181333a42b28048bf352d64b91d2b8,
+        type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 5091653097936800336, guid: c167e04ba92848441ad6e850d4b6592c,
+        type: 3}
+    - target: {fileID: 7873509397721782364, guid: bc181333a42b28048bf352d64b91d2b8,
+        type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 5091653097936800336, guid: c167e04ba92848441ad6e850d4b6592c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc181333a42b28048bf352d64b91d2b8, type: 3}
+--- !u!1 &2681315112704835051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1942248442307759493, guid: bc181333a42b28048bf352d64b91d2b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4594148023913099374}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &806038233244407905 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3814037378827134991, guid: bc181333a42b28048bf352d64b91d2b8,
     type: 3}
   m_PrefabInstance: {fileID: 4594148023913099374}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5946407774489356338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7873509397721782364, guid: bc181333a42b28048bf352d64b91d2b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4594148023913099374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2681315112704835051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5a5311e26990343aee788f40f360c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6655130026288053715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,6 +339,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onSuccessful.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onSuccessful.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onSuccessful.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onSuccessful.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5946407774489356338}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onSuccessful.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: NextPuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onSuccessful.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258500, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3fd006c1100771e429ecfacd1bdc7802, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a36086cfcc2d9674a87fc43fc2083fb1, type: 3}
 --- !u!1 &4594148022676241428 stripped

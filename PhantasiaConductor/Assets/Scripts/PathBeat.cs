@@ -86,6 +86,11 @@ public class PathBeat : MonoBehaviour
 
     void Update()
     {
+        // Skip
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            OnSuccess();
+        }
 
         if (!moving)
         {

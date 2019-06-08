@@ -75,15 +75,18 @@ public class MelodyObject : MonoBehaviour
             if (unlocked)
             {
                 pathBeat.Invoke("ResetPosition", beatOffset);
+                pathBeat.moving = true;
                 if (!fantasiaOn)
                 {
                     loopSource.Play();
                 }
             }
-            
-            // if still locked and not moving then handle the window indicator
-            Invoke("WindowOn", beatOffset);
-            Invoke("WindowOff", windowLength + beatOffset);
+            else
+            {
+                // if still locked and not moving then handle the window indicator
+                Invoke("WindowOn", beatOffset);
+                Invoke("WindowOff", windowLength + beatOffset);
+            }
         }
     }
 
@@ -93,9 +96,12 @@ public class MelodyObject : MonoBehaviour
         windowStatus = true;
         if (!pathBeat.moving)
         {
-            rend.material = normalMat;
-            ChangeAlpha(1f);
-            hittable.canInteract = true;
+            if (!unlocked)
+            {
+                rend.material = normalMat;
+                ChangeAlpha(1f);
+                hittable.canInteract = true;
+            }
         }
 
     }
@@ -107,9 +113,12 @@ public class MelodyObject : MonoBehaviour
         // only if  not moving
         if (!pathBeat.moving)
         {
-            rend.material = normalMat;
-            ChangeAlpha(offAlpha);
-            hittable.canInteract = false;
+            if (!unlocked)
+            {
+                rend.material = normalMat;
+                ChangeAlpha(offAlpha);
+                hittable.canInteract = false;
+            }
         }
     }
 
@@ -122,7 +131,7 @@ public class MelodyObject : MonoBehaviour
     {
         unlocked = true;
         rend.material = unlockedMat;
-        loopSource.Play();
+        // loopSource.Play();
     }
 
     public void ObjectFailed()

@@ -69,8 +69,10 @@ namespace Valve.VR.InteractionSystem
             if (gameObject.activeInHierarchy && waitingToEnableNext)
             {
                 waitingToEnableNext = false;
-                puzzles[currentPuzzle].SetActive(true);
-                Debug.Log("HI?");
+                if (currentPuzzle < puzzles.Length)
+                {
+                    puzzles[currentPuzzle].SetActive(true);
+                }
             }
             for (int i = 0; i < puzzles.Length; i++) {
 

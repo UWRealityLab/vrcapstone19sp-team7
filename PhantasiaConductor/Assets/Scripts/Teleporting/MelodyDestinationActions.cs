@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HarmonyDestinationActions : MonoBehaviour
+public class MelodyDestinationActions : MonoBehaviour
 {
     public float delayDepart = 4f;
-
-    public UnityEvent moveToCenter;
+    public UnityEvent MoveToCenter;
 
     public void Arrive()
     {
@@ -19,9 +18,10 @@ public class HarmonyDestinationActions : MonoBehaviour
         StartCoroutine(DelayDepart());
     }
 
-    private IEnumerator DelayDepart() {
+    private IEnumerator DelayDepart()
+    {
         yield return new WaitForSeconds(delayDepart);
 
-        moveToCenter.Invoke();
+        MoveToCenter.Invoke();
     }
 }
