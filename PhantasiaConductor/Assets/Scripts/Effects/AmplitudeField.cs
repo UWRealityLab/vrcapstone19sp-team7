@@ -8,8 +8,11 @@ public class AmplitudeField : MonoBehaviour
 {
     public GameObject objPrefab;
 
-    public Valve.VR.InteractionSystem.Hand rightHand;
-    public Valve.VR.InteractionSystem.Hand leftHand;
+    // public Valve.VR.InteractionSystem.Hand rightHand;
+    // public Valve.VR.InteractionSystem.Hand leftHand;
+
+    public GameObject rightHand;
+    public GameObject leftHand;
 
     public float radius;
 
