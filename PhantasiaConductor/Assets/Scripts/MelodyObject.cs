@@ -122,6 +122,7 @@ public class MelodyObject : MonoBehaviour
     {
         unlocked = true;
         rend.material = unlockedMat;
+        loopSource.Play();
     }
 
     public void ObjectFailed()

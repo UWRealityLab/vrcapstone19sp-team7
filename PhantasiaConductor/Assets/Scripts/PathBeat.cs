@@ -43,6 +43,7 @@ public class PathBeat : MonoBehaviour
     public float completionTime = -1.0f;
 
     private LineRenderer lineRenderer;
+    private bool prevMoving;
 
     float timeElapsed;
     int index;
@@ -401,7 +402,7 @@ public class PathBeat : MonoBehaviour
 
     private void OnReachedEndBad()
     {
-        
+
         Reset();
         // mark so that we don't immediately fail
         wasMarked = false;
@@ -409,4 +410,15 @@ public class PathBeat : MonoBehaviour
 
         onReachedEndBad.Invoke();
     }
+
+    // Fantasia
+    public void PauseFantasia()
+    {
+        prevMoving = moving;
+        moving = false;
+    }
+
+    public void ResumeFantasia() {
+        moving = prevMoving;
+    } 
 }
