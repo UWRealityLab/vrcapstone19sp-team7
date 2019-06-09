@@ -85,10 +85,12 @@ namespace Valve.VR.InteractionSystem
 
             // if (Physics.Raycast(leftHand.transform.position, leftHand.transform.rotation * transform.forward, Mathf.Infinity, ~(1 << 2)))
             // Debug.Log("we have hit");
+
+            GameObject obj = null;
             foreach (var hand in hands)
             {
                 // Raycast only once for each hand
-                GameObject obj = PerformRaycast(hand);
+                obj = PerformRaycast(hand);
                 if (obj == null)
                 {
                     continue;
@@ -140,6 +142,9 @@ namespace Valve.VR.InteractionSystem
                     // Vector3 end = leftHand.transform.rotation * transform.forward * 1000 + start;
                     Vector3 end = leftHand.transform.forward * 1000 + start;
 
+                    if (obj != null) {
+                        end = obj.transform.position;
+                    }           
                     leftLineRenderer.SetPosition(0, start);
                     leftLineRenderer.SetPosition(1, end);
                 }
@@ -149,7 +154,10 @@ namespace Valve.VR.InteractionSystem
                     Vector3 start = rightHand.transform.position;
                     // Vector3 end = rightHand.transform.rotation * transform.forward * 1000 + start;
                     Vector3 end = rightHand.transform.forward * 1000 + start;
-
+                    
+                    if (obj != null) {
+                        end = obj.transform.position;
+                    }
                     rightLineRenderer.SetPosition(0, start);
                     rightLineRenderer.SetPosition(1, end);
                 }
