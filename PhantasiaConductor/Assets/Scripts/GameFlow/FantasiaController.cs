@@ -34,7 +34,7 @@ public class FantasiaController : MonoBehaviour
 
     private MasterLoop masterLoop;
     private TempoController tempo;
-    private float normal = 63.0f; // song length
+    private float normal = 56.0f; // song length
     private float measureTime;
     private float beatTIme;
     private float prevMeasureTime;
@@ -65,9 +65,9 @@ public class FantasiaController : MonoBehaviour
     {
         // Set tempo/timing metrics
         measureCount = 0;
-        measureTime = normal / 29.0f;
+        measureTime = normal / 28.0f;
         beatTIme = measureTime / 4.0f;
-        MasterLoop.loopTime = beatTIme * 8;
+        // MasterLoop.loopTime = beatTIme * 8;
 
         GetComponent<AudioSource>().Play();
         prevMeasureTime = Time.time;
@@ -96,11 +96,11 @@ public class FantasiaController : MonoBehaviour
         {
             BattonTrails.Invoke();
             trail = true;
-        } else if (measureCount == 5)
+        } else if (measureCount == 7)
         {
             ObjectTracking.Invoke();
             tracking = true;
-        } else if (measureCount == 17)
+        } else if (measureCount == 19)
         {
             ObjectTrackingOff.Invoke();
             WallsOn.Invoke();
@@ -108,12 +108,13 @@ public class FantasiaController : MonoBehaviour
             tracking = false;
             wallsPulse = true;
             walls = true;
-        } else if (measureCount == 20)
+        } else if (measureCount == 21)
         {
             ObjectTracking.Invoke();
             tracking = true;
         } else if (measureCount == 24)
         {
+            Debug.Log("confetti on");
             Confetti.Invoke();
             confetti = true;
         } else if (measureCount == 26)

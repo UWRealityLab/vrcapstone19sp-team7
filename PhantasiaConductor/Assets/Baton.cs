@@ -20,10 +20,6 @@ public class Baton : MonoBehaviour
 
     public void SetCompletion(float completion, float time)
     {
-    		//
-    	
-
-        Debug.Log("HI" + completion);
         if (other != null)
         {
         	audio.pitch = 1.5f + (1.5f * completion);
