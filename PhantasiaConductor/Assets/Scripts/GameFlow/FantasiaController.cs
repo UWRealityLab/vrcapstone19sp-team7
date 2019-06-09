@@ -114,7 +114,6 @@ public class FantasiaController : MonoBehaviour
             tracking = true;
         } else if (measureCount == 24)
         {
-            Debug.Log("confetti on");
             Confetti.Invoke();
             confetti = true;
         } else if (measureCount == 26)
@@ -123,6 +122,7 @@ public class FantasiaController : MonoBehaviour
             wallsPulse = false;
         } else if (measureCount == 30)
         {
+            ObjectTrackingOff.Invoke();
             onFinish.Invoke();
         }
 

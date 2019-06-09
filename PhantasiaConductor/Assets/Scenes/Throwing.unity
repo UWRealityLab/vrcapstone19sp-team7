@@ -822,6 +822,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3906439871547382771, guid: 8a83454104c6ad54dab6072635c3892b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3906439871547382771, guid: 8a83454104c6ad54dab6072635c3892b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3906439871547382771, guid: 8a83454104c6ad54dab6072635c3892b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3906947034468520073, guid: 8a83454104c6ad54dab6072635c3892b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -848,21 +863,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3906947033617156125, guid: 8a83454104c6ad54dab6072635c3892b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906439871547382771, guid: 8a83454104c6ad54dab6072635c3892b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906439871547382771, guid: 8a83454104c6ad54dab6072635c3892b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3906439871547382771, guid: 8a83454104c6ad54dab6072635c3892b,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -936,7 +936,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5206375682768712624, guid: f0486aae4f0f5294191689733bac1c32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5206375682768712631, guid: f0486aae4f0f5294191689733bac1c32, type: 3}
+    - {fileID: 5206375682768712624, guid: f0486aae4f0f5294191689733bac1c32, type: 3}
+    - {fileID: 5206375682768712630, guid: f0486aae4f0f5294191689733bac1c32, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0486aae4f0f5294191689733bac1c32, type: 3}
 --- !u!114 &1439329151 stripped
 MonoBehaviour:
@@ -1211,6 +1219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PianoPuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837641069144768298, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5837641069144768310, guid: 2ef7fce5cec6c284fae49b3c5a05ba10,
         type: 3}
