@@ -54,9 +54,9 @@ public class MelodyTutorial : MonoBehaviour
             obj.GetComponent<Renderer>().material.color = new Color(c.r, c.g, c.b, 1f);
             yield return new WaitForSeconds(0.2f);
 
-            while(showTutorial && hand.transform.rotation != startAngle) {
+            while(showTutorial && hand.transform.localRotation != startAngle) {
                 float step = rotateSpeed * Time.deltaTime;
-                hand.transform.rotation = Quaternion.RotateTowards(hand.transform.rotation, startAngle, step);
+                hand.transform.localRotation = Quaternion.RotateTowards(hand.transform.localRotation, startAngle, step);
                 yield return null;
             }
             obj.GetComponent<Renderer>().material = tracking;
@@ -66,7 +66,7 @@ public class MelodyTutorial : MonoBehaviour
                 obj.transform.localPosition = Vector3.MoveTowards(obj.transform.localPosition, end, step);
 
                 Vector3 newDir = obj.transform.localPosition - hand.transform.localPosition;
-                hand.transform.rotation = Quaternion.LookRotation(newDir);
+                hand.transform.localRotation = Quaternion.LookRotation(newDir);
                 yield return null;
             }
             obj.GetComponent<Renderer>().material = unlocked;
@@ -76,7 +76,7 @@ public class MelodyTutorial : MonoBehaviour
             }
 
             yield return new WaitForSeconds(delay);
-            hand.transform.rotation = Quaternion.Euler(initialAngle.x, initialAngle.y, initialAngle.z);
+            hand.transform.localRotation = initialAngle;
             obj.transform.localPosition = start;
             obj.GetComponent<Renderer>().material = normal; 
         }
