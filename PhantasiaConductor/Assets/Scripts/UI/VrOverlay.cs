@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class VrOverlay : MonoBehaviour
 {
-    public Camera trackedCamera;
+    private Camera trackedCamera;
 
-    public float offset = 0.1f;
+    private float offset = 0.1f;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        trackedCamera = Camera.main;
+        offset = trackedCamera.nearClipPlane + 0.1f;
+        
+
         var frustrumHeight = 2.0f * offset * Mathf.Tan(trackedCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
         var frustrumWidth = frustrumHeight * trackedCamera.aspect;
         RectTransform t = GetComponent<RectTransform>();
