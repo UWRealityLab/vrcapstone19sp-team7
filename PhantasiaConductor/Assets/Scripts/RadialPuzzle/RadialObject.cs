@@ -83,34 +83,37 @@ public class RadialObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (audioSource != null)
+        if (collider.gameObject.tag == "RightNet" || collider.gameObject.tag == "LeftNet")
         {
-            audioSource.Play();
-        }
-
-        if (!hasBeenCaught)
-        {
-            GameObject net = collider.gameObject;
-            if (net.tag == "RightNet" && captureType == CaptureType.LEFT ||
-                net.tag == "LeftNet" && captureType == CaptureType.RIGHT)
+            if (audioSource != null)
             {
-                return;
+                audioSource.Play();
             }
 
-
-            // we caught it
-            if (particleSystemPrefab != null)
+            if (!hasBeenCaught)
             {
-                ParticleSystem ps = Instantiate(particleSystemPrefab).GetComponent<ParticleSystem>();
-                ps.gameObject.transform.position = transform.position;
-                ps.Play();
+                GameObject net = collider.gameObject;
+                if (net.tag == "RightNet" && captureType == CaptureType.LEFT ||
+                    net.tag == "LeftNet" && captureType == CaptureType.RIGHT)
+                {
+                    return;
+                }
+
+
+                // we caught it
+                if (particleSystemPrefab != null)
+                {
+                    ParticleSystem ps = Instantiate(particleSystemPrefab).GetComponent<ParticleSystem>();
+                    ps.gameObject.transform.position = transform.position;
+                    ps.Play();
+                }
+
+
+                onSuccess.Invoke();
+                ownerSequence.ObjectCaught(groupId);
+                Destroy(gameObject);
+                hasBeenCaught = true;
             }
-
-
-            onSuccess.Invoke();
-            ownerSequence.ObjectCaught(groupId);
-            Destroy(gameObject);
-            hasBeenCaught = true;
         }
     }
 
