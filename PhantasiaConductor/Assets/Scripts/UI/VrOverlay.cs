@@ -6,14 +6,14 @@ public class VrOverlay : MonoBehaviour
 {
     private Camera trackedCamera;
 
-    private float offset = 0.1f;
+    private float offset = 0.7f;
     
 
     // Start is called before the first frame update
     void Start()
     {
         trackedCamera = Camera.main;
-        offset = trackedCamera.nearClipPlane + 0.1f;
+        // offset = trackedCamera.nearClipPlane + 0.01f;
         
 
         var frustrumHeight = 2.0f * offset * Mathf.Tan(trackedCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
