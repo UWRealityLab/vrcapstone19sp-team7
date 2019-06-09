@@ -14,6 +14,7 @@ public class Baton : MonoBehaviour
     {
     	audio = GetComponent<AudioSource>();
         rend = GetComponent<Renderer>();
+        audio.volume = 0;
     }
 
 
@@ -22,11 +23,11 @@ public class Baton : MonoBehaviour
     		//
     	
 
-        //Debug.Log("HI" + other);
+        Debug.Log("HI" + completion);
         if (other != null)
         {
         	audio.pitch = 1.5f + (1.5f * completion);
-	    	audio.volume = .1f;
+	    	audio.volume = .08f;
 	    	CancelInvoke();
 			Invoke("VolumeDown", .1f);
             other.SetCompletion(completion, time);

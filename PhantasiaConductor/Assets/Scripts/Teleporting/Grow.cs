@@ -36,7 +36,11 @@ public class Grow : MonoBehaviour
         float counter = 0;
         float initialScale = transform.localScale.x;
         growing = true;
-
+        if (counter >= growDuration)
+        {
+            Debug.Log("DAM");
+            GetComponent<AudioSource>().Play();
+        }
         while (growing && counter < growDuration)
         {
             counter += Time.deltaTime;
@@ -46,6 +50,7 @@ public class Grow : MonoBehaviour
             transform.localScale = newScale;
             yield return null;
         }
+
     }
 
     public void StopGrow()
