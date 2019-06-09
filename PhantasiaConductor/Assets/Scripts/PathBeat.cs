@@ -73,7 +73,8 @@ public class PathBeat : MonoBehaviour
             LoadFromFile(fileName);
         }
 
-        if (completionTime > 0.0f && pathMode == PathMode.SPEED_CONSTANT) {
+        if (completionTime > 0.0f && pathMode == PathMode.SPEED_CONSTANT)
+        {
             Debug.Log("setting completion time");
             SetCompletionTime(completionTime);
         }
@@ -229,12 +230,28 @@ public class PathBeat : MonoBehaviour
 
     public void LoadFromFile(string path)
     {
-        path = directory + path + ".txt";
-        StreamReader reader = new StreamReader(path);
+        string f = path;
+        var textFile = Resources.Load<TextAsset>(f);
+
+        // path = directory + path + ".txt";
+        // StreamReader reader = new StreamReader(path);
         string line;
-        while (!reader.EndOfStream)
+        // while (!reader.EndOfStream)
+        // {
+        //     line = reader.ReadLine();
+
+        //     var tokens = line.Split(',');
+        //     var v = new Vector3(float.Parse(tokens[0]), float.Parse(tokens[1]), float.Parse(tokens[2]));
+        //     AddVertex(v, 1f);
+        // }
+        string[] linesInFile = textFile.text.Split('\n');
+        foreach (var l in linesInFile)
         {
-            line = reader.ReadLine();
+            line = l;
+            // line = reader.ReadLine();
+            if (string.IsNullOrEmpty(line)) {
+                continue;
+            }
 
             var tokens = line.Split(',');
             var v = new Vector3(float.Parse(tokens[0]), float.Parse(tokens[1]), float.Parse(tokens[2]));
@@ -261,7 +278,8 @@ public class PathBeat : MonoBehaviour
             hittable.onTracked.AddListener(delegate ()
             {
                 markAsHit();
-                if (!isMoving) {
+                if (!isMoving)
+                {
                     Begin();
                 }
             });
@@ -423,7 +441,8 @@ public class PathBeat : MonoBehaviour
         moving = false;
     }
 
-    public void ResumeFantasia() {
+    public void ResumeFantasia()
+    {
         moving = prevMoving;
-    } 
+    }
 }
