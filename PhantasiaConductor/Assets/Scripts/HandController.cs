@@ -44,6 +44,7 @@ namespace Valve.VR.InteractionSystem
         // for extra help with raycasting
         private List<LineRenderer> leftExtraLineRenderers;
         private List<LineRenderer> rightExtraLineRenderers;
+        private Vector3 hitPoint;
 
         #if UnityEditor
         private SteamVR_Action_Boolean gripAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("GrabGrip");
@@ -86,6 +87,9 @@ namespace Valve.VR.InteractionSystem
             // if (Physics.Raycast(leftHand.transform.position, leftHand.transform.rotation * transform.forward, Mathf.Infinity, ~(1 << 2)))
             // Debug.Log("we have hit");
 
+            UpdateLine(leftHand, leftLineRenderer);
+            UpdateLine(rightHand, rightLineRenderer);
+            /*
             GameObject obj = null;
             foreach (var hand in hands)
             {
@@ -143,7 +147,7 @@ namespace Valve.VR.InteractionSystem
                     Vector3 end = leftHand.transform.forward * 1000 + start;
 
                     if (obj != null) {
-                        end = obj.transform.position;
+                        end = hitPoint;
                     }           
                     leftLineRenderer.SetPosition(0, start);
                     leftLineRenderer.SetPosition(1, end);
@@ -156,10 +160,73 @@ namespace Valve.VR.InteractionSystem
                     Vector3 end = rightHand.transform.forward * 1000 + start;
                     
                     if (obj != null) {
-                        end = obj.transform.position;
+                        end = hitPoint;
                     }
                     rightLineRenderer.SetPosition(0, start);
                     rightLineRenderer.SetPosition(1, end);
+                }
+            }
+            */
+        }
+
+        private void UpdateLine(GameObject hand, LineRenderer lineRend)
+        {
+            // Raycast only once for each hand
+            GameObject obj = PerformRaycast(hand);
+            if (obj != null)
+            {
+
+#if UnityEditor
+            SteamVR_Input_Sources handType = hand.gameObject.GetComponent<Hand>();
+                
+
+            if (pinchAction.GetStateDown(handType))
+            {
+                obj.SendMessage("OnPinched", SendMessageOptions.DontRequireReceiver);
+            }
+
+            if (gripAction.GetStateDown(handType))
+            {
+                obj.SendMessage("OnGripped", SendMessageOptions.DontRequireReceiver);
+            }
+
+#endif
+
+                if (!interactedLastFrame[hand])
+                {
+                    obj.SendMessage("OnHit", SendMessageOptions.DontRequireReceiver);
+                    lastInstanceIds[hand] = obj.GetInstanceID();
+                    interactedLastFrame[hand] = true;
+                }
+                else
+                {
+                    lastInstanceIds[hand] = -1;
+                    interactedLastFrame[hand] = false;
+                }
+
+                obj.SendMessage("OnTracked", SendMessageOptions.DontRequireReceiver);
+            }
+
+            if (debugMode)
+            {
+                Debug.DrawRay(leftHand.transform.position, leftHand.transform.forward * 1000, Color.green);
+                Debug.DrawRay(rightHand.transform.position, rightHand.transform.forward * 1000, Color.blue);
+            }
+
+            if (renderingLines)
+            {
+                if (lineRend != null)
+                {
+                    Vector3 start = hand.transform.position;
+                    // Vector3 end = rightHand.transform.rotation * transform.forward * 1000 + start;
+                    Vector3 end = hand.transform.forward * 1000 + start;
+
+                    if (obj != null)
+                    {
+                        end = hitPoint;
+                    }
+                    lineRend.SetPosition(0, start);
+                    lineRend.SetPosition(1, end);
                 }
             }
         }
@@ -173,6 +240,7 @@ namespace Valve.VR.InteractionSystem
             if (Physics.Raycast(hand.transform.position, hand.transform.forward, out hit, Mathf.Infinity, layerMask))
             {
                 GameObject obj = hit.collider.gameObject;
+                hitPoint = hit.point;
                 return obj;
             }
             return null;
