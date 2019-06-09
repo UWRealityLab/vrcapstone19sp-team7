@@ -9,6 +9,9 @@ public class CountDown : MonoBehaviour
     public Canvas darkCanvas;
     public Text countdown;
     public GameController controller;
+    public GameObject rhythm;
+    public bool trig = false;
+    public int cSwitch = 0;
     void OnEnable()
     {
         Invoke("Dim", 0);
@@ -19,9 +22,37 @@ public class CountDown : MonoBehaviour
     void Update()
     {
         countdown.text = ("Skip puzzle in " + timeLeft);
+        if (Input.GetKey(KeyCode.Backspace) && timeLeft != 0)
+        {
+            darkCanvas.enabled = false;
+            timeLeft = 5;
+        }
+
         if (timeLeft == 0)
         {
-            countdown.GetComponent<Text>().enabled = true;
+            countdown.GetComponent<Text>().enabled = false;
+            
+            //case 1 = rhythm, case 2 = bass, case 3 = melody, case 4 = harmony
+
+            switch (cSwitch)
+            {
+                case 1:
+                    trig = true;
+                    break;
+
+                case 2:
+                    FindObjectOfType<RadialSequence>().onSuccess.Invoke();
+                    break;
+
+                case 3:
+                    break;
+
+                case 4:
+                    trig = true;
+                    break;
+
+            }
+
             controller.SetNextActive();
             darkCanvas.enabled = false;
             timeLeft = 5;
@@ -41,7 +72,6 @@ public class CountDown : MonoBehaviour
 
     void Dim()
     {
-        Debug.Log("blargen");
         darkCanvas.enabled = true;
     }
 }

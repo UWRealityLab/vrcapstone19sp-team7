@@ -14,7 +14,7 @@ public class Hittable : MonoBehaviour
     public UnityEvent onTracked;
 
     public GameObject haptics;
-
+    public CountDown counter;
     public bool inContact;
 
     public bool canHit;
@@ -35,15 +35,17 @@ public class Hittable : MonoBehaviour
     void Start()
     {
         haptics = GameObject.Find("/Haptics");
+        counter = FindObjectOfType<CountDown>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        if (counter.trig && counter.cSwitch == 1)
         {
             if (!isUnlocked)
             {
                 Unlock();
+                counter.trig = false;
             }
         }
     }
