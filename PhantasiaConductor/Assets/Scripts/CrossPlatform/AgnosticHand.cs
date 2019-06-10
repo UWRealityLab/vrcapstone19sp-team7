@@ -42,22 +42,60 @@ public class AgnosticHand : MonoBehaviour
             else
             {
                 leftBaton = baton;
-          }
+            }
         }
     }
+
 
     public Baton GetBaton()
     {
         return baton;
     }
 
-    public static Baton GetRightBaton() {
+    private Valve.VR.SteamVR_Action_Boolean pinchAction = Valve.VR.SteamVR_Input.GetAction<Valve.VR.SteamVR_Action_Boolean>("GrabPinch");
+    public bool TriggerDown()
+    {
+        Valve.VR.SteamVR_Input_Sources handType = steamHand.GetComponent<Valve.VR.InteractionSystem.Hand>().handType;
+        return pinchAction.GetStateDown(handType);
+    }
+
+    public bool TriggerUp()
+    {
+        Valve.VR.SteamVR_Input_Sources handType = steamHand.GetComponent<Valve.VR.InteractionSystem.Hand>().handType;
+        return pinchAction.GetStateUp(handType);
+    }
+
+    // public bool TriggerDown() {
+    //     OVRGrabber grabber = oculusHand.GetComponent<OVRGrabber>();
+    //     OVRInput.Controller controller = isRight ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
+    //     return OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controller);
+    // }
+
+    // public bool TriggerUp() {
+    //     OVRGrabber grabber = oculusHand.GetComponent<OVRGrabber>();
+    //     OVRInput.Controller controller = isRight ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
+    //     return OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, controller);
+    // }
+
+    public static Baton GetRightBaton()
+    {
         return rightBaton;
     }
 
-    public static Baton GetLeftBaton() {
+    public static Baton GetLeftBaton()
+    {
         return leftBaton;
     }
 
+    void Update()
+    {
+        if (TriggerDown())
+        {
+            Debug.Log("trigger down" + isRight);
+        }
+        if (TriggerUp()) {
+            Debug.Log("trigger up" + isRight);
+        }
+    }
 
 }

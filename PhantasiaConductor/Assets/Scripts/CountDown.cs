@@ -21,7 +21,7 @@ public class CountDown : MonoBehaviour
     }
     void Update()
     {
-        countdown.text = ("Skip puzzle in " + timeLeft);
+        countdown.text = ("Keep holding the trigger to skip puzzle in " + timeLeft);
         if (Input.GetKey(KeyCode.Backspace) && timeLeft != 0)
         {
             darkCanvas.enabled = false;

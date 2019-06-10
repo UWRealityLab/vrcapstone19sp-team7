@@ -87,8 +87,8 @@ namespace Valve.VR.InteractionSystem
             // if (Physics.Raycast(leftHand.transform.position, leftHand.transform.rotation * transform.forward, Mathf.Infinity, ~(1 << 2)))
             // Debug.Log("we have hit");
 
-            UpdateLine(leftHand, leftLineRenderer);
-            UpdateLine(rightHand, rightLineRenderer);
+            UpdateLine(leftHand, 1, leftLineRenderer);
+            UpdateLine(rightHand, 0, rightLineRenderer);
             /*
             GameObject obj = null;
             foreach (var hand in hands)
@@ -169,7 +169,7 @@ namespace Valve.VR.InteractionSystem
             */
         }
 
-        private void UpdateLine(GameObject hand, LineRenderer lineRend)
+        private void UpdateLine(GameObject hand, int handNum, LineRenderer lineRend)
         {
             // Raycast only once for each hand
             GameObject obj = PerformRaycast(hand);
@@ -204,7 +204,7 @@ namespace Valve.VR.InteractionSystem
                     interactedLastFrame[hand] = false;
                 }
 
-                obj.SendMessage("OnTracked", SendMessageOptions.DontRequireReceiver);
+                obj.SendMessage("OnTracked", handNum, SendMessageOptions.DontRequireReceiver);
             }
 
             if (debugMode)

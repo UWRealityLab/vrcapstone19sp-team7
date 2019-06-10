@@ -31,6 +31,8 @@ public class MelodyObject : MonoBehaviour
     private bool windowStatus = false;
     private float offAlpha = 0.3f;
 
+    private float completion = 0f;
+
 
     void Awake()
     {
@@ -66,6 +68,31 @@ public class MelodyObject : MonoBehaviour
         // when using beat infos
         // beatOffset = i * delta;
     }
+
+    private void Update()
+    {
+        //BATON
+        //Needs a condition for 'in contact'
+        /*
+        if (inContact)
+        {
+            Debug.Log("WTF" + windowStatus);
+            completion += Time.deltaTime / (MasterLoop.loopTime);
+            AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+            AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+        }
+        else
+        {
+            if (completion != 0)
+            {
+                completion = 0;
+                AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+                AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+            }
+        }
+        */
+    }
+
 
     public void NewLoop()
     {

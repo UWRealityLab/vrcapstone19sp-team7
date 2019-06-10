@@ -8,6 +8,7 @@ public class HarmonyHand : MonoBehaviour
 
 	public GameObject leftHand;
     public GameObject rightHand;
+    public bool isRight = true;
     public bool unlocked;
     public bool hidden;
     private void Awake()
@@ -27,7 +28,13 @@ public class HarmonyHand : MonoBehaviour
         {
             //GetComponent<Renderer>().material.color = Color.HSVToRGB(transform.localPosition.y % 1f, .3f, 1f);
             Vector3 newPos = transform.position;
-            newPos.y = rightHand.transform.position.y;
+            if (isRight)
+            {
+                newPos.y = rightHand.transform.position.y;
+            } else
+            {
+                newPos.y = leftHand.transform.position.y;
+            }
             transform.position = newPos;
         }
 	}

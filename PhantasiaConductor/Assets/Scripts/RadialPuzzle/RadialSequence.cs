@@ -57,6 +57,7 @@ public class RadialSequence : MonoBehaviour
     private float delay;
 
     private float prevTime;
+    private Haptics haptics;
 
     // Start is called before the first frame update
     void Awake()
@@ -66,6 +67,7 @@ public class RadialSequence : MonoBehaviour
         totalObjectsToCatch = spawnDegrees.Length;
 
         transform.position = originTransform.position;
+        haptics = transform.Find("/Haptics").GetComponent<Haptics>();
     }
 
     private void Update()
@@ -161,11 +163,20 @@ public class RadialSequence : MonoBehaviour
         }
     }
     
-    public void ObjectCaught(int groupId)
+    public void ObjectCaught(int groupId, bool rightHand)
     {
         objectsCaughtByGroupId[groupId]++;
         int objectsCaught = objectsCaughtByGroupId[groupId];
         onObjectCaught.Invoke();
+
+        // haptics
+        if (rightHand)
+        {
+            haptics.PulseRight();
+        } else
+        {
+            haptics.PulseLeft();
+        }
         // Debug.Log("objects caught" + objectsCaught);
         Baton baton = AgnosticHand.GetRightBaton();
         baton.SetCompletion((float)objectsCaught / totalObjectsToCatch , 1.0f);

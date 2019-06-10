@@ -22,8 +22,9 @@ public class Baton : MonoBehaviour
     {
         if (other != null)
         {
+            Debug.Log("CCCC: " + completion);
         	audio.pitch = 1.5f + (1.5f * completion);
-	    	audio.volume = .08f;
+	    	audio.volume = .1f;
 	    	CancelInvoke();
 			Invoke("VolumeDown", .1f);
             other.SetCompletion(completion, time);

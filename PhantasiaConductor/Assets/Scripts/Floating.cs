@@ -5,9 +5,9 @@ public class Floating : MonoBehaviour
 {
     // Effect to float up/down with spinning
 
-    public float degPerSecond = 10.0f;
-    public float amp = 0.5f;
-    public float freq = 1f;
+    public float degPerSecond = 1.0f;
+    public float amp = 0.1f;
+    public float freq = .1f;
 
     // Position Storage Variables
     Vector3 posOffset = new Vector3();
@@ -40,9 +40,9 @@ public class Floating : MonoBehaviour
         }
         else
         {
-            amp = 0.5f;
-            degPerSecond = 10.0f;
-            freq = 0.5f;
+            degPerSecond = 0f;
+            amp = 0.25f;
+            freq = .25f;
         }
 
     }

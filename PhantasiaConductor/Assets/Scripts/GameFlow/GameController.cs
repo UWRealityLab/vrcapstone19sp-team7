@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     public GameObject[] puzzleOrder;
     public int[] numActive;
     public GameObject[] fadeObjects;
-
+    public bool debugMode = false;
     public GameObject podiumPosition;
     public float returnDelay;
     public float fadeDelay;
@@ -23,6 +23,12 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         fade = GetComponent<Fade>();
+        if (debugMode) {
+            for (int i = 0; i < numActive.Length; i++)
+            {
+                numActive[i] = numActive.Length;
+            }
+        }
     }
 
     private void Start()
@@ -32,7 +38,10 @@ public class GameController : MonoBehaviour
         for (int i = puzzleIndex; i < numActive[activeIndex]; i++)
         {
             puzzleOrder[i].SetActive(true);
-            puzzleIndex++;
+            if (!debugMode)
+            {
+                puzzleIndex++;
+            }
         }
         activeIndex++;
     }
@@ -48,7 +57,10 @@ public class GameController : MonoBehaviour
             for (int i = 0; i < numActive[activeIndex]; i++)
             {
                 puzzleOrder[puzzleIndex].SetActive(true);
-                puzzleIndex++;
+                if (!debugMode)
+                {
+                    puzzleIndex++;
+                }
             }
             activeIndex++;
         }

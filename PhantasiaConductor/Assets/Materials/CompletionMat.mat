@@ -80,5 +80,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.1228, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LockColor: {r: 0.745283, g: 0.08085619, b: 0.43340904, a: 0.5882353}
-    - _UnlockColor: {r: 0.9056604, g: 0.70867926, b: 0.10679956, a: 1}
+    - _LockColor: {r: 1, g: 1, b: 1, a: 1}
+    - _UnlockColor: {r: 1, g: 0, b: 0.004170418, a: 1}

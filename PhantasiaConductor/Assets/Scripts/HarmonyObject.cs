@@ -38,6 +38,7 @@ public class HarmonyObject : MonoBehaviour
     private float prevTime;
     private float delay;
     private bool prevMoving;
+    private Haptics haptics;
 
 	void Awake()
 	{
@@ -51,13 +52,13 @@ public class HarmonyObject : MonoBehaviour
         fade = GetComponent<Fade>();
         rend = GetComponent<Renderer>();
         cd = FindObjectOfType<CountDown>();
+        haptics = transform.Find("/Haptics").GetComponent<Haptics>();
 	}
 
     private void OnEnable()
     {
         fade.FadeIn(gameObject);
     }
-
 
     // Update is called once per frame
     void Update()
@@ -66,12 +67,21 @@ public class HarmonyObject : MonoBehaviour
         if (inContact)
         {
             completion += Time.deltaTime / (MasterLoop.loopTime - cheatTime);
+            AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+            AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+            // haptics.PulseLeft();
+            // haptics.PulseRight();
         } else
         {
-            completion = 0;
+            if (completion != 0)
+            {
+                completion = 0;
+                AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+                AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+            }
+            
         }
-        AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
-        AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+        
 
         //COLOR
         Color color;
@@ -174,6 +184,7 @@ public class HarmonyObject : MonoBehaviour
 	{
 		GetComponent<Collider>().enabled = false;
 	  	loopSource.volume = 1;
+        inContact = false;
         unlocked = true;
 	  	onUnlock.Invoke();
 	}
