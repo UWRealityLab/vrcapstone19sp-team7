@@ -244,8 +244,6 @@ public class OVRPlayerControllerP : MonoBehaviour
 		}
 
 		CameraHeight = CameraRig.centerEyeAnchor.localPosition.y;
-		// PJ was here
-		CameraHeight += 0.5f;
 
 		if (CameraUpdated != null)
 		{
