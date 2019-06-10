@@ -1237,7 +1237,7 @@ MonoBehaviour:
   - {fileID: 1144734736}
   - {fileID: 885904890}
   - {fileID: 629141023}
-  numActive: 04000000010000000100000001000000
+  numActive: 01000000010000000100000001000000
   fadeObjects:
   - {fileID: 1560075252}
   - {fileID: 1612164980}
@@ -6238,8 +6238,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ae785f18e6722e549b8072a5f7c8c68a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
-  m_Pitch: 1
+  m_Volume: 0.025
+  m_Pitch: 0.7
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -12848,6 +12848,11 @@ PrefabInstance:
       propertyPath: originTransform
       value: 
       objectReference: {fileID: 1144734742}
+    - target: {fileID: 1358709088400938364, guid: 32cb8fe44c69fb74d9ed012c42e69438,
+        type: 3}
+      propertyPath: spawnHeight
+      value: 51.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7743513899671810457, guid: 32cb8fe44c69fb74d9ed012c42e69438,
         type: 3}
       propertyPath: originTransform
@@ -12876,7 +12881,7 @@ PrefabInstance:
     - target: {fileID: 4817026562531860698, guid: 32cb8fe44c69fb74d9ed012c42e69438,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 46.5
       objectReference: {fileID: 0}
     - target: {fileID: 4817026562531860698, guid: 32cb8fe44c69fb74d9ed012c42e69438,
         type: 3}
@@ -14059,7 +14064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &2143290450
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14070,7 +14075,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7dbbaa37e70aa234abb58cd5618ef82d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1ad8cd339b69f96408a2a80bd551e9c4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.384
   m_Pitch: 1
