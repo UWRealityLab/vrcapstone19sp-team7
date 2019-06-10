@@ -98,15 +98,15 @@ public class MelodyObject : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
+            if (!fantasiaOn)
+            {
+                loopSource.Play();
+            }
             // just keep looping if unlocked
             if (unlocked)
             {
                 pathBeat.Invoke("ResetPosition", beatOffset);
                 pathBeat.moving = true;
-                if (!fantasiaOn)
-                {
-                    loopSource.Play();
-                }
             }
             else
             {
@@ -158,7 +158,6 @@ public class MelodyObject : MonoBehaviour
     {
         unlocked = true;
         rend.material = unlockedMat;
-        // loopSource.Play();
     }
 
     public void ObjectFailed()
