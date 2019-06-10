@@ -6,16 +6,16 @@ using Valve.VR;
 
 public class Haptics : MonoBehaviour
 {
-    #if UNITY_EDITOR
     public SteamVR_Action_Vibration hapticAction;
-    void Start() {
+    void Start()
+    {
         Debug.Log("Hello Windows Haptics");
     }
 
     public void PulseLeft()
     {
         hapticAction.Execute(0, 1, 150, 75, SteamVR_Input_Sources.LeftHand);
-        
+
     }
 
     public void PulseRight()
@@ -24,7 +24,8 @@ public class Haptics : MonoBehaviour
 
     }
 
-    public void sweepHandRight() {
+    public void sweepHandRight()
+    {
         //hapticAction.Execute(0, 1, 75, 75, SteamVR_Input_Sources.RightHand);
         //hapticAction.Execute(0, 0.5f, 100, 75, SteamVR_Input_Sources.RightHand);
         hapticAction.Execute(0, 1, 125, 60, SteamVR_Input_Sources.RightHand);
@@ -32,38 +33,46 @@ public class Haptics : MonoBehaviour
 
 
     }
-    public void sweepHandLeft() {
+    public void sweepHandLeft()
+    {
         //hapticAction.Execute(0, 1, 75, 20, SteamVR_Input_Sources.LeftHand);
         //hapticAction.Execute(0, 0.5f, 100, 40, SteamVR_Input_Sources.LeftHand);
         hapticAction.Execute(0, 1, 125, 60, SteamVR_Input_Sources.LeftHand);
         hapticAction.Execute(0, 1, 150, 75, SteamVR_Input_Sources.LeftHand);
-
-    }
-    #elif UNITY_ANDROID
-    void Start() {
-        Debug.Log("Hello Android");
     }
 
-    public void PulseLeft() {
-        // OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.RTouch);
-        // yield WaitForSeconds()
-    }
+    // void Start()
+    // {
+    //     Debug.Log("Hello Android");
+    // }
 
-    public void PulseRight() {
+    // public IEnumerator PulseLeft()
+    // {
+    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.LTouch);
+    //     yield return new WaitForSeconds(1.0f);
+    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+    // }
 
-    }
+    // public IEnumerator PulseRight()
+    // {
+    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.RTouch);
+    //     yield return new WaitForSeconds(1.0f);
+    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    // }
 
-    public void sweepHandRight() {
+    // public IEnumerator sweepHandRight()
+    // {
+    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.RTouch);
+    //     yield return new WaitForSeconds(1.0f);
+    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    // }
 
-    }
+    // public IEnumerator sweepHandLeft()
+    // {
+    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.LTouch);
+    //     yield return new WaitForSeconds(1.0f);
+    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+    // }
 
-    public void sweepHandLeft() {
-        
-    }
-    #else
-    void Start() {
-        Debug.Log("Unrecognized platform, check Haptics.cs");
-    }
-    #endif
-    
+
 }
