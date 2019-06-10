@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5206375682768712625}
   - component: {fileID: 833810007398548881}
   - component: {fileID: 1386866001616996267}
+  - component: {fileID: 1193163830354324686}
   m_Layer: 0
   m_Name: ThrowObj
   m_TagString: Untagged
@@ -122,3 +123,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3472724, y: 0.44943976, z: 2.2323892}
   m_Center: {x: -0.00000023841858, y: -0.00041776896, z: 0.117841244}
+--- !u!114 &1193163830354324686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206375682768712628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9044e9b4e2fb0d0479b03c318739888e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 5
