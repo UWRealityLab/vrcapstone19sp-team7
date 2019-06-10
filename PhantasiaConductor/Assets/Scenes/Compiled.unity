@@ -1237,7 +1237,7 @@ MonoBehaviour:
   - {fileID: 1144734736}
   - {fileID: 885904890}
   - {fileID: 629141023}
-  numActive: 01000000010000000100000001000000
+  numActive: 04000000010000000100000001000000
   fadeObjects:
   - {fileID: 1560075252}
   - {fileID: 1612164980}
@@ -6238,7 +6238,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ae785f18e6722e549b8072a5f7c8c68a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12089,6 +12089,9 @@ MonoBehaviour:
   darkCanvas: {fileID: 301627407}
   countdown: {fileID: 580448354}
   controller: {fileID: 130850544}
+  rhythm: {fileID: 0}
+  trig: 0
+  cSwitch: 0
 --- !u!1 &1714741406 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3854365218549340889, guid: 3a61011b4efb1ac498b2246be0ad6192,
@@ -12864,7 +12867,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0e0797d83b143ac48a628053e1a4fde7, type: 3}
+      objectReference: {fileID: 8300000, guid: d6815a992c5a32544a6a7d8199891f9d, type: 3}
     - target: {fileID: 4817026562531860698, guid: 32cb8fe44c69fb74d9ed012c42e69438,
         type: 3}
       propertyPath: m_LocalPosition.x
