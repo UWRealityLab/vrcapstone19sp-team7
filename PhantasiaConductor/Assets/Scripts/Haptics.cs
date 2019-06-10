@@ -46,32 +46,32 @@ public class Haptics : MonoBehaviour
     //     Debug.Log("Hello Android");
     // }
 
-    // public IEnumerator PulseLeft()
+    // public void PulseLeft()
     // {
-    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.LTouch);
-    //     yield return new WaitForSeconds(1.0f);
-    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.LTouch);
+    //     // yield return new WaitForSeconds(1.0f);
+    //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
     // }
 
-    // public IEnumerator PulseRight()
+    // public void PulseRight()
     // {
-    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.RTouch);
-    //     yield return new WaitForSeconds(1.0f);
-    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.RTouch);
+    //     // yield return new WaitForSeconds(1.0f);
+    //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
     // }
 
-    // public IEnumerator sweepHandRight()
+    // public void sweepHandRight()
     // {
-    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.RTouch);
-    //     yield return new WaitForSeconds(1.0f);
-    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.RTouch);
+    //     // yield return new WaitForSeconds(1.0f);
+    //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
     // }
 
-    // public IEnumerator sweepHandLeft()
+    // public void sweepHandLeft()
     // {
-    //     OVRInput.SetControllerVibration(0.5f, 0.5f, OVRInput.Controller.LTouch);
-    //     yield return new WaitForSeconds(1.0f);
-    //     OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.LTouch);
+    //     // yield return new WaitForSeconds(1.0f);
+    //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
     // }
 
 
