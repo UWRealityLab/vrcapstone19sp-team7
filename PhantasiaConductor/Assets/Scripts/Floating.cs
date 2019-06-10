@@ -41,8 +41,8 @@ public class Floating : MonoBehaviour
         else
         {
             degPerSecond = 0f;
-            amp = 0.2f;
-            freq = .2f;
+            amp = 0.25f;
+            freq = .25f;
         }
 
     }
