@@ -42,22 +42,50 @@ public class AgnosticHand : MonoBehaviour
             else
             {
                 leftBaton = baton;
-          }
+            }
         }
     }
+
 
     public Baton GetBaton()
     {
         return baton;
     }
 
-    public static Baton GetRightBaton() {
+    private Valve.VR.SteamVR_Action_Boolean pinchAction = Valve.VR.SteamVR_Input.GetAction<Valve.VR.SteamVR_Action_Boolean>("GrabPinch");
+    public bool TriggerDown()
+    {
+        Valve.VR.SteamVR_Input_Sources handType = steamHand.GetComponent<Valve.VR.InteractionSystem.Hand>().handType;
+        return pinchAction.GetStateDown(handType);
+    }
+
+    public bool TriggerUp()
+    {
+        Valve.VR.SteamVR_Input_Sources handType = steamHand.GetComponent<Valve.VR.InteractionSystem.Hand>().handType;
+        return pinchAction.GetStateUp(handType);
+    }
+
+    // public bool TriggerDown() {
+    //     // OVRInput.GetDown();
+    //     return false;
+    // }
+
+    public static Baton GetRightBaton()
+    {
         return rightBaton;
     }
 
-    public static Baton GetLeftBaton() {
+    public static Baton GetLeftBaton()
+    {
         return leftBaton;
     }
 
+    void Update()
+    {
+        if (TriggerDown())
+        {
+            Debug.Log("trigger down" + isRight);
+        }
+    }
 
 }
