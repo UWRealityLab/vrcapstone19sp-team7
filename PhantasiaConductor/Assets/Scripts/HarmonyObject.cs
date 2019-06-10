@@ -58,20 +58,27 @@ public class HarmonyObject : MonoBehaviour
         fade.FadeIn(gameObject);
     }
 
-
     // Update is called once per frame
     void Update()
 	{
         //BATON
         if (inContact)
         {
+            Debug.Log("WTF" + inContact);
             completion += Time.deltaTime / (MasterLoop.loopTime - cheatTime);
+            AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+            AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
         } else
         {
-            completion = 0;
+            if (completion != 0)
+            {
+                completion = 0;
+                AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+                AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+            }
+            
         }
-        AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
-        AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+        
 
         //COLOR
         Color color;
@@ -174,6 +181,7 @@ public class HarmonyObject : MonoBehaviour
 	{
 		GetComponent<Collider>().enabled = false;
 	  	loopSource.volume = 1;
+        inContact = false;
         unlocked = true;
 	  	onUnlock.Invoke();
 	}
