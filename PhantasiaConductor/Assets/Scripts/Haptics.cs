@@ -48,31 +48,48 @@ public class Haptics : MonoBehaviour
 
     // public void PulseLeft()
     // {
-    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.LTouch);
+    //     CancelInvoke("EndLeft");
+    //     OVRInput.SetControllerVibration(.46f, 1.0f, OVRInput.Controller.LTouch);
     //     // yield return new WaitForSeconds(1.0f);
     //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+    //     Invoke("EndLeft", 1.0f);
     // }
 
     // public void PulseRight()
     // {
-    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.RTouch);
+    //     CancelInvoke("EndRight");
+    //     OVRInput.SetControllerVibration(.46f, 1.0f, OVRInput.Controller.RTouch);
     //     // yield return new WaitForSeconds(1.0f);
     //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    //     Invoke("EndRight", 1.0f);
     // }
 
     // public void sweepHandRight()
     // {
-    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.RTouch);
+    //     CancelInvoke("EndRight");
+    //     OVRInput.SetControllerVibration(.46f, 1.0f, OVRInput.Controller.RTouch);
     //     // yield return new WaitForSeconds(1.0f);
     //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+    //     Invoke("EndRight", 1.0f);
     // }
 
     // public void sweepHandLeft()
     // {
-    //     OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.LTouch);
+    //     CancelInvoke("EndLeft");
+    //     OVRInput.SetControllerVibration(.46f, 1.0f, OVRInput.Controller.LTouch);
+    //     Invoke("EndLeft", 1.0f);
     //     // yield return new WaitForSeconds(1.0f);
     //     // OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
     // }
 
+    // void EndLeft()
+    // {
+    //     OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.LTouch);
+    // }
+
+    // void EndRight()
+    // {
+    //     OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch);
+    // }
 
 }
