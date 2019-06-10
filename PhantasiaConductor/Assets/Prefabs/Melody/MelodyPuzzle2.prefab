@@ -369,6 +369,31 @@ PrefabInstance:
       propertyPath: onSuccessful.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onBegan.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onBegan.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onBegan.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onFailed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177176734528258501, guid: a36086cfcc2d9674a87fc43fc2083fb1,
+        type: 3}
+      propertyPath: onFailed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7177176734528258500, guid: a36086cfcc2d9674a87fc43fc2083fb1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
