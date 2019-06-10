@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 
+
 public class Haptics : MonoBehaviour
 {
     #if UNITY_EDITOR
@@ -44,7 +45,8 @@ public class Haptics : MonoBehaviour
     }
 
     public void PulseLeft() {
-
+        // OVRInput.SetControllerVibration(1.0f, 1.0f, OVRInput.Controller.RTouch);
+        // yield WaitForSeconds()
     }
 
     public void PulseRight() {

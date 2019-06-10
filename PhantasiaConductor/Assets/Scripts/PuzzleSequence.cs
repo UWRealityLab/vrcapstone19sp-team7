@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Valve.VR.InteractionSystem
-{
     public class PuzzleSequence : MonoBehaviour
     {
 
@@ -12,7 +10,7 @@ namespace Valve.VR.InteractionSystem
         private AudioSource winSource;
         public AudioClip winClip;
         public int cheat = 0;
-        public int currentPuzzle;
+        private int currentPuzzle;
         public bool handColliders;
         public bool isRhythm;
         public bool isMelody;
@@ -141,6 +139,4 @@ namespace Valve.VR.InteractionSystem
                 }
             }
         }
-        
-    }	
-}
+    }

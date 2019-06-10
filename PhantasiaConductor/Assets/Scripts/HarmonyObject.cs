@@ -31,6 +31,7 @@ public class HarmonyObject : MonoBehaviour
 	private bool moving = false;
 	private float beatTime;
     private float completion;
+    private CountDown cd;
 
     public bool fantasiaOn = false;
 
@@ -49,6 +50,7 @@ public class HarmonyObject : MonoBehaviour
 		transform.localPosition = new Vector3(0, positionGoal, 0);
         fade = GetComponent<Fade>();
         rend = GetComponent<Renderer>();
+        cd = FindObjectOfType<CountDown>();
 	}
 
     private void OnEnable()
@@ -111,6 +113,12 @@ public class HarmonyObject : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.N)) {
 			Unlock();
 		}
+
+        if(cd.cSwitch == 4 && cd.trig)
+        {
+            Unlock();
+            cd.trig = false;
+        }
 	}
 
 	//runs slightly before each beat, so harmony object can get a head start moving
