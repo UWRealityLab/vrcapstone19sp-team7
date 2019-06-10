@@ -86,16 +86,4 @@ public class AgnosticHand : MonoBehaviour
     {
         return leftBaton;
     }
-
-    void Update()
-    {
-        if (TriggerDown())
-        {
-            Debug.Log("trigger down" + isRight);
-        }
-        if (TriggerUp()) {
-            Debug.Log("trigger up" + isRight);
-        }
-    }
-
 }
