@@ -53,7 +53,7 @@ public class CountDown : MonoBehaviour
 
             }
 
-            controller.SetNextActive();
+            // controller.SetNextActive();
             darkCanvas.enabled = false;
             timeLeft = 5;
 

@@ -69,30 +69,6 @@ public class MelodyObject : MonoBehaviour
         // beatOffset = i * delta;
     }
 
-    private void Update()
-    {
-        //BATON
-        //Needs a condition for 'in contact'
-        /*
-        if (inContact)
-        {
-            Debug.Log("WTF" + windowStatus);
-            completion += Time.deltaTime / (MasterLoop.loopTime);
-            AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
-            AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
-        }
-        else
-        {
-            if (completion != 0)
-            {
-                completion = 0;
-                AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
-                AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
-            }
-        }
-        */
-    }
-
 
     public void NewLoop()
     {

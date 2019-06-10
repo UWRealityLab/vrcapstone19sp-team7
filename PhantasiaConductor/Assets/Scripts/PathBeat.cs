@@ -95,6 +95,9 @@ public class PathBeat : MonoBehaviour
 
         if (!moving)
         {
+            // BATON
+            AgnosticHand.GetRightBaton().SetCompletion(0, 0);
+
             return;
         }
         if (canMoveForward)
@@ -114,7 +117,9 @@ public class PathBeat : MonoBehaviour
             }
 
             float completion = timeElapsed / t;
-            // Debug.Log("completion" + completion + "time elapsed" + timeElapsed + " t" + t);
+
+            // BATON
+            AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
 
             v = Vector3.Lerp(lineRenderer.GetPosition(index),
                              lineRenderer.GetPosition(index + 1),
