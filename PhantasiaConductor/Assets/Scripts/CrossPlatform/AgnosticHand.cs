@@ -66,8 +66,15 @@ public class AgnosticHand : MonoBehaviour
     }
 
     // public bool TriggerDown() {
-    //     // OVRInput.GetDown();
-    //     return false;
+    //     OVRGrabber grabber = oculusHand.GetComponent<OVRGrabber>();
+    //     OVRInput.Controller controller = isRight ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
+    //     return OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controller);
+    // }
+
+    // public bool TriggerUp() {
+    //     OVRGrabber grabber = oculusHand.GetComponent<OVRGrabber>();
+    //     OVRInput.Controller controller = isRight ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
+    //     return OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, controller);
     // }
 
     public static Baton GetRightBaton()
@@ -85,6 +92,9 @@ public class AgnosticHand : MonoBehaviour
         if (TriggerDown())
         {
             Debug.Log("trigger down" + isRight);
+        }
+        if (TriggerUp()) {
+            Debug.Log("trigger up" + isRight);
         }
     }
 
