@@ -92,11 +92,19 @@ public class Hittable : MonoBehaviour
         }
     }
 
-    void OnTracked()
+    void OnTracked(int hand) // 0 = right , 1 = left, andything else = none 
     {
         if (canInteract)
         {
             onTracked.Invoke();
+            if (hand == 0)
+            {
+                haptics.GetComponent<Haptics>().PulseRight();
+            } 
+            if (hand == 1)
+            {
+                haptics.GetComponent<Haptics>().PulseLeft();
+            }
         }
     }
 

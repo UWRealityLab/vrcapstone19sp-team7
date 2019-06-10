@@ -36,7 +36,7 @@ public class FantasiaController : MonoBehaviour
     private TempoController tempo;
     private float normal = 56.0f; // song length
     private float measureTime;
-    private float beatTIme;
+    private float beatTime;
     private float prevMeasureTime;
 
     // For pausing and restarting
@@ -66,8 +66,8 @@ public class FantasiaController : MonoBehaviour
         // Set tempo/timing metrics
         measureCount = 0;
         measureTime = normal / 28.0f;
-        beatTIme = measureTime / 4.0f;
-        // MasterLoop.loopTime = beatTIme * 8;
+        beatTime = measureTime / 4.0f;
+        // MasterLoop.loopTime = beatTime * 8;
 
         GetComponent<AudioSource>().Play();
         prevMeasureTime = Time.time;

@@ -113,7 +113,12 @@ public class RadialObject : MonoBehaviour
 
 
                 onSuccess.Invoke();
-                ownerSequence.ObjectCaught(groupId);
+                bool right = true;
+                if (collider.gameObject.tag == "LeftNet")
+                {
+                    right = false;
+                }
+                ownerSequence.ObjectCaught(groupId, right);
                 Destroy(gameObject);
                 hasBeenCaught = true;
             }

@@ -38,6 +38,7 @@ public class HarmonyObject : MonoBehaviour
     private float prevTime;
     private float delay;
     private bool prevMoving;
+    private Haptics haptics;
 
 	void Awake()
 	{
@@ -51,6 +52,7 @@ public class HarmonyObject : MonoBehaviour
         fade = GetComponent<Fade>();
         rend = GetComponent<Renderer>();
         cd = FindObjectOfType<CountDown>();
+        haptics = transform.Find("/Haptics").GetComponent<Haptics>();
 	}
 
     private void OnEnable()
@@ -64,10 +66,11 @@ public class HarmonyObject : MonoBehaviour
         //BATON
         if (inContact)
         {
-            Debug.Log("WTF" + inContact);
             completion += Time.deltaTime / (MasterLoop.loopTime - cheatTime);
             AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
             AgnosticHand.GetLeftBaton().SetCompletion(completion, 0);
+            // haptics.PulseLeft();
+            // haptics.PulseRight();
         } else
         {
             if (completion != 0)
