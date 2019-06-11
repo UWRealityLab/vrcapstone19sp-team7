@@ -14,11 +14,8 @@ TagManager:
   - BeatWall
   - RightNet
   - LeftNet
-  - RhythmCanvas
-  - MelodyCanvas
-  - BassCanvas
-  - HarmonyCanvas
   - radial
+  - OVRCanvas
   layers:
   - Default
   - TransparentFX

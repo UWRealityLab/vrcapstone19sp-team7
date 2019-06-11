@@ -9,9 +9,17 @@ public class CountDown : MonoBehaviour
     public Canvas darkCanvas;
     public Text countdown;
     public GameController controller;
-    public GameObject rhythm;
+    
     public bool trig = false;
     public int cSwitch = 0;
+
+    private void Awake()
+    {
+        if (GameObject.FindObjectOfType<OVRPlayerController>().enabled)
+        {
+            darkCanvas = GameObject.FindObjectOfType<OVRPlayerController>().GetComponent<Canvas>();
+        }
+    }
     void OnEnable()
     {
         Invoke("Dim", 0);
@@ -44,12 +52,12 @@ public class CountDown : MonoBehaviour
                     break;
 
                 case 2:
-                    //GameObject.FindGameObjectWithTag("radial").GetComponent<RadialSequence>().onSuccess.Invoke();
                     trig = true;
                     Debug.Log("bass skip " + cSwitch);
                     break;
 
                 case 3:
+                    trig = true;
                     Debug.Log("melody skip " + cSwitch);
                     break;
 
