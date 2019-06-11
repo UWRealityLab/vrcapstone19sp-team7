@@ -23,7 +23,7 @@ public class UnlockAction : MonoBehaviour
 	void Update()
 	{
 		if (inCenter) {
-            y += Time.deltaTime;
+            y += Time.deltaTime * ((rotationSpeed * 360) / MasterLoop.loopTime);
         	transform.rotation = Quaternion.Euler(0, y, 0);
 
 			//transform.rotation.y += 1;
@@ -61,8 +61,8 @@ public class UnlockAction : MonoBehaviour
 	public void OnEnable(){
         GameObject center = GameObject.Find("/CenterArea");
         if (moveCenterDown) {
-        	 center.GetComponent<MoveDown>().Move();
-     	  }
+        	 center.GetComponent<MoveDown>().Move(5);
+     	}
         transform.SetParent(center.transform);
 	}
 }
