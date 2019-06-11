@@ -11918,6 +11918,8 @@ MonoBehaviour:
   darkCanvas: {fileID: 301627407}
   countdown: {fileID: 580448354}
   controller: {fileID: 130850544}
+  leftHand: {fileID: 1446758432}
+  righttHand: {fileID: 692980000}
   trig: 0
   cSwitch: 0
 --- !u!4 &1499886835

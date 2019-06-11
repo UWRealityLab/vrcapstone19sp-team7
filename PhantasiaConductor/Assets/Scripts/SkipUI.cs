@@ -7,6 +7,8 @@ public class SkipUI : MonoBehaviour
     public float holdTime = 3f;
     public CountDown counter;
     private float holdTimer = 0f;
+    public AgnosticHand leftHand;
+    public AgnosticHand righttHand;
 
     private void Awake()
     {
@@ -16,7 +18,7 @@ public class SkipUI : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.Space))
+        if (leftHand.IsTriggerDown() || righttHand.IsTriggerDown())
         {
             holdTimer += Time.deltaTime;
 
@@ -27,7 +29,7 @@ public class SkipUI : MonoBehaviour
                 holdTimer = 0f;
             }
         }
-        if (!Input.GetKey(KeyCode.Space))
+        if (!(leftHand.IsTriggerDown() || righttHand.IsTriggerDown()))
         {
             holdTimer = 0f;
         }
