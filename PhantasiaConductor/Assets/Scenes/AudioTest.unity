@@ -603,7 +603,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d05930a8f9567ee4aaac5a50b22c11e7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 022603d0ff6282642b7e9e5217790431, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -927,6 +927,11 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 500892067}
+    - target: {fileID: 3913596181071325279, guid: e270c8974f5391a489d349cf22569143,
+        type: 3}
+      propertyPath: refreshRate
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e270c8974f5391a489d349cf22569143, type: 3}
 --- !u!1 &1302675985
