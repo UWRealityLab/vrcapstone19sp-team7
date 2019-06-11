@@ -1188,7 +1188,7 @@ MonoBehaviour:
   - {fileID: 1486572152}
   - {fileID: 1544448473}
   - {fileID: 1701858832}
-  debugMode: 1
+  debugMode: 0
   podiumPosition: {fileID: 367740096}
   returnDelay: 3
   fadeDelay: 2
@@ -15188,7 +15188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &2143290450
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15196,7 +15196,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143290449}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1ad8cd339b69f96408a2a80bd551e9c4, type: 3}
