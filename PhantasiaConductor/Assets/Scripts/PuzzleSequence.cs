@@ -8,7 +8,6 @@ using UnityEngine.Events;
 
         public GameObject[] puzzles;
         private AudioSource winSource;
-        public AudioClip winClip;
         public int cheat = 0;
         private int currentPuzzle;
         public bool handColliders;
@@ -39,7 +38,6 @@ using UnityEngine.Events;
 
             loopSource = GetComponent<AudioSource>();
             winSource = GameObject.Find("/Sounds/Chimes").GetComponent<AudioSource>();
-            winSource.clip = winClip;
             currentPuzzle = 0;
             puzzles[0].SetActive(true);
             for (int i = 0; i < puzzles.Length; i++)

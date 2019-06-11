@@ -14,7 +14,7 @@ public class RadialObject : MonoBehaviour
     public float lifetime = 4f;
 
     public float fallSpeed = 1.0f;
-    public bool twoHandMode = false;
+    public bool twoHandMode = true;
 
     public GameObject particleSystemPrefab;
 
