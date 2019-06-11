@@ -38,22 +38,26 @@ public class CountDown : MonoBehaviour
             {
                 case 1:
                     trig = true;
+                    Debug.Log("rhythm skip " + cSwitch);
                     break;
 
                 case 2:
-                    FindObjectOfType<RadialSequence>().onSuccess.Invoke();
+                    GameObject.FindGameObjectWithTag("radial").GetComponent<RadialSequence>().onSuccess.Invoke();
+                    Debug.Log("bass skip " + cSwitch);
                     break;
 
                 case 3:
+                    Debug.Log("melody skip " + cSwitch);
                     break;
 
                 case 4:
                     trig = true;
+                    Debug.Log("harmony skip " + cSwitch);
                     break;
 
             }
 
-            // controller.SetNextActive();
+            controller.SetNextActive();
             darkCanvas.enabled = false;
             timeLeft = 5;
 

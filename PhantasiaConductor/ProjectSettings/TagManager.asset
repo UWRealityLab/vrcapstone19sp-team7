@@ -18,6 +18,7 @@ TagManager:
   - MelodyCanvas
   - BassCanvas
   - HarmonyCanvas
+  - radial
   layers:
   - Default
   - TransparentFX

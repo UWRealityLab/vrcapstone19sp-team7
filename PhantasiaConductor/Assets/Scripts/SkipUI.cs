@@ -20,14 +20,14 @@ public class SkipUI : MonoBehaviour
             if (holdTimer > holdTime)
             {
                 Debug.Log(holdTimer);
-                cd.enabled = true;
+                cd.GetComponent<CountDown>().enabled = true;
                 Invoke("Reset", 5.5f);
             }
         }
     }
     private void Reset()
     {
-        cd.enabled = false;
+        cd.GetComponent<CountDown>().enabled = false;
         holdTimer = 0f;
     }
 }
