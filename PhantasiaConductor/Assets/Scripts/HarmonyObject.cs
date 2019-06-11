@@ -92,13 +92,9 @@ public class HarmonyObject : MonoBehaviour
             color = Color.HSVToRGB(0, 0, 1);
 		}
         if (!fade.done) {
-            if (unlocked)
-            {
-                color.a = .55f;
-            } else
-            {
-                color.a = .85f;
-            }
+            
+            color.a = .65f;
+            
         } else {
             color.a = initialA;
         }
