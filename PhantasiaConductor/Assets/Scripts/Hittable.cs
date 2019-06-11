@@ -48,6 +48,11 @@ public class Hittable : MonoBehaviour
                 counter.trig = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Unlock();
+        }
     }
 
     void OnTriggerEnter(Collider other)
