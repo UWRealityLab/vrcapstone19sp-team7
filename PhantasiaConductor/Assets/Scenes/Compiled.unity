@@ -8000,6 +8000,10 @@ PrefabInstance:
       propertyPath: useRecommendedMSAALevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: _trackingOriginType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -8177,7 +8181,7 @@ MonoBehaviour:
   HmdResetsY: 0
   HmdRotatesY: 0
   GravityModifier: 0
-  useProfileData: 0
+  useProfileData: 1
   EnableLinearMovement: 0
   EnableRotation: 0
   RotationEitherThumbstick: 0
