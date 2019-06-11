@@ -46,6 +46,8 @@ public class PathBeat : MonoBehaviour
     private bool prevMoving;
 
     float timeElapsed;
+    float completionBaton;
+    public float timeElapsedBaton;
     int index;
 
     bool isMoving = false;
@@ -83,6 +85,7 @@ public class PathBeat : MonoBehaviour
         {
             Begin();
         }
+        completionBaton = 0;
     }
 
     void Update()
@@ -96,7 +99,11 @@ public class PathBeat : MonoBehaviour
         if (!moving)
         {
             // BATON
-            AgnosticHand.GetRightBaton().SetCompletion(0, 0);
+            if (completionBaton != 0)
+            {
+                completionBaton = 0;
+                AgnosticHand.GetRightBaton().SetCompletion(completionBaton, 0);
+            }
 
             return;
         }
@@ -119,7 +126,11 @@ public class PathBeat : MonoBehaviour
             float completion = timeElapsed / t;
 
             // BATON
-            AgnosticHand.GetRightBaton().SetCompletion(completion, 0);
+            completionBaton = timeElapsedBaton / 4.0f;
+            if (!hasSuccessfullyCompleted)
+            {
+                AgnosticHand.GetRightBaton().SetCompletion(completionBaton, 0);
+            }
 
             v = Vector3.Lerp(lineRenderer.GetPosition(index),
                              lineRenderer.GetPosition(index + 1),
@@ -155,6 +166,7 @@ public class PathBeat : MonoBehaviour
             }
 
             timeElapsed += Time.deltaTime;
+            timeElapsedBaton += Time.deltaTime;
         }
     }
 
@@ -192,6 +204,7 @@ public class PathBeat : MonoBehaviour
         ResetPosition();
         moving = false;
         hasFailed = false;
+        timeElapsedBaton = 0;
 
         MelodyObject mObj = obj.GetComponent<MelodyObject>();
         mObj.ResetMaterial();
