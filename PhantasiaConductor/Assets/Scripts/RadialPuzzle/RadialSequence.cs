@@ -18,6 +18,7 @@ public class RadialSequence : MonoBehaviour
 
     public float[] spawnDegrees;
 
+    public CountDown counter;
 
     public MasterLoop masterLoop;
 
@@ -62,6 +63,7 @@ public class RadialSequence : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        counter = FindObjectOfType<CountDown>();
 
         // should be same as length of spawnDegrees array
         totalObjectsToCatch = spawnDegrees.Length;
@@ -73,6 +75,11 @@ public class RadialSequence : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
+        {
+            onSuccess.Invoke();
+            complete = true;
+        }
+        if (counter.cSwitch == 2 && counter.trig)
         {
             onSuccess.Invoke();
             complete = true;

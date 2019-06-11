@@ -31,11 +31,14 @@ public class Hittable : MonoBehaviour
     private bool hitFlag;
 
 
-
+    private void Awake()
+    {
+        counter = FindObjectOfType<CountDown>();
+    }
     void Start()
     {
         haptics = GameObject.Find("/Haptics");
-        counter = FindObjectOfType<CountDown>();
+        //counter = FindObjectOfType<CountDown>();
     }
 
     void Update()

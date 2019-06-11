@@ -22,10 +22,12 @@ public class CountDown : MonoBehaviour
     void Update()
     {
         countdown.text = ("Keep holding the trigger to skip puzzle in " + timeLeft);
-        if (Input.GetKey(KeyCode.Backspace) && timeLeft != 0)
+        if (!Input.GetKey(KeyCode.Space))
         {
+            StopCoroutine("LoseTime");
             darkCanvas.enabled = false;
             timeLeft = 5;
+            this.enabled = false;
         }
 
         if (timeLeft == 0)
@@ -42,7 +44,8 @@ public class CountDown : MonoBehaviour
                     break;
 
                 case 2:
-                    GameObject.FindGameObjectWithTag("radial").GetComponent<RadialSequence>().onSuccess.Invoke();
+                    //GameObject.FindGameObjectWithTag("radial").GetComponent<RadialSequence>().onSuccess.Invoke();
+                    trig = true;
                     Debug.Log("bass skip " + cSwitch);
                     break;
 
@@ -57,9 +60,10 @@ public class CountDown : MonoBehaviour
 
             }
 
-            controller.SetNextActive();
+            //controller.SetNextActive();
             darkCanvas.enabled = false;
             timeLeft = 5;
+            this.enabled = false;
 
         }
     }
