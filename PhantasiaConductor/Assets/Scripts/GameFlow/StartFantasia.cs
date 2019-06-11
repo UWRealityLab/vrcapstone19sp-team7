@@ -16,15 +16,15 @@ public class StartFantasia : MonoBehaviour
 
         onFantasiaOn.Invoke();
 
-        yield return new WaitForSeconds(fantasiaStartDelay);
+        // yield return new WaitForSeconds(fantasiaStartDelay);
 
         transitionSound.Play();
 
-        yield return new WaitForSeconds(2.5f);
+        // yield return new WaitForSeconds(2.5f);
 
         GetComponent<FantasiaController>().StartFantasia();
             
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
 
         StartCoroutine(FadeCanvas(instructions.GetComponent<CanvasGroup>(), 1.0f, 0.0f, 1f));
     }
