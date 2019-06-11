@@ -20,10 +20,10 @@ public class UnlockAction : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void FixedUpdate()
+	void Update()
 	{
 		if (inCenter) {
-			y += rotationSpeed;
+            y += Time.deltaTime;
         	transform.rotation = Quaternion.Euler(0, y, 0);
 
 			//transform.rotation.y += 1;
