@@ -30,7 +30,7 @@ public class PathBeat : MonoBehaviour
     public GameObject obj;
 
     public PathMode pathMode = PathMode.SPEED_CONSTANT;
-
+    public CountDown counter;
     // units of movement per sec
     public float speed = 5;
 
@@ -65,6 +65,7 @@ public class PathBeat : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        counter = FindObjectOfType<CountDown>();
     }
 
     void Start()
@@ -94,6 +95,11 @@ public class PathBeat : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
             OnSuccess();
+        }
+        if (counter.trig && counter.cSwitch == 3)
+        {
+            OnSuccess();
+            counter.trig = false;
         }
 
         if (!moving)
