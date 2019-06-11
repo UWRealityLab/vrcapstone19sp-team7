@@ -77,6 +77,13 @@ public class AgnosticHand : MonoBehaviour
     //     return OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controller);
     // }
 
+    // public bool IsTriggerDown()
+    // {
+    //     OVRGrabber grabber = oculusHand.GetComponent<OVRGrabber>();
+    //     OVRInput.Controller controller = isRight ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
+    //     return OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, controller);
+    // }
+
     // public bool TriggerUp() {
     //     OVRGrabber grabber = oculusHand.GetComponent<OVRGrabber>();
     //     OVRInput.Controller controller = isRight ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
