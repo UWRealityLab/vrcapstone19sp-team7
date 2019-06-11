@@ -9,7 +9,9 @@ public class CountDown : MonoBehaviour
     public Canvas darkCanvas;
     public Text countdown;
     public GameController controller;
-    
+    public AgnosticHand leftHand;
+    public AgnosticHand righttHand;
+
     public bool trig = false;
     public int cSwitch = 0;
 
@@ -30,7 +32,7 @@ public class CountDown : MonoBehaviour
     void Update()
     {
         countdown.text = ("Keep holding the trigger to skip puzzle in " + timeLeft);
-        if (!Input.GetKey(KeyCode.Space))
+        if (!(leftHand.IsTriggerDown() || righttHand.IsTriggerDown()))
         {
             StopCoroutine("LoseTime");
             darkCanvas.enabled = false;
@@ -38,7 +40,7 @@ public class CountDown : MonoBehaviour
             this.enabled = false;
         }
 
-        if (timeLeft == 0)
+        else if (timeLeft == 0)
         {
             countdown.GetComponent<Text>().enabled = false;
             

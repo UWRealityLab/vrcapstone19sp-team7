@@ -8194,7 +8194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdTime: 3
-  cd: {fileID: 1499886834}
+  counter: {fileID: 0}
+  leftHand: {fileID: 1446758432}
+  righttHand: {fileID: 692980000}
 --- !u!4 &1145275107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd,
@@ -11918,6 +11920,8 @@ MonoBehaviour:
   darkCanvas: {fileID: 301627407}
   countdown: {fileID: 580448354}
   controller: {fileID: 130850544}
+  leftHand: {fileID: 1446758432}
+  righttHand: {fileID: 692980000}
   trig: 0
   cSwitch: 0
 --- !u!4 &1499886835
@@ -13074,7 +13078,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdTime: 3
-  cd: {fileID: 1499886834}
+  counter: {fileID: 0}
+  leftHand: {fileID: 1446758432}
+  righttHand: {fileID: 692980000}
 --- !u!114 &1709879474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3906439871925060509, guid: 8a83454104c6ad54dab6072635c3892b,

@@ -65,6 +65,12 @@ public class AgnosticHand : MonoBehaviour
         return pinchAction.GetStateUp(handType);
     }
 
+    public bool IsTriggerDown()
+    {
+        Valve.VR.SteamVR_Input_Sources handType = steamHand.GetComponent<Valve.VR.InteractionSystem.Hand>().handType;
+        return pinchAction.GetState(handType);
+    }
+
     // public bool TriggerDown() {
     //     OVRGrabber grabber = oculusHand.GetComponent<OVRGrabber>();
     //     OVRInput.Controller controller = isRight ? OVRInput.Controller.RTouch : OVRInput.Controller.LTouch;
