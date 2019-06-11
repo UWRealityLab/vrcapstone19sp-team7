@@ -21,7 +21,8 @@ public class SkipUI : MonoBehaviour
             {
                 Debug.Log(holdTimer);
                 cd.GetComponent<CountDown>().enabled = true;
-                Invoke("Reset", 5.5f);
+                //Invoke("Reset", 5.5f);
+                holdTimer = 0f;
             }
         }
     }
