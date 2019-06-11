@@ -47,7 +47,7 @@ public class PathBeat : MonoBehaviour
 
     float timeElapsed;
     float completionBaton;
-    public float timeElapsedBaton;
+    float timeElapsedBaton;
     int index;
 
     bool isMoving = false;
@@ -126,7 +126,7 @@ public class PathBeat : MonoBehaviour
             float completion = timeElapsed / t;
 
             // BATON
-            completionBaton = timeElapsedBaton / 4.0f;
+            completionBaton =  timeElapsedBaton / 4.0f;
             if (!hasSuccessfullyCompleted)
             {
                 AgnosticHand.GetRightBaton().SetCompletion(completionBaton, 0);
@@ -204,7 +204,6 @@ public class PathBeat : MonoBehaviour
         ResetPosition();
         moving = false;
         hasFailed = false;
-        timeElapsedBaton = 0;
 
         MelodyObject mObj = obj.GetComponent<MelodyObject>();
         mObj.ResetMaterial();
@@ -213,6 +212,7 @@ public class PathBeat : MonoBehaviour
     public void Begin()
     {
         moving = true;
+        timeElapsedBaton = 0;
         onBegan.Invoke();
     }
 
