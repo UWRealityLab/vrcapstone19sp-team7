@@ -840,7 +840,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1075,6 +1075,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4026090742114099901}
     m_Modifications:
+    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
+        type: 3}
+      propertyPath: m_Name
+      value: ParticleSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9052794520737189480, guid: 954515b4678722b4fbf6c0d46debd459,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,16 +1138,6 @@ PrefabInstance:
     - target: {fileID: 9052794520737189480, guid: 954515b4678722b4fbf6c0d46debd459,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
-        type: 3}
-      propertyPath: m_Name
-      value: ParticleSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
