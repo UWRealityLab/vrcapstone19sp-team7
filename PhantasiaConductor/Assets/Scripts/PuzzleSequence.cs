@@ -14,10 +14,10 @@ using UnityEngine.Events;
         public bool handColliders;
         public bool isRhythm;
         public bool isMelody;
-        
+        public bool PlayingLoop = false;
         public GameObject leftHand;
         public GameObject rightHand;
-
+        private AudioSource loopSource;
         
         public UnityEvent onNextPuzzle;
         public UnityEvent onPuzzleComplete;
@@ -36,11 +36,10 @@ using UnityEngine.Events;
                 leftHand.GetComponent<Collider>().enabled = false;
                 rightHand.GetComponent<Collider>().enabled = false;
             }
-            
 
-            winSource = GetComponent<AudioSource>();
+            loopSource = GetComponent<AudioSource>();
+            winSource = GameObject.Find("/Sounds/Chimes").GetComponent<AudioSource>();
             winSource.clip = winClip;
-            winSource.volume = .75f;
             currentPuzzle = 0;
             puzzles[0].SetActive(true);
             for (int i = 0; i < puzzles.Length; i++)
@@ -59,11 +58,14 @@ using UnityEngine.Events;
                 
             } else {
                 onPuzzleComplete.Invoke();
+                TurnOffLoops();
+                PlayingLoop = true;
             }
         }
 
         public void NewLoop(){
-
+            
+            //Enable next puzzle
             if (gameObject.activeInHierarchy && waitingToEnableNext)
             {
                 waitingToEnableNext = false;
@@ -72,6 +74,8 @@ using UnityEngine.Events;
                     puzzles[currentPuzzle].SetActive(true);
                 }
             }
+
+            //call newloops
             for (int i = 0; i < puzzles.Length; i++) {
 
                 if (isRhythm) {
@@ -82,16 +86,22 @@ using UnityEngine.Events;
                     puzzles[i].GetComponent<HarmonyObject>().NewLoop();
                 }
             }
+
+            if (PlayingLoop)
+            {
+                loopSource.Play();
+            }
         }
 
-        public void FantasiaOn()
+        public void TurnOffLoops()
         {
             for (int i = 0; i < puzzles.Length; i++)
             {
                 if (isRhythm)
                 {
                     puzzles[i].transform.Find("RhythmObject").GetComponent<PercussionObject>().fantasiaOn = true;
-                } else if (isMelody)
+                }
+                else if (isMelody)
                 {
                     puzzles[i].transform.Find("MelodyObject").GetComponent<MelodyObject>().fantasiaOn = true;
                 }
@@ -100,6 +110,12 @@ using UnityEngine.Events;
                     puzzles[i].GetComponent<HarmonyObject>().fantasiaOn = true;
                 }
             }
+         }
+
+
+        public void FantasiaOn()
+        {
+            PlayingLoop = false;
         }
 
         public void PauseFantasia()
@@ -121,7 +137,7 @@ using UnityEngine.Events;
             }
         }
 
-        public void ResumeeFantasia()
+        public void ResumeFantasia()
         {
             for (int i = 0; i < puzzles.Length; i++)
             {

@@ -39,6 +39,7 @@ public class MelodyObject : MonoBehaviour
         coll = GetComponent<Collider>();
         rend = GetComponent<MeshRenderer>();
         loopSource = GetComponent<AudioSource>();
+        loopSource.volume = 0;
         rend.material = normalMat;
         ChangeAlpha(offAlpha);
 
@@ -74,10 +75,6 @@ public class MelodyObject : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            if (!fantasiaOn)
-            {
-                loopSource.Play();
-            }
             // just keep looping if unlocked
             if (unlocked)
             {
@@ -89,6 +86,11 @@ public class MelodyObject : MonoBehaviour
                 // if still locked and not moving then handle the window indicator
                 Invoke("WindowOn", beatOffset);
                 Invoke("WindowOff", windowLength + beatOffset);
+            }
+
+            if (!fantasiaOn)
+            {
+                loopSource.Play();
             }
         }
     }

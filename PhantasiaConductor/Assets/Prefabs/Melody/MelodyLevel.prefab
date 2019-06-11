@@ -180,6 +180,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   haptics: {fileID: 0}
+  counter: {fileID: 0}
   inContact: 0
   canHit: 0
   canInteract: 0
@@ -373,7 +374,7 @@ MonoBehaviour:
   failMat: {fileID: 2100000, guid: 9f7f1abc663f73e49a59d693e721189e, type: 2}
   unlockedMat: {fileID: 2100000, guid: 6db66adb191f4b94d904c517cfc0eebd, type: 2}
   pathBeat: {fileID: 7177176734528258501}
-  windowLength: 1
+  windowLength: 0.3
   unlocked: 0
   beatOffset: 0
   fantasiaOn: 0
@@ -948,21 +949,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7177176734221168517}
     m_Modifications:
-    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
-        type: 3}
-      propertyPath: m_Name
-      value: ParticleSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 9052794520737189480, guid: 954515b4678722b4fbf6c0d46debd459,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1017,6 +1003,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
+        type: 3}
+      propertyPath: m_Name
+      value: ParticleSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166108009468520152, guid: 954515b4678722b4fbf6c0d46debd459,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 954515b4678722b4fbf6c0d46debd459, type: 3}
