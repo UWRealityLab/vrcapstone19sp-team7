@@ -10351,7 +10351,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -12380,6 +12380,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8828065337997791030, guid: 763f1d661fa028245813e58def9eb444,
+        type: 3}
+      propertyPath: flock
+      value: 
+      objectReference: {fileID: 1979038197}
     - target: {fileID: 5946407774489356338, guid: 763f1d661fa028245813e58def9eb444,
         type: 3}
       propertyPath: onPuzzleComplete.m_PersistentCalls.m_Calls.Array.size
@@ -12800,11 +12805,6 @@ PrefabInstance:
       propertyPath: flock
       value: 
       objectReference: {fileID: 8433011511322038032}
-    - target: {fileID: 8828065337997791030, guid: 763f1d661fa028245813e58def9eb444,
-        type: 3}
-      propertyPath: flock
-      value: 
-      objectReference: {fileID: 1979038197}
     - target: {fileID: 1672824077393450143, guid: 763f1d661fa028245813e58def9eb444,
         type: 3}
       propertyPath: flock
