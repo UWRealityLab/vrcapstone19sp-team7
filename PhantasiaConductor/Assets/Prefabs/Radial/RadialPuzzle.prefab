@@ -1434,22 +1434,22 @@ PrefabInstance:
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[2]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[3]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[4]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[5]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
@@ -1953,22 +1953,22 @@ PrefabInstance:
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[2]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[3]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
@@ -1988,17 +1988,17 @@ PrefabInstance:
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[7]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[8]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
       propertyPath: captureTypes.Array.data[9]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 740847581815176657, guid: 4d6cfda5aca56494c95edf2b84145b87,
         type: 3}
