@@ -81,8 +81,9 @@ public class RadialSequence : MonoBehaviour
         }
         if (counter.cSwitch == 2 && counter.trig)
         {
-            onSuccess.Invoke();
             complete = true;
+            onSuccess.Invoke();
+            counter.trig = false;
         }
     }
 
