@@ -15,7 +15,7 @@ Hannah is an undergraduate computer science major at the University of Washingto
 
 **Ben Celsi**
 
-![Ben](https://github.com/UWRealityLab/vrcapstone19sp-team7/raw/gh-pages/assets/ben1.jpg?raw=true)
+![Ben](https://github.com/UWRealityLab/vrcapstone19sp-team7/raw/gh-pages/assets/ben.jpg)
 
 Ben Celsi is a senior studying Computer Science.  He has previously made games for the group EarthGames UW and was also on a robotics team called ARUW for a bit. In his spare time, he enjoys writing about himself in the third person.
 
