@@ -3,7 +3,7 @@ title: Who Are We?
 feature_image: "https://picsum.photos/1300/400?image=989"
 ---
 
-Our team is comprised of four amazing CS undergrads. Let's meet htem!
+Our team is comprised of four amazing CS undergrads. Let's meet them!
 
 **Hannah Werbel**
 
@@ -12,6 +12,8 @@ Our team is comprised of four amazing CS undergrads. Let's meet htem!
 Hannah is an undergraduate computer science major at the University of Washington with minors in physics and math. She is pasissionate about creating inclusive technology that is accesssible to everyone. Outside of school, Hannah is involved in several music ensembles. She is excited to bring her love of music to her work with Cosmic Symphony. 
 
 **PJ Kumlue**
+
+PJ is a graduating senior interested in game development, especially creating gameplay and computer graphics. His other main areas of interest in computer science are machine learning, networks, and compilers, although he is also fascinated by all areas of CS. He hopes to be able to create immersive and moving experiences in games one day
 
 **Ben Celsi**
 
