@@ -5,8 +5,14 @@ using UnityEngine;
 public class MoveDown : MonoBehaviour
 {
     private int tempScaleFactor = 1;
-    // Start is called before the first frame update
-	public void Move(int scaleFactor) {
+    public CountDown counter;
+    public GameObject center;
+
+    private void Awake()
+    {
+        counter = FindObjectOfType<CountDown>();
+    }
+    public void Move(int scaleFactor) {
 		StartCoroutine(MoveDownSteps());
         tempScaleFactor = scaleFactor;
 	}
@@ -18,6 +24,14 @@ public class MoveDown : MonoBehaviour
     	}
     }
 
-    
-    
+    private void Update()
+    {
+        if (counter.cSwitch == 2)
+        {
+            center.SetActive(false);
+        }
+
+    }
+
+
 }

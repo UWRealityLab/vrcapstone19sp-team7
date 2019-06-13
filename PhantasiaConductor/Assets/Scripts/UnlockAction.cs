@@ -11,13 +11,14 @@ public class UnlockAction : MonoBehaviour
 	public float radius;
 	public float rotationSpeed = 1; //negative for counterclockwise
 
-	public GameObject rhythmObject;
+    public GameObject rhythmObject;
 	private float y = 0;
 
 	void Awake () {
 		inCenter = false;
-		//rhythmObject = transform.parent.Find("RhythmObject");
-	}
+        //rhythmObject = transform.parent.Find("RhythmObject");
+
+    }
 
 	// Update is called once per frame
 	void Update()
@@ -25,9 +26,8 @@ public class UnlockAction : MonoBehaviour
 		if (inCenter) {
             y += Time.deltaTime * ((rotationSpeed * 360) / MasterLoop.loopTime);
         	transform.rotation = Quaternion.Euler(0, y, 0);
-
-			//transform.rotation.y += 1;
-		} else {
+            //transform.rotation.y += 1;
+        } else {
 			Vector3 delta = centerPosition - transform.localPosition;
 			if (delta.magnitude < .25f) {
 				inCenter = true;

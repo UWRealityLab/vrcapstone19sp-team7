@@ -179,7 +179,10 @@ public class HarmonyObject : MonoBehaviour
     private void Unlock()
 	{
 		GetComponent<Collider>().enabled = false;
-	  	loopSource.volume = 1;
+        Color color; 
+        color = Color.HSVToRGB(transform.localPosition.y % 1f, 1f, 1f);
+        GetComponent<Renderer>().material.color = color;
+        loopSource.volume = 1;
         inContact = false;
         unlocked = true;
 	  	onUnlock.Invoke();
