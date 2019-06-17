@@ -1,2 +1,2 @@
-# vrcapstone19sp-team7
-Team 7 Repo
+# Cosmic Symphony
+This fork is used to compile the Oculus Quest version
